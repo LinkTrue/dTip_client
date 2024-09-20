@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useState, useEffect, useImperativeHandle, forwardRef } from "react";
 import Select from "react-select";
 
@@ -48,7 +49,7 @@ const ChainsComboBox = forwardRef(({ onSelect }, ref) => {
         onChange={handleChange}
         getOptionLabel={(option) => (
           <div style={{ display: "flex", alignItems: "center" }}>
-            <img
+            <Image
               src={option.value}
               alt={option.label}
               style={{ width: 20, marginRight: 10 }}
@@ -62,5 +63,7 @@ const ChainsComboBox = forwardRef(({ onSelect }, ref) => {
     </div>
   );
 });
+
+ChainsComboBox.displayName = "ChainsComboBox";
 
 export default ChainsComboBox;

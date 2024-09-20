@@ -1,6 +1,7 @@
 import { useState, useEffect, useImperativeHandle, forwardRef } from "react";
 import Select from "react-select";
-import { useGlobalState, Web3Item } from "@/context/GlobalStateContext";
+import { useGlobalState } from "@/context/GlobalStateContext";
+import Image from "next/image";
 
 const Web3ItemsComboBox = forwardRef(({ onSelect }, ref) => {
   const [icons, setIcons] = useState([]);
@@ -58,7 +59,7 @@ const Web3ItemsComboBox = forwardRef(({ onSelect }, ref) => {
         onChange={handleChange}
         getOptionLabel={(option) => (
           <div style={{ display: "flex", alignItems: "center" }}>
-            <img
+            <Image
               src={option.value}
               alt={option.label}
               style={{ width: 20, marginRight: 10 }}
@@ -72,5 +73,7 @@ const Web3ItemsComboBox = forwardRef(({ onSelect }, ref) => {
     </div>
   );
 });
+
+Web3ItemsComboBox.displayName = "Web3ItemsComboBox";
 
 export default Web3ItemsComboBox;

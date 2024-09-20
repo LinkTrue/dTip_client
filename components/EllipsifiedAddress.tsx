@@ -1,5 +1,4 @@
 import React from 'react';
-import { useToast } from "@/hooks/use-toast"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
 import {
@@ -11,8 +10,6 @@ import {
 import { ellipsify, copyToClipboard } from '../lib/utils'
 
 const EllipsifiedAddress = ({ walletAddress }: { walletAddress: string }) => {
-
-
     return (
         <TooltipProvider>
             <Tooltip>
@@ -41,15 +38,6 @@ const EllipsifiedAddress = ({ walletAddress }: { walletAddress: string }) => {
                 </TooltipContent>
             </Tooltip>
         </TooltipProvider>
-
-
-        // <span>
-        //     <button
-
-        //     >
-
-        //     </button>
-        // </span>
     );
 };
 

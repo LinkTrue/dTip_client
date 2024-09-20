@@ -24,7 +24,7 @@ const S2Username = () => {
     const [isChecking, setIsChecking] = useState(false);
 
     // Handle input change for user information (step 1)
-    const handleUserInfoChange = (e: any) => {
+    function handleUserInfoChange(e: React.ChangeEvent<HTMLInputElement>) {
         const validateUsername = (username: string) => {
             const lowercaseEnglishPattern = /^[a-z\s]+$/; // Allows lowercase letters and spaces
             return lowercaseEnglishPattern.test(username);
@@ -54,14 +54,12 @@ const S2Username = () => {
         setIsChecking(true);
 
         try {
-            isUsernameAvailable(userProfile.username).then((result) => {
+            isUsernameAvailable(userProfile.username).then(() => {
                 setUserNameCheckOK(true);
-            }).catch(err => {
+            }).finally(() => {
+                setIsChecking(false);
             })
-                .finally(() => {
-                    setIsChecking(false);
-                })
-        } catch (err: any) {
+        } catch (err: unknown) {
             logException(err);
         }
     };

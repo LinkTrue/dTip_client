@@ -61,12 +61,12 @@ export default function UserProfile() {
           setIsFetching(false);
         })
     }
-  }, [isConnected, username, getProfileByUsername]);
+  }, [isFetching, isConnected, username, getProfileByUsername, setUserProfile]);
 
   function parseResult(result: string[]) {
     // Initialize arrays for Web2 and Web3 items
-    let web2Items: Web2Item[] = [];
-    let web3Items: Web3Item[] = [];
+    const web2Items: Web2Item[] = [];
+    const web3Items: Web3Item[] = [];
 
     // Loop through the result and process each item
     for (let i = 0; i < result.length; i++) {

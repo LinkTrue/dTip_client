@@ -1,5 +1,5 @@
 "use client"
-import Image from "next/image";
+// import Image from "next/image";
 import { useSteps, Steps } from '../context/StepsContext';
 
 import Step1 from '../components/steps/S1Main';

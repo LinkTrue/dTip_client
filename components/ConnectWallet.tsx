@@ -1,16 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useBlockchain } from "@/context/BlockchainProvider";
-import { useLogger } from '@/context/LoggerContext';
-
 
 const BlockchainComponent: React.FC = () => {
-    const { log, logException } = useLogger();
     const {
         handleConnectWallet,
-        networkName,
         isConnecting,
         isConnected,
-        signer,
     } = useBlockchain();
 
     return (

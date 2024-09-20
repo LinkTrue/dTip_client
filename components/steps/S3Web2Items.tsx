@@ -1,8 +1,8 @@
 import { RefObject, useRef, useState } from "react";
-import { ellipsify } from '@/lib/utils';
 import { useSteps } from '@/context/StepsContext'
 import SocialMediaComboBox from '@/components/SocialMediaComboBox';
 import { useGlobalState, Web2Item } from "@/context/GlobalStateContext";
+import Image from "next/image";
 
 // Define the type for the ref
 interface SocialMediaComboBoxHandle {
@@ -30,7 +30,7 @@ const S3Web2Items = () => {
         }
     };
 
-    const handleWeb2AddressesChange = (e: any) => {
+    const handleWeb2AddressesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setWeb2Item((prevItem) => ({
             ...prevItem,
@@ -111,7 +111,7 @@ const S3Web2Items = () => {
                                 {userProfile.web2Items.map((item, index) => (
                                     <tr key={index}>
                                         <td className="px-4 py-2 border-b items-center justify-center">
-                                            <img src={item.iconUrl} alt={item.iconUrl} style={{ width: 30, height: 30 }} />
+                                            <Image src={item.iconUrl} alt={item.iconUrl} style={{ width: 30, height: 30 }} />
                                         </td>
                                         <td className="px-4 py-2 border-b">
                                             <a href={item.fullURL} target="_blank" rel="noopener noreferrer"

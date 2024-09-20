@@ -1,9 +1,9 @@
 import { RefObject, useRef, useState } from "react";
-import { ellipsify } from '@/lib/utils';
 import { useGlobalState, Web3Item } from "@/context/GlobalStateContext";
 import { useSteps } from '@/context/StepsContext'
 import ChainsComboBox from '@/components/ChainsComboBox';
 import EllipsifiedWalletAddress from '@/components/EllipsifiedAddress';
+import Image from "next/image";
 
 
 // Define the type for the ref
@@ -32,7 +32,7 @@ const S4Web3Items = () => {
         }
     };
 
-    const handleWeb3ItemInputChange = (e: any) => {
+    const handleWeb3ItemInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setWeb3Item((prevItem) => ({
             ...prevItem,
@@ -103,7 +103,7 @@ const S4Web3Items = () => {
                                 {userProfile.web3Items.map((item, index) => (
                                     <tr key={index}>
                                         <td className="px-4 py-2 border-b items-center justify-center">
-                                            <img src={item.icon} alt={item.icon} style={{ width: 30, height: 30 }} />
+                                            <Image src={item.icon} alt={item.icon} style={{ width: 30, height: 30 }} />
                                         </td>
                                         <td className="px-4 py-2 border-b">
                                             <EllipsifiedWalletAddress walletAddress={item.walletAddress} />

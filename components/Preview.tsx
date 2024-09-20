@@ -6,6 +6,7 @@ import EllipsifiedAddress from "@/components/EllipsifiedAddress";
 import { copyToClipboard } from '@/lib/utils'
 import Web3ItemsComboBox from '@/components/Web3ItemsComboBox';
 import { useGlobalState } from '@/context/GlobalStateContext';
+import Image from "next/image";
 
 const Preview = () => {
     const { userProfile } = useGlobalState();
@@ -35,9 +36,9 @@ const Preview = () => {
 
                 <div className="flex flex-wrap justify-center mt-3">
                     {userProfile.web2Items.map((item, index) => (
-                        <a key={`web2Addresses${index}`} href={item.fullURL} target="_blank" rel="noopener noreferrer" title={item.title}>
+                        <a key={`web2Addresses${index}`} href={item.fullURL} target="_blank" rel="noopener noreferrer" title={item.iconUrl}>
                             <div style={{ display: "flex", alignItems: "center", margin: "1px" }}>
-                                <img src={item.iconUrl} alt={item.title} style={{ width: 20, marginRight: 10 }} />
+                                <Image src={item.iconUrl} alt={item.iconUrl} style={{ width: 20, marginRight: 10 }} />
                             </div>
                         </a>
                     ))}

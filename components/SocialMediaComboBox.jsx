@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useState, useEffect, useImperativeHandle, forwardRef } from "react";
 import Select from "react-select";
 
@@ -48,7 +49,7 @@ const SocialMediaComboBox = forwardRef(({ onSelect, autoFocus = false }, ref) =>
         onChange={handleChange}
         getOptionLabel={(option) => (
           <div style={{ display: "flex", alignItems: "center" }}>
-            <img
+            <Image
               src={option.value}
               alt={option.label}
               style={{ width: 20, marginRight: 10 }}
@@ -63,5 +64,8 @@ const SocialMediaComboBox = forwardRef(({ onSelect, autoFocus = false }, ref) =>
     </div>
   );
 });
+
+// Set the display name for debugging purposes
+SocialMediaComboBox.displayName = "SocialMediaComboBox";
 
 export default SocialMediaComboBox;
