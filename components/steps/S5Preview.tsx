@@ -38,10 +38,7 @@ const S5Preview = () => {
                 //TODO redirect to the profile page.
 
             }).catch((err) => {
-
                 console.log(err);
-                debugger
-
             }).finally(() => {
                 setIsPublishing(false)
             })
@@ -53,18 +50,13 @@ const S5Preview = () => {
     return (
         <div>
 
-            <h1 className="font-bold">Preview</h1>
-            <p>Here is how your profile will look like</p>
-            <br />
-
+            <h1 className="font-bold mb-8">Preview of your profile:</h1>
             <Preview />
-
-            <br />
-            <p>All good?</p>
+            <p className='mt-10'>All good?</p>
             <br />
             <br />
             <p>
-                then <strong>publish now</strong> to reserve it forever!
+                then <strong>publish it now</strong> to <i>reserve it</i> forever!
             </p>
 
             <div className="flex justify-between gap-4 mt-9">

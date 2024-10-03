@@ -11,6 +11,7 @@ export default function UserProfile() {
   const params = useParams();
   const {
     handleConnectWallet,
+    signer,
     isConnecting,
     isConnected,
   } = useBlockchain();
@@ -41,7 +42,7 @@ export default function UserProfile() {
   }, [isConnected, isConnecting, handleConnectWallet]);
 
   useEffect(() => {
-    if (isConnected && username.length > 0 && !isFetching) {
+    if (isConnected && signer && username.length > 0 && !isFetching) {
       setIsFetching(true);
       getProfileByUsername(username).then(res => {
         const cleanedData = parseResult(res);
@@ -55,13 +56,12 @@ export default function UserProfile() {
         )
       })
         .catch(err => {
-          debugger
           console.log(err);
         }).finally(() => {
           setIsFetching(false);
         })
     }
-  }, [isFetching, isConnected, username, getProfileByUsername, setUserProfile]);
+  }, [isConnected, signer, username, getProfileByUsername, setUserProfile]);
 
   function parseResult(result: string[]) {
     // Initialize arrays for Web2 and Web3 items
@@ -103,8 +103,11 @@ export default function UserProfile() {
   // set the profile data into the global state 
   return (
     <div>
-      {isConnecting ? <>Connecting ...</> : ''}
-      {isConnected && isFetching ? <>Reading Blockchain Data ...</> : ''}
+      <div className='text-center'>
+        {isConnecting ? <span>Connecting ...</span> : ''}
+        {isConnected && isFetching ? <span className='pt-32'>Reading Blockchain Data ...</span> : ''}
+      </div>
+
       {isConnected && !isFetching ? <Preview /> : ''}
 
     </div>

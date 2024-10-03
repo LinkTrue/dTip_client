@@ -4,6 +4,8 @@ import { useSteps } from '@/context/StepsContext'
 import ChainsComboBox from '@/components/ChainsComboBox';
 import EllipsifiedWalletAddress from '@/components/EllipsifiedAddress';
 import Image from "next/image";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 
 
 // Define the type for the ref
@@ -63,47 +65,54 @@ const S4Web3Items = () => {
     };
 
     return (
-        <div className="flex flex-col items-center">
-            <h2 className="mb-3">Add your Crypto Wallet addresses</h2>
+        <div className="flex flex-col text-center gap-8">
+            <h2 className="mb-8 text-lg lg:text-4xl md:text-2xl">Add your destination Wallet addresses you like to share with your fans!</h2>
             <ChainsComboBox ref={comboBoxRef} onSelect={handleSelectChain} />
 
-            <div className="mt-4">
-                <input
-                    className="text-sm rounded h-8 m-1 p-1 border"
+            <div className="flex items-center">
+                <Input
+                    className="text-sm rounded h-8 mr-4 border"
                     type="text"
                     name="walletAddress"
                     value={web3Item.walletAddress}
                     onChange={handleWeb3ItemInputChange}
-                    placeholder="Wallet address"
+                    placeholder="Wallet address eg. 0x15e69F13Ef2C5b81D40342AB6dc84A887866B146"
                     required
                 />
-                <button
-                    className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 mt-2"
-                    type="button"
-                    onClick={handleAddItem}
-                >
-                    +
-                </button>
+                {web3Item.icon ?
+                    <Button
+                        className="rounded-full bg-foreground text-background text-base h-8"
+                        type="button"
+                        onClick={handleAddItem}
+                    >
+                        +
+                    </Button>
+                    : <></>
+                }
+            </div>
 
-                <br /><br />
-                <hr />
-                <br /><br />
+            {userProfile.web3Items.length > 0 ? (
 
-                <div className="pt-3">
-                    {userProfile.web3Items.length > 0 ? (
+                <div className="mt-2 p-6">
+                    <p className="text-2xl font-bold">Summary:</p>
+                    <div className="flex flex-col pt-3 items-center">
+
                         <table className="min-w-full border border-gray-200 border-collapse">
                             <thead>
                                 <tr>
                                     <th className="px-4 py-2 border-b">Icon</th>
                                     <th className="px-4 py-2 border-b">Address</th>
-                                    <th className="px-4 py-2 border-b">Actions</th>
+                                    <th className="px-4 py-2 border-b">Remove</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {userProfile.web3Items.map((item, index) => (
                                     <tr key={index}>
                                         <td className="px-4 py-2 border-b items-center justify-center">
-                                            <Image src={item.icon} alt={item.icon} style={{ width: 30, height: 30 }} />
+                                            <Image src={item.icon} alt={item.icon}
+                                                width={30}
+                                                height={30}
+                                            />
                                         </td>
                                         <td className="px-4 py-2 border-b">
                                             <EllipsifiedWalletAddress walletAddress={item.walletAddress} />
@@ -118,14 +127,12 @@ const S4Web3Items = () => {
                                 ))}
                             </tbody>
                         </table>
-                    ) : (
-                        <p>No items added yet.</p>
-                    )}
-
+                    </div>
                 </div>
-
-            </div>
-            <div className="flex justify-between gap-4 mt-9">
+            ) : (
+                <></>
+            )}
+            <div className="flex justify-between gap-4 mt-6">
                 <button
                     className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
                     type="button"

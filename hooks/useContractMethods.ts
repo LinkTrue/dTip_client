@@ -49,27 +49,31 @@ export const useContractMethods = () => {
 
   const isUsernameAvailable = useCallback(async (username: string) => {
     if (!smartContractService) {
-      toast.info(
-        "For now we only support Optimism [mainnet & testnet]."
+      throw Error(
+        "No SmartContract found! make sure you are connected to Optimism mainnet."
       )
     } else {
       try {
         await smartContractService.callStatic('registerUserProfile', [username, ["testTitle"], ["testValue"]]);
+        return true;
       } catch (error: any) {
+        console.debug(error);
         if (error && error.reason) {
           const revertReason = error.reason;
 
           // Check if the error message contains the specific message
           if (revertReason.includes("Wallet already registered!")) {
-            toast.warning(
-              `There is already a profile associated with this wallet address;
-              Please use another wallet if you need to create a new profile.`, { duration: 100000 }
+            throw Error(
+              `A profile is already linked to this wallet address. Please use a different wallet to create a new profile.`
             );
           } else if (revertReason.includes("Username is reserved or contains a reserved prefix")) {
-            toast.warning(`This username might confuse users, please choose your brand name`);
+            throw Error(`This username might confuse users, please choose your brand name`);
+          } else if(revertReason.includes("Username already taken")) {
+            throw Error(`It is taken. now be creative.`);
           }
         } else {
           log(`Error data is not available or not in expected format`);
+          throw Error("SURPRISING ERROR!, ITS LIFE; IT JUST HAPPENS. TRY HARD REFRESH.")
         }
 
         log(`Error calling static method registerUserProfile:`);

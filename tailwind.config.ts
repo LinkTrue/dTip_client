@@ -7,10 +7,14 @@ const config: Config = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    darkMode: 'class',
     extend: {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+      },
+      fontSize: {
+        'xxs': '0.625rem', // Example for extra extra small
       },
     },
   },

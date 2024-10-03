@@ -1,6 +1,8 @@
 import { RefObject, useRef, useState } from "react";
 import { useSteps } from '@/context/StepsContext'
 import SocialMediaComboBox from '@/components/SocialMediaComboBox';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { useGlobalState, Web2Item } from "@/context/GlobalStateContext";
 import Image from "next/image";
 
@@ -62,56 +64,60 @@ const S3Web2Items = () => {
     };
 
     return (
-        <div className="flex flex-col items-center">
-            <h2 className="mb-3">Add your social media links</h2>
-            <span tabIndex={1}>
-                <SocialMediaComboBox
-                    ref={comboBoxRef}
-                    onSelect={handleSelect}
-                    autoFocus={true}
-                />
-            </span>
+        <div className="flex flex-col text-center gap-8">
+            <strong>@{userProfile.username}</strong>
+            <h2 className="mb-8 text-lg lg:text-4xl md:text-2xl">Guide your fans with thoughtful hand-picked destinations you want!<br />
+                <p className="text-sm">(any www address, social media, Ecommerce, shop, etc.):</p>
+            </h2>
+            <SocialMediaComboBox
+                ref={comboBoxRef}
+                onSelect={handleSelect}
+                autoFocus={true}
+            />
 
-            <div className="mt-4">
-                <input
-                    className="text-sm rounded h-8 m-1 p-1 border"
+            <div className="flex items-center">
+                <Input
+                    className="text-sm rounded h-8 mr-4 border"
                     type="url"
                     name="fullURL"
                     value={web2Item.fullURL}
                     onChange={handleWeb2AddressesChange}
-                    placeholder="Your page full URL"
+                    placeholder="e.g., https://example.com or https://paypal.me/username"
                     required
-                    tabIndex={2}
+                    tabIndex={1}
                 />
-                <button
-                    className="rounded-full bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 mt-2"
-                    type="button"
-                    onClick={handleAddItem}
-                    tabIndex={3}
-                >
-                    +
-                </button>
-
-                <br /><br />
-                <hr />
-                <br /><br />
-
-                Summary:
-                <div className="pt-3">
-                    {userProfile.web2Items.length > 0 ? (
-                        <table className="min-w-full border border-gray-200 border-collapse">
+                {web2Item.iconUrl ?
+                    <Button
+                        className="rounded-full bg-foreground text-background text-base h-8"
+                        type="button"
+                        onClick={handleAddItem}
+                        tabIndex={2}
+                    >
+                        +
+                    </Button>
+                    : <></>
+                }
+            </div>
+            {userProfile.web2Items.length > 0 ? (
+                <div className="mt-2 p-6">
+                    <p className="text-2xl font-bold">Summary:</p>
+                    <div className="flex flex-col pt-3 items-center">
+                        <table className="border border-gray-200 border-collapse">
                             <thead>
                                 <tr>
                                     <th className="px-4 py-2 border-b">Icon</th>
                                     <th className="px-4 py-2 border-b">URL</th>
-                                    <th className="px-4 py-2 border-b">Actions</th>
+                                    <th className="px-4 py-2 border-b">Remove</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {userProfile.web2Items.map((item, index) => (
                                     <tr key={index}>
                                         <td className="px-4 py-2 border-b items-center justify-center">
-                                            <Image src={item.iconUrl} alt={item.iconUrl} style={{ width: 30, height: 30 }} />
+                                            <Image src={item.iconUrl} alt={item.iconUrl}
+                                                width={20}
+                                                height={20}
+                                            />
                                         </td>
                                         <td className="px-4 py-2 border-b">
                                             <a href={item.fullURL} target="_blank" rel="noopener noreferrer"
@@ -131,14 +137,12 @@ const S3Web2Items = () => {
                                 ))}
                             </tbody>
                         </table>
-                    ) : (
-                        <p>No items added yet.</p>
-                    )}
-
+                    </div>
                 </div>
-
-            </div>
-            <div className="flex justify-between gap-4 mt-9">
+            ) : (
+                <></>
+            )}
+            <div className="flex justify-between gap-4 mt-6">
                 <button
                     className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
                     type="button"

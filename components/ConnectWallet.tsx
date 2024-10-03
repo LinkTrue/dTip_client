@@ -22,7 +22,9 @@ const BlockchainComponent: React.FC = () => {
                        "
                     onClick={() => handleConnectWallet(true)}
                 >
-                    {isConnecting ? 'Waiting for MetaMask to connect...' : 'Connect Wallet'}
+                    {isConnecting ? (
+                        (<div className="spinner"></div>)
+                    ) : 'Connect Wallet'}
 
                 </button>
             )}

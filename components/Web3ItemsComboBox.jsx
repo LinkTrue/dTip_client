@@ -63,11 +63,13 @@ const Web3ItemsComboBox = forwardRef(({ onSelect }, ref) => {
               src={option.value}
               alt={option.label}
               style={{ width: 20, marginRight: 10 }}
+              width={20}
+              height={20}
             />
             {option.label}
           </div>
         )}
-        placeholder={`Choose wallet address`}
+        placeholder={`Select a wallet address`}
         isClearable
       />
     </div>

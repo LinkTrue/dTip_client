@@ -2,8 +2,10 @@
 import { useSteps } from '@/context/StepsContext'
 import { useGlobalState } from "@/context/GlobalStateContext";
 import { useContractMethods } from '@/hooks/useContractMethods';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLogger } from '@/context/LoggerContext';
+import { Input } from '@/components/ui/input';
+import { toast } from 'sonner';
 
 const S2Username = () => {
     const { logException } = useLogger();
@@ -22,6 +24,7 @@ const S2Username = () => {
     const { isUsernameAvailable } = useContractMethods();
 
     const [isChecking, setIsChecking] = useState(false);
+    const [isUsernameError, setIsUsernameError] = useState(false);
 
     // Handle input change for user information (step 1)
     function handleUserInfoChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -46,40 +49,46 @@ const S2Username = () => {
             }
             updateUsername(_usernameValue);
             setUserNameCheckOK(false);
+            setIsUsernameError(false);
         }
     };
 
     const handleUsernameCheck = async () => {
         if (isChecking) return;
         setIsChecking(true);
-
-        try {
-            isUsernameAvailable(userProfile.username).then(() => {
+        isUsernameAvailable(userProfile.username).then((res) => {
+            if (!!res) {
                 setUserNameCheckOK(true);
-            }).finally(() => {
-                setIsChecking(false);
-            })
-        } catch (err: unknown) {
-            logException(err);
-        }
+                nextStep();
+            } else {
+                console.debug(res);
+            }
+        }).catch(err => {
+            setIsUsernameError(true);
+            toast.error(err.message)
+        }).finally(() => {
+            setIsChecking(false);
+        })
     };
 
+    useEffect(() => { });
+
     return (
-        <div>
-            <h2 className="mb-3">Choose a unique username for your brand</h2>
-            <div className="flex-column items-center p-1 m-5">
-                <input
+        <div className='flex flex-col gap-4 text-center'>
+            <h2 className="mb-3 lg:text-4xl md:text-2xl">Choose your unique brand name</h2>
+            <div className="flex-column items-center p-1 m-20">
+                <Input
                     className={`
-                    text-sm rounded h-8 m-1 p-1 border 
-                    ${userNameCheckOK &&
-                        'border-4 border-green-500 focus:outline-none focus:border-green-700'
-                        }
+                     
+                    ${userNameCheckOK && 'border-4 border-green-500 focus:outline-none focus:border-green-700'}
+                    ${isUsernameError && 'border-4 border-red-500 focus:outline-none focus:red-green-700'}
+                    
                     `}
                     type="text"
                     name="username"
                     value={userProfile.username ?? ''}
                     onChange={handleUserInfoChange}
-                    placeholder="Choose your username"
+                    placeholder="input username"
                     required
                     tabIndex={1}
                     autoFocus={true}

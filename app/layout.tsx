@@ -38,32 +38,15 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <a href="/" className="flex text-center justify-center pt-8 text-2xl">
+          <strong>Link</strong>True<sup><span className="text-xs">Join now!</span></sup>
+        </a>
         <LoggerProvider>
           <BlockchainProvider>
             <GlobalStateProvider>
               <StepsProvider>
                 <SmartContractProvider>
-
-                  <div className="
-            grid 
-            grid-rows-[20px_1fr_20px] 
-            items-center 
-            justify-items-center 
-            min-h-screen 
-            p-8 pb-10 gap-16 sm:p-10 
-            font-[family-name:var(--font-geist-sans)]
-            ">
-                    <a href="/" >
-                      <Image
-                        src="logo.svg"
-                        alt="Next.js logo"
-                        width={180}
-                        height={38}
-                        priority
-                      />
-                    </a>
-                    {children}
-                  </div>
+                  {children}
                 </SmartContractProvider>
               </StepsProvider>
             </GlobalStateProvider>

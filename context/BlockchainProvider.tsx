@@ -2,14 +2,16 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode, useRef } from "react";
 import { useLogger } from '@/context/LoggerContext';
 import { ethers, VoidSigner, ZeroAddress } from "ethers";
+import { toast } from "sonner";
 
+const supportedBlockchains = [10, 11155420];
 interface BlockchainContextType {
     isConnected: boolean;
     isConnecting: boolean;
     networkName: string;
     chainId: number;
     signer: any;
-    handleConnectWallet: (usingMetamask: boolean) => void;
+    handleConnectWallet: (usingMetamask: boolean) => Promise<Boolean>;
 }
 
 const BlockchainContext = createContext<BlockchainContextType | undefined>(undefined);
@@ -24,7 +26,8 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
     const [chainId, setChainId] = useState<number>(0);
     const [isConnecting, setIsConnecting] = useState<boolean>(false);
 
-    const CUSTOM_RPC_URL = "https://sepolia.optimism.io";  // Your custom RPC URL
+    const CUSTOM_RPC_URL = "https://sepolia.optimism.io";
+    // const CUSTOM_RPC_URL = "https://optimism.drpc.org";  //TODO use mainnet
 
     useEffect(() => {
         if (!isConnected) return;
@@ -70,14 +73,49 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
     const connectWallet = async (usingMetamask: boolean = true): Promise<void> => {
         let ethersProvider;
 
-
         if (usingMetamask) {
             // Check if MetaMask is available and use it, otherwise use the custom RPC provider
             if (typeof window !== "undefined" && (window as any).ethereum) {
                 const metaMaskProvider = (window as any).ethereum;
                 await metaMaskProvider.request({ method: 'eth_requestAccounts' });
                 const chainIdRaw = await metaMaskProvider.request({ method: 'eth_chainId' });
-                setChainId(parseInt(chainIdRaw, 16));
+                const chainId = parseInt(chainIdRaw, 16);
+                setChainId(chainId);
+
+                // Add Optimism to MetaMask.
+                if (!supportedBlockchains.includes(chainId)) {
+                    await (window as any).ethereum.request(
+                        // {
+                        //     method: 'wallet_addEthereumChain',
+                        //     params: [{
+                        //         chainId: '0xA', // Hexadecimal for 11155111 (Sepolia Testnet)
+                        //         chainName: 'OP Mainnet',
+                        //         nativeCurrency: {
+                        //             name: 'ETH Token',
+                        //             symbol: 'ETH',
+                        //             decimals: 18
+                        //         },
+                        //         rpcUrls: ['https://mainnet.optimism.io'],
+                        //         blockExplorerUrls: ['https://optimistic.etherscan.io/']
+                        //     }]
+                        // },
+                        {
+                            method: 'wallet_addEthereumChain',
+                            params: [{
+                                chainId: '0xA', // Hexadecimal for 11155111 (Sepolia Testnet) or 11155420
+                                chainName: 'OP Sepolia Testnet',
+                                nativeCurrency: {
+                                    name: 'Sepolia Ether',
+                                    symbol: 'ETH',
+                                    decimals: 18
+                                },
+                                rpcUrls: ['https://sepolia.optimism.io'],
+                                blockExplorerUrls: ['https://optimism-sepolia.blockscout.com']
+                            }]
+                        }
+
+                    );
+                }
 
                 ethersProvider = new ethers.BrowserProvider(metaMaskProvider);
 
@@ -85,15 +123,13 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
                 const walletSigner = await ethersProvider.getSigner();
                 setSigner(walletSigner);
 
-
             } else {
                 throw new Error("No MetaMask browser extension found. Please install MetaMask.");
             }
         } else {
             log('MetaMask not found, using custom RPC node');
+            debugger
             ethersProvider = new ethers.JsonRpcProvider(CUSTOM_RPC_URL);
-            const network = await ethersProvider.getNetwork();
-            setChainId(Number(network.chainId));
 
             const fallbackSigner = new ethers.VoidSigner(ZeroAddress, ethersProvider);
 
@@ -104,14 +140,14 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
         setProvider(ethersProvider);
 
         const network = await ethersProvider.getNetwork();
-        setNetworkName(network.name);
+        setChainId(Number(network.chainId));
 
         setIsConnected(true);
         log('Wallet connected');
     };
 
     const handleConnectWallet = async (usingMetamask: boolean = true) => {
-        if (isConnecting) return;
+        if (isConnecting) return false;
 
         setIsConnecting(true);
 
@@ -119,11 +155,17 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
             await connectWallet(usingMetamask);
             setIsConnecting(false);
         } catch (error: any) {
-            log("Failed to connect wallet:");
-            logException(error);
-            alert("Failed to connect to Blockchain. Make sure MetaMask is installed.");
+            if (error.message.includes("User rejected the request")) {
+                toast.warning("To own a profile, connect your wallet and change the network to Ethereum Layer 2 (Optimism).")
+            } else {
+                debugger
+                log("Failed to connect wallet:");
+                logException(error);
+            }
             setIsConnecting(false);
+            return false;
         }
+        return true;
     };
 
     return (
@@ -134,6 +176,7 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
                 chainId,
                 signer,
                 isConnecting,
+                // smartContract,
                 handleConnectWallet
             }
         }>

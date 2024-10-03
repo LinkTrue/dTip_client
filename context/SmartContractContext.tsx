@@ -16,12 +16,12 @@ export const SmartContractProvider: React.FC<
     const [smartContractService, setSmartContractService] = useState<BlockchainServiceInterface | null>(null);
 
     useEffect(() => {
-        if (signer && chainId) {
-            setSmartContractService(
-                SmartContractService(signer, chainId)
-            );
+        if (!smartContractService && signer && chainId) {
+            const service = SmartContractService(signer, chainId);
+            setSmartContractService(service);
         }
-    }, [signer, chainId]);
+    }, [signer, chainId, smartContractService]);
+
 
     return (
         <SmartContractContext.Provider value={{ smartContractService }}>

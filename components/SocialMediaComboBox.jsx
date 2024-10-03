@@ -41,6 +41,7 @@ const SocialMediaComboBox = forwardRef(({ onSelect, autoFocus = false }, ref) =>
   return (
     <div>
       <Select
+        tabIndex={0}
         value={selectedOption}
         options={icons.filter((icon) =>
           icon.label.toLowerCase().includes(search.toLowerCase())
@@ -53,11 +54,13 @@ const SocialMediaComboBox = forwardRef(({ onSelect, autoFocus = false }, ref) =>
               src={option.value}
               alt={option.label}
               style={{ width: 20, marginRight: 10 }}
+              width={20}
+              height={20}
             />
             {option.label}
           </div>
         )}
-        placeholder="Search social media icons..."
+        placeholder="Search for icon..."
         isClearable
         autoFocus={autoFocus}
       />

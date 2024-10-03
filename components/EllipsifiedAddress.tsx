@@ -28,7 +28,7 @@ const EllipsifiedAddress = ({ walletAddress }: { walletAddress: string }) => {
                         }
                         }
                     >
-                        <span>
+                        <span className='md:text-xl text-xxs lg:text-2xl'>
                             {ellipsify(walletAddress)} {" "} <i className="fas fa-copy"></i>
                         </span>
                     </Button>

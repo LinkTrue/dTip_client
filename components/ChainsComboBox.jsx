@@ -53,11 +53,13 @@ const ChainsComboBox = forwardRef(({ onSelect }, ref) => {
               src={option.value}
               alt={option.label}
               style={{ width: 20, marginRight: 10 }}
+              width={20}
+              height={20}
             />
             {option.label}
           </div>
         )}
-        placeholder="Search the Native coin name..."
+        placeholder="Select the coin name..."
         isClearable
       />
     </div>
