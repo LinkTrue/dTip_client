@@ -69,11 +69,8 @@ const S3Web2Items = () => {
             <h2 className="mb-8 text-lg lg:text-4xl md:text-2xl">Guide your fans with thoughtful hand-picked destinations you want!<br />
                 <p className="text-sm">(any www address, social media, Ecommerce, shop, etc.):</p>
             </h2>
-            <SocialMediaComboBox
-                ref={comboBoxRef}
-                onSelect={handleSelect}
-                autoFocus={true}
-            />
+            {/* @ts-expect-error  error*/}
+            <SocialMediaComboBox ref={comboBoxRef} onSelect={handleSelect} autoFocus={true} />
 
             <div className="flex items-center">
                 <Input

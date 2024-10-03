@@ -68,6 +68,7 @@ const Preview = () => {
             <div className="flex flex-col items-center justify-center">
                 {userProfile.web3Items.length > 0 && (
                     <div className="flex items-center space-x-4">
+                        {/* @ts-expect-error  error*/}
                         <Web3ItemsComboBox onSelect={handleWeb3ItemSelect} />
                     </div>
                 )}

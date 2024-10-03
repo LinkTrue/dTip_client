@@ -3,12 +3,10 @@ import { useSteps } from '@/context/StepsContext'
 import { useGlobalState } from "@/context/GlobalStateContext";
 import { useContractMethods } from '@/hooks/useContractMethods';
 import { useEffect, useState } from 'react';
-import { useLogger } from '@/context/LoggerContext';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
 
 const S2Username = () => {
-    const { logException } = useLogger();
 
     const { prevStep, nextStep } = useSteps();
     const {

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import localFont from "next/font/local";
 import "./globals.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';

@@ -67,6 +67,7 @@ const S4Web3Items = () => {
     return (
         <div className="flex flex-col text-center gap-8">
             <h2 className="mb-8 text-lg lg:text-4xl md:text-2xl">Add your destination Wallet addresses you like to share with your fans!</h2>
+            {/* @ts-expect-error error*/}
             <ChainsComboBox ref={comboBoxRef} onSelect={handleSelectChain} />
 
             <div className="flex items-center">
