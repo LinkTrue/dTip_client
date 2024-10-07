@@ -46,8 +46,8 @@ export default function RootLayout({
             <GlobalStateProvider>
               <StepsProvider>
                 <SmartContractProvider>
-                  <div>
-                    <div className="mx-2">
+                  <div className="h-screen flex flex-col justify-between">
+                    <div className="mx-4 my-4">
                       {children}
                     </div>
                     <footer className="flex flex-col text-center bg-gray-200 bg-foreground pt-1 gap-4">

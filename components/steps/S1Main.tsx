@@ -47,17 +47,15 @@ const S1Main = () => {
                 <div className='spinner'></div>
             </div>
             :
-            <div className='flex flex-col gap-4 text-center'>
+            <div className='flex flex-col justify-start gap-y-14  p-4 text-center bg-gray-50 rounded-lg shadow-md'>
                 {!isConnected &&
                     <div className="max-w-md mx-auto p-4 text-center bg-gray-50 rounded-lg shadow-md">
-                        <h2 className="mb-2">Accept crypto donations with</h2>
-                        <div className=''>
-                            <ul>
-                                <li>confidence</li>
-                                <li>&</li>
-                                <li>full ownership</li>
-                            </ul>
-                        </div>
+                        <h2 className="mb-2">Enable crypto donations with</h2>
+                        <ul>
+                            <li>confidence</li>
+                            <li>&</li>
+                            <li>full ownership</li>
+                        </ul>
                     </div>
                 }
 
@@ -81,6 +79,7 @@ const S1Main = () => {
                                         </>
                                         :
                                         <>
+                                            A Bio Link You Control, Forever.
                                         </>
                                 }
                             </span>

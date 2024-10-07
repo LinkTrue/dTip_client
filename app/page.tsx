@@ -27,7 +27,6 @@ export default function Home() {
           toast.error(err)
         })
       else {
-        debugger
         handleDisconnectWallet();
       }
     }
@@ -36,30 +35,28 @@ export default function Home() {
   );
 
   return (
-    <div className="flex flex-col min-h-screen"> {/* Use flex and set minimum height to screen height */}
-      <main className="flex-grow h-auto pt-24">
-        {currentStep === Steps.Main && <Step1 />}
-        {currentStep === Steps.Username && <Step2 />}
-        {currentStep === Steps.Web2Addresses && <Step3 />}
-        {currentStep === Steps.Web3Addresses && <Step4 />}
-        {currentStep === Steps.Preview && <Step5 />}
+    <main className="pt-6 xl:text-4xl md:text-2xl">
+      {currentStep === Steps.Main && <Step1 />}
+      {currentStep === Steps.Username && <Step2 />}
+      {currentStep === Steps.Web2Addresses && <Step3 />}
+      {currentStep === Steps.Web3Addresses && <Step4 />}
+      {currentStep === Steps.Preview && <Step5 />}
 
-        {isConnected && (
-          <div className="flex text-left pt-20">
-            <div>
-              <EllipsifiedWalletAddress walletAddress={signer?.address} />
-              {balance && balance > 0 ? (
-                <p className="text-xs pt-2 pb-4 text-center"><strong>Balance</strong>: {balance} $OP_ETH</p>
-              ) : (
-                <p className="text-red-400" title="You need some ETH on the Optimism network to reserve your profile">
-                  Low Balance! Top up OP ETH to build a profile.
-                </p>
-              )}
-            </div>
+      {isConnected && (
+        <div className="flex text-left pt-20">
+          <div>
+            <EllipsifiedWalletAddress walletAddress={signer?.address} />
+            {balance && balance > 0 ? (
+              <p className="text-xs pt-2 pb-4 text-center"><strong>Balance</strong>: {balance} $OP_ETH</p>
+            ) : (
+              <p className="text-sm" title="You need some $ETH on the Optimism network to reserve your profile">
+                Low Balance! Top up Optimism $ETH to build a profile.
+              </p>
+            )}
           </div>
-        )}
+        </div>
+      )}
 
-      </main>
-    </div>
+    </main>
   );
 }

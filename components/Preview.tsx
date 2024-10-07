@@ -54,7 +54,7 @@ const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
             </div>
 
             {/* WEB2 ITEMS */}
-            <div className="flex flex-wrap justify-center mt-2 mb-8 bg-gray-400 rounded-lg p-3">
+            <div className="flex flex-wrap justify-center mt-2 mb-8 bg-gray-300 rounded-lg p-3 gap-x-3">
                 {userProfile.web2Items.map((item, index) => (
                     <a key={`web2Addresses${index}`} href={item.fullURL} target="_blank" rel="noopener noreferrer"
                         title={item.iconUrl.substring(item.iconUrl.lastIndexOf('/') + 1).replace('.svg', '')}
@@ -80,7 +80,7 @@ const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
                 )}
 
                 {selectedWeb3Item.walletAddress && (
-                    <div className="flex flex-col mt-4 gap-4">
+                    <div className="flex flex-col mt-4 gap-4 items-center">
                         <EllipsifiedAddress walletAddress={selectedWeb3Item.walletAddress} />
                         {/* <p className="pt-4">or Scan the QR Code</p> */}
                         <QRCodeSVG
@@ -104,7 +104,9 @@ const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
 
             {!isPreview &&
                 <div className="flex text-xl items-center justify-center gap-8 space-x-2 pt-6 ">
-                    <span className="fa-solid fa-share text-lg text-orange-500"></span>
+                    <span className="fa-solid fa-share text-lg text-orange-500"
+                    title="Share this profile"
+                    ></span>
                     <span className="flex space-x-4 items-center">
                         <span title="share this profile on twitter" onClick={shareOnTwitter} className="fa-brands fa-square-x-twitter cursor-pointer"></span>
                         <span title="share this profile on facebook" onClick={shareOnFacebook} className="fa-brands fa-square-facebook cursor-pointer"></span>

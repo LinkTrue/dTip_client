@@ -41,7 +41,6 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
         setNetworkName("");
         setIsConnected(false);
         log('Disconnected from provider');
-        alert("Wallet disconnected");
     }
 
     const connectWallet = async (usingMetamask: boolean = true): Promise<void> => {

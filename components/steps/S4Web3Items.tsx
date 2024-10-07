@@ -6,6 +6,7 @@ import EllipsifiedWalletAddress from '@/components/EllipsifiedAddress';
 import Image from "next/image";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { toast } from "sonner";
 
 
 // Define the type for the ref
@@ -60,17 +61,19 @@ const S4Web3Items = () => {
             setWeb3Item({ icon: '', walletAddress: '' }); // Clear the form
             handleClearSelection();
         } else {
-            alert('Please fill out all fields');
+            toast.warning('Please select a blockchain network and input your wallet address.', { duration: 5000 });
         }
     };
 
     return (
-        <div className="flex flex-col text-center gap-8">
+        <div className="flex flex-col text-center gap-y-4">
             <h2 className="text-xl lg:text-4xl md:text-2xl">Add your wallet addresses</h2>
-            {/* @ts-expect-error error*/}
-            <ChainsComboBox ref={comboBoxRef} onSelect={handleSelectChain} />
+            <div className="px-10">
+                {/* @ts-expect-error error*/}
+                <ChainsComboBox ref={comboBoxRef} onSelect={handleSelectChain} />
+            </div>
 
-            <div className="flex items-center">
+            <div className="flex items-center p-4">
                 <Input
                     className="text-sm rounded h-8 mr-4 border"
                     type="text"
@@ -109,17 +112,17 @@ const S4Web3Items = () => {
                             <tbody>
                                 {userProfile.web3Items.map((item, index) => (
                                     <tr key={index}>
-                                        <td className="px-4 py-2 border-b items-center justify-center">
+                                        <td className="flex px-4 py-4 items-center justify-center">
                                             <Image src={item.icon} alt={item.icon}
                                                 width={30}
                                                 height={30}
                                                 loading="lazy"
                                             />
                                         </td>
-                                        <td className="px-4 py-2 border-b">
+                                        <td className="px-4 py-2 items-center justify-center">
                                             <EllipsifiedWalletAddress walletAddress={item.walletAddress} />
                                         </td>
-                                        <td className="px-4 py-2 border-b flex items-center justify-center">
+                                        <td className="px-4 py-2 items-center justify-center">
                                             <button
                                                 className="border rounded-full cursor-pointer w-8 h-8 text-red-500 font-bold"
                                                 rel="noopener noreferrer"
@@ -134,25 +137,29 @@ const S4Web3Items = () => {
             ) : (
                 <></>
             )}
-            <div className="flex justify-between gap-4 mt-6">
-                <button
-                    className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-                    type="button"
-                    onClick={prevStep}
-                >
-                    {"<"}
-                </button>
+            <div className="m-8">
+                <hr className="m-4 border-t-2 dark:border-gray-600" />
+                <div className="flex justify-between gap-4 mt-6">
+                    <button
+                        className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+                        type="button"
+                        onClick={prevStep}
+                    >
+                        {"<"}
+                    </button>
 
-                <button
-                    className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center 
+                    <button
+                        className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center 
           bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] 
           text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-                    type="button"
-                    onClick={nextStep}
-                >
-                    {">"}
-                </button>
+                        type="button"
+                        onClick={nextStep}
+                    >
+                        {">"}
+                    </button>
+                </div>
             </div>
+
         </div>
     );
 };

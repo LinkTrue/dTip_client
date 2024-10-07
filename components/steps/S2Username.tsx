@@ -96,44 +96,47 @@ const S2Username = () => {
                 }
             </div>
 
-            <div className="flex justify-between gap-4 mt-2">
-                <button
-                    className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-                    type="button"
-                    onClick={prevStep}
-                    tabIndex={4}
-                >
-                    {"<"}
-                </button>
-
-                {userNameOK && !userNameCheckOK ?
+            <div className='m-8'>
+                <hr className='m-4 border-t-2 dark:border-gray-600' />
+                <div className="flex justify-between gap-4">
                     <button
-                        onClick={handleUsernameCheck}
-                        disabled={!userNameOK || isChecking}
-                        className={`
+                        className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+                        type="button"
+                        onClick={prevStep}
+                        tabIndex={4}
+                    >
+                        {"<"}
+                    </button>
+
+                    {userNameOK && !userNameCheckOK ?
+                        <button
+                            onClick={handleUsernameCheck}
+                            disabled={!userNameOK || isChecking}
+                            className={`
                             btn-small rounded-full py-2 px-4 
                             ${userNameOK ? "bg-blue-500 text-white" : "bg-gray-400 text-gray-700"}
                             `}
-                        tabIndex={2}
-                    >
-                        {isChecking ? 'Checking ...' :
-                            'Check'
-                        }
-                    </button>
-                    : userNameCheckOK ?
-                        <button
-                            disabled={!userNameCheckOK}
-                            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center 
+                            tabIndex={2}
+                        >
+                            {isChecking ? 'Checking ...' :
+                                'Check'
+                            }
+                        </button>
+                        : userNameCheckOK ?
+                            <button
+                                disabled={!userNameCheckOK}
+                                className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center 
           bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] 
           text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-                            type="button"
-                            onClick={nextStep}
-                            tabIndex={3}
-                        >
-                            {">"}
-                        </button>
-                        : <></>
-                }
+                                type="button"
+                                onClick={nextStep}
+                                tabIndex={3}
+                            >
+                                {">"}
+                            </button>
+                            : <></>
+                    }
+                </div>
             </div>
         </div>
     );

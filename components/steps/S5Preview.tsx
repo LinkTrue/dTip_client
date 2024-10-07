@@ -48,17 +48,21 @@ const S5Preview = () => {
     return (
         <div>
             <h1 className="font-bold mb-2 pt-8">Preview of your profile:</h1>
-            <Preview isPreview={true} />
-            <p className='text-center mt-10'>All good?</p>
+            <div className='p-4'>
+                <Preview isPreview={true} />
+            </div>
+            <p className='text-left mt-10'>All good?</p>
             <br />
             <br />
             <p>
                 PUBLISH now to make it <strong>permanently yours</strong>!
             </p>
 
-            <div className="flex justify-between gap-4 mt-9">
-                <button
-                    className="rounded-full 
+            <div className='m-8'>
+                <hr className='m-4 border-t-2 dark:border-gray-600' />
+                <div className="flex justify-between gap-4 mt-9">
+                    <button
+                        className="rounded-full 
                border border-solid border-transparent 
                transition-colors 
                flex items-center justify-center 
@@ -67,28 +71,26 @@ const S5Preview = () => {
                hover:bg-black 
                dark:hover:bg-[#ccc] 
                text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-                    type="button"
-                    onClick={prevStep}
-                >
-                    {"<"}
-                </button>
+                        type="button"
+                        onClick={prevStep}
+                    >
+                        {"<"}
+                    </button>
 
-                <button
-                    className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center 
-          bg-foreground text-background gap-2 
-          hover:bg-[#383838] dark:hover:bg-[#10bdbd] 
-          text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5
-          "
-                    type="button"
-                    disabled={isPublishing}
-                    onClick={handlePublish}
-                >
-                    {isPublishing ?
-                        (<div className="spinner"></div>)
-                        : "Publish"
-                    }
-                </button>
+                    <button className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center 
+          bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#10bdbd] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+                        type="button"
+                        disabled={isPublishing}
+                        onClick={handlePublish}
+                    >
+                        {isPublishing ?
+                            (<div className="spinner"></div>)
+                            : "Publish"
+                        }
+                    </button>
+                </div>
             </div>
+
         </div>
     );
 };
