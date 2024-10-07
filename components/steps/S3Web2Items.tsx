@@ -65,9 +65,9 @@ const S3Web2Items = () => {
 
     return (
         <div className="flex flex-col text-center gap-8">
-            <strong>@{userProfile.username}</strong>
-            <h2 className="mb-8 text-lg lg:text-4xl md:text-2xl">Guide your fans with thoughtful hand-picked destinations you want!<br />
-                <p className="text-sm">(any www address, social media, Ecommerce, shop, etc.):</p>
+
+            <h2 className="pt-8 text-2xl lg:text-4xl md:text-2xl">Add your social links:<br />
+                <p className="text-xs">(any website, social media, shops, stripe, ...)</p>
             </h2>
             {/* @ts-expect-error  error*/}
             <SocialMediaComboBox ref={comboBoxRef} onSelect={handleSelect} autoFocus={true} />
@@ -85,19 +85,19 @@ const S3Web2Items = () => {
                 />
                 {web2Item.iconUrl ?
                     <Button
-                        className="rounded-full bg-foreground text-background text-base h-8"
+                        className="rounded-full bg-foreground text-background text-base p-4"
                         type="button"
                         onClick={handleAddItem}
                         tabIndex={2}
                     >
-                        +
+                        <strong>+</strong>
                     </Button>
                     : <></>
                 }
             </div>
             {userProfile.web2Items.length > 0 ? (
                 <div className="mt-2 p-6">
-                    <p className="text-2xl font-bold">Summary:</p>
+                    <p className="text-2xl font-bold">Your draft:</p>
                     <div className="flex flex-col pt-3 items-center">
                         <table className="border border-gray-200 border-collapse">
                             <thead>
@@ -114,6 +114,7 @@ const S3Web2Items = () => {
                                             <Image src={item.iconUrl} alt={item.iconUrl}
                                                 width={20}
                                                 height={20}
+                                                loading="lazy"
                                             />
                                         </td>
                                         <td className="px-4 py-2 border-b">

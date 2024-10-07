@@ -56,6 +56,7 @@ const SocialMediaComboBox = forwardRef(({ onSelect, autoFocus = false }, ref) =>
               style={{ width: 20, marginRight: 10 }}
               width={20}
               height={20}
+              loading="lazy"
             />
             {option.label}
           </div>

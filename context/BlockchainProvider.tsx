@@ -4,14 +4,19 @@ import { useLogger } from '@/context/LoggerContext';
 import { ethers, VoidSigner, ZeroAddress } from "ethers";
 import { toast } from "sonner";
 
-const supportedBlockchains = [10, 11155420];
+const supportedBlockchains = [
+    // 10, //TODO uncomment on Mainnet launch
+    11155420
+];
 interface BlockchainContextType {
     isConnected: boolean;
     isConnecting: boolean;
     networkName: string;
     chainId: number;
     signer: any;
+    provider: any;
     handleConnectWallet: (usingMetamask: boolean) => Promise<Boolean>;
+    handleDisconnectWallet: () => void;
 }
 
 const BlockchainContext = createContext<BlockchainContextType | undefined>(undefined);
@@ -29,46 +34,15 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
     const CUSTOM_RPC_URL = "https://sepolia.optimism.io";
     // const CUSTOM_RPC_URL = "https://optimism.drpc.org";  //TODO use mainnet
 
-    useEffect(() => {
-        if (!isConnected) return;
 
-        const handleChainChanged = () => {
-            window.location.reload();  // Reload the page when the chain changes
-        };
-
-        const handleAccountsChanged = () => {
-            if (signer) {
-                window.location.reload();
-            }
-        };
-
-        if (typeof window !== "undefined" && (window as any).ethereum) {
-            (window as any).ethereum.on("chainChanged", handleChainChanged);
-            (window as any).ethereum.on("accountsChanged", handleAccountsChanged);
-        }
-
-        return () => {
-            if (typeof window !== "undefined" && (window as any).ethereum) {
-                (window as any).ethereum.removeListener("chainChanged", handleChainChanged);
-                (window as any).ethereum.removeListener("accountsChanged", handleAccountsChanged);
-            }
-        };
-    }, [isConnected, signer]);
-
-    useEffect(() => {
-        setOnDisconnectCallback(() => {
-            setSigner(null);
-            setNetworkName("");
-            setIsConnected(false);
-            log('Disconnected from provider');
-            alert("Wallet disconnected");
-        });
-    }, []);
-
-    const onDisconnectCallback = useRef<(() => void) | null>(null);
-    const setOnDisconnectCallback = (callback: () => void): void => {
-        onDisconnectCallback.current = callback;
-    };
+    const handleDisconnectWallet = () => {
+        debugger
+        setSigner(null);
+        setNetworkName("");
+        setIsConnected(false);
+        log('Disconnected from provider');
+        alert("Wallet disconnected");
+    }
 
     const connectWallet = async (usingMetamask: boolean = true): Promise<void> => {
         let ethersProvider;
@@ -77,10 +51,9 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
             // Check if MetaMask is available and use it, otherwise use the custom RPC provider
             if (typeof window !== "undefined" && (window as any).ethereum) {
                 const metaMaskProvider = (window as any).ethereum;
-                await metaMaskProvider.request({ method: 'eth_requestAccounts' });
-                const chainIdRaw = await metaMaskProvider.request({ method: 'eth_chainId' });
-                const chainId = parseInt(chainIdRaw, 16);
-                setChainId(chainId);
+                const accounts = await metaMaskProvider.request({ method: 'eth_requestAccounts' });
+                let chainIdRaw = await metaMaskProvider.request({ method: 'eth_chainId' });
+                let chainId = parseInt(chainIdRaw, 16);
 
                 // Add Optimism to MetaMask.
                 if (!supportedBlockchains.includes(chainId)) {
@@ -102,7 +75,7 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
                         {
                             method: 'wallet_addEthereumChain',
                             params: [{
-                                chainId: '0xA', // Hexadecimal for 11155111 (Sepolia Testnet) or 11155420
+                                chainId: '0xaa37dc', // Hexadecimal for 11155111 (Sepolia Testnet) or 11155420
                                 chainName: 'OP Sepolia Testnet',
                                 nativeCurrency: {
                                     name: 'Sepolia Ether',
@@ -117,6 +90,9 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
                     );
                 }
 
+                chainIdRaw = await metaMaskProvider.request({ method: 'eth_chainId' });
+                chainId = parseInt(chainIdRaw, 16);
+
                 ethersProvider = new ethers.BrowserProvider(metaMaskProvider);
 
                 // Get signer only when using MetaMask
@@ -128,7 +104,6 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
             }
         } else {
             log('MetaMask not found, using custom RPC node');
-            debugger
             ethersProvider = new ethers.JsonRpcProvider(CUSTOM_RPC_URL);
 
             const fallbackSigner = new ethers.VoidSigner(ZeroAddress, ethersProvider);
@@ -176,8 +151,10 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
                 chainId,
                 signer,
                 isConnecting,
+                provider,
                 // smartContract,
-                handleConnectWallet
+                handleConnectWallet,
+                handleDisconnectWallet
             }
         }>
             {children}

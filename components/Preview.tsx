@@ -9,7 +9,7 @@ import { useGlobalState } from '@/context/GlobalStateContext';
 import Image from "next/image";
 import { toast } from "sonner";
 
-const Preview = () => {
+const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
     const [pageUrl, setPageUrl] = useState<string>('');
     const { userProfile } = useGlobalState();
     const [selectedWeb3Item, setSelectedWeb3Item] = useState<Web3Item>({
@@ -41,15 +41,19 @@ const Preview = () => {
             setPageUrl(`https://miladtsx.github.io/linktrue_client/${userProfile.username}`);
     }, [userProfile.username])
 
-
     return (
 
-        <div className="flex flex-col gap-4 p-1 items-center border border-y-blue-100 border-x-red-100">
+        <div className={
+            `flex flex-col gap-8 p-1 items-center border border-y-blue-100 border-x-red-100 
+            ${!isPreview && 'h-screen'}`
+        }>
 
+            {/* USERNAME */}
             <div className="bg-gray-200 rounded-full mt-10 shadow-md">
                 <p className="p-4"><strong>@ {userProfile.username}</strong></p>
             </div>
 
+            {/* WEB2 ITEMS */}
             <div className="flex flex-wrap justify-center mt-2 mb-8 bg-gray-400 rounded-lg p-3">
                 {userProfile.web2Items.map((item, index) => (
                     <a key={`web2Addresses${index}`} href={item.fullURL} target="_blank" rel="noopener noreferrer"
@@ -59,12 +63,14 @@ const Preview = () => {
                             <Image src={item.iconUrl} alt={item.iconUrl}
                                 width={30}
                                 height={30}
+                                loading="lazy"
                             />
                         </div>
                     </a>
                 ))}
             </div>
 
+            {/* WEB3 ITEMS */}
             <div className="flex flex-col items-center justify-center">
                 {userProfile.web3Items.length > 0 && (
                     <div className="flex items-center space-x-4">
@@ -93,9 +99,12 @@ const Preview = () => {
                         />
                     </div>
                 )}
+            </div>
 
-                <div className="flex items-center justify-between space-x-2 w-full pt-8">
-                    <span>Share profile:</span>
+
+            {!isPreview &&
+                <div className="flex text-xl items-center justify-center gap-8 space-x-2 pt-6 ">
+                    <span className="fa-solid fa-share text-lg text-orange-500"></span>
                     <span className="flex space-x-4 items-center">
                         <span title="share this profile on twitter" onClick={shareOnTwitter} className="fa-brands fa-square-x-twitter cursor-pointer"></span>
                         <span title="share this profile on facebook" onClick={shareOnFacebook} className="fa-brands fa-square-facebook cursor-pointer"></span>
@@ -106,13 +115,12 @@ const Preview = () => {
                         onClick={() => {
                             copyToClipboard(pageUrl)
                             toast.info("Profile address is copied.", { description: 'Paste it wherever you like.' })
-                        }
-                        }
+                        }}
                     >
-                        <span className="fas fa-copy mr-1"></span>Copy Link
+                        <span className="fas fa-copy mr-1" />Copy Link
                     </Button>
                 </div>
-            </div>
+            }
         </div>
 
     );

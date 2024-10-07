@@ -3,10 +3,12 @@ import Preview from '@/components/Preview';
 import { useContractMethods } from '@/hooks/useContractMethods';
 import { useGlobalState } from '@/context/GlobalStateContext';
 import { useState } from 'react';
+import { useLoggerService } from '../../hooks/useLogger';
 
 const S5Preview = () => {
     const { prevStep } = useSteps();
     const { publish } = useContractMethods();
+    const { logException } = useLoggerService();
     const { userProfile } = useGlobalState();
     const [isPublishing, setIsPublishing] = useState(false)
 
@@ -31,14 +33,10 @@ const S5Preview = () => {
             }
 
             setIsPublishing(true);
-            publish(userProfile.username, keys, values).then((result) => {
-                console.log(result);
-
-                debugger
-                //TODO redirect to the profile page.
-
+            publish(userProfile.username, keys, values).then(() => {
+                window.location.href += `/${userProfile.username}`
             }).catch((err) => {
-                console.log(err);
+                logException(err);
             }).finally(() => {
                 setIsPublishing(false)
             })
@@ -49,19 +47,26 @@ const S5Preview = () => {
 
     return (
         <div>
-
-            <h1 className="font-bold mb-8">Preview of your profile:</h1>
-            <Preview />
-            <p className='mt-10'>All good?</p>
+            <h1 className="font-bold mb-2 pt-8">Preview of your profile:</h1>
+            <Preview isPreview={true} />
+            <p className='text-center mt-10'>All good?</p>
             <br />
             <br />
             <p>
-                then <strong>publish it now</strong> to <i>reserve it</i> forever!
+                PUBLISH now to make it <strong>permanently yours</strong>!
             </p>
 
             <div className="flex justify-between gap-4 mt-9">
                 <button
-                    className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+                    className="rounded-full 
+               border border-solid border-transparent 
+               transition-colors 
+               flex items-center justify-center 
+               bg-gray-200 
+               text-background gap-2 
+               hover:bg-black 
+               dark:hover:bg-[#ccc] 
+               text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
                     type="button"
                     onClick={prevStep}
                 >

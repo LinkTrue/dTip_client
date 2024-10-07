@@ -20,7 +20,7 @@ export const SmartContractProvider: React.FC<
             const service = SmartContractService(signer, chainId);
             setSmartContractService(service);
         }
-    }, [signer, chainId, smartContractService]);
+    }, [signer, chainId]);
 
 
     return (

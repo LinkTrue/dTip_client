@@ -1,12 +1,18 @@
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSmartContract } from "@/context/SmartContractContext";
 import { toast } from "sonner";
 import { useLogger } from '@/context/LoggerContext';
 
 export const useContractMethods = () => {
   const { log, logException } = useLogger();
+  const [isSmartContractInitialized, setIsSmartContractInitialized] = useState<boolean>(false);
 
   const smartContractService = useSmartContract();
+
+  useEffect(() => {
+    if (smartContractService)
+      setIsSmartContractInitialized(true);
+  }, [smartContractService]);
 
 
   const getReservedPrefixes = useCallback(async (index: bigint) => {
@@ -31,12 +37,44 @@ export const useContractMethods = () => {
           // Check if the error message contains the specific message
           if (revertReason.includes("Username does not exist")) {
             toast.info(
-              `This profile is not found!`, { duration: 100000 }
+              `This profile is not found!`, { duration: 10000 }
             );
           } else if (revertReason.includes("Username is reserved or contains a reserved prefix")) {
             toast.warning(`This username might confuse users, please choose your brand name`);
           }
         } else {
+          debugger
+          log(`Error data is not available or not in expected format`);
+        }
+
+        log(`Error calling method getProfile:`);
+        logException(error);
+        throw new Error(`Failed to call method getProfile`);
+      }
+
+  }, [smartContractService]);
+
+  const getProfileByWallet = useCallback(async (walletAddress: string) => {
+    if (!smartContractService) {
+      throw new Error("SmartContractService not available");
+    } else
+      try {
+        const result = await smartContractService.read("getProfile(address)", [walletAddress]);
+        return result;
+      } catch (error: any) {
+        if (error && error.reason) {
+          const revertReason = error.reason;
+
+          // Check if the error message contains the specific message
+          if (revertReason.includes("Username does not exist")) {
+            toast.info(
+              `This profile is not found!`, { duration: 10000 }
+            );
+          } else if (revertReason.includes("Username is reserved or contains a reserved prefix")) {
+            toast.warning(`This username might confuse users, please choose your brand name`);
+          }
+        } else {
+          debugger
           log(`Error data is not available or not in expected format`);
         }
 
@@ -64,21 +102,16 @@ export const useContractMethods = () => {
           // Check if the error message contains the specific message
           if (revertReason.includes("Wallet already registered!")) {
             throw Error(
-              `A profile is already linked to this wallet address. Please use a different wallet to create a new profile.`
+              `Each wallet can only have one profile. Please use a different wallet.`
             );
           } else if (revertReason.includes("Username is reserved or contains a reserved prefix")) {
             throw Error(`This username might confuse users, please choose your brand name`);
-          } else if(revertReason.includes("Username already taken")) {
+          } else if (revertReason.includes("Username already taken")) {
             throw Error(`It is taken. now be creative.`);
           }
-        } else {
-          log(`Error data is not available or not in expected format`);
-          throw Error("SURPRISING ERROR!, ITS LIFE; IT JUST HAPPENS. TRY HARD REFRESH.")
         }
-
-        log(`Error calling static method registerUserProfile:`);
         logException(error);
-        throw new Error(`Failed to call static method registerUserProfile`);
+        throw Error(`Please try another username.`);
       }
     }
   }, [smartContractService]);
@@ -117,6 +150,7 @@ export const useContractMethods = () => {
             toast.warning(`This username might confuse users, please choose your brand name`);
           }
         } else {
+          debugger
           log(`Error data is not available or not in expected format`);
         }
 
@@ -128,7 +162,9 @@ export const useContractMethods = () => {
   }, [smartContractService]);
 
   return {
+    isSmartContractInitialized,
     getProfileByUsername,
+    getProfileByWallet,
     getReservedPrefixes,
     isUsernameAvailable,
     publish

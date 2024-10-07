@@ -72,9 +72,9 @@ const S2Username = () => {
     useEffect(() => { });
 
     return (
-        <div className='flex flex-col gap-4 text-center'>
-            <h2 className="mb-3 lg:text-4xl md:text-2xl">Choose your unique brand name</h2>
-            <div className="flex-column items-center p-1 m-20">
+        <div className='flex flex-col text-center'>
+            <h2 className="lg:text-4xl md:text-2xl">Choose your unique brand name</h2>
+            <div className="flex-column items-center p-1 m-10">
                 <Input
                     className={`
                      
@@ -92,11 +92,11 @@ const S2Username = () => {
                     autoFocus={true}
                 />
                 {usernameError &&
-                    <p className="text-sm text-red-500">{usernameError}</p>
+                    <p className="pt-2 text-sm text-red-500">{usernameError}</p>
                 }
             </div>
 
-            <div className="flex justify-between gap-4 mt-9">
+            <div className="flex justify-between gap-4 mt-2">
                 <button
                     className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
                     type="button"

@@ -33,6 +33,7 @@ body {
   width: 16px;
   height: 16px;
   animation: spin 0.9s linear infinite;
+  display: inline-block;
 }
 
 @keyframes spin {
@@ -42,4 +43,11 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+
+footer {
+  position: relative; /* Change to relative */
+  bottom: 0; /* Ensures it stays at the bottom */
+  left: 0; 
+  right: 0; 
 }

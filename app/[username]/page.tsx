@@ -4,7 +4,8 @@ import Preview from '@/components/Preview';
 import { useParams } from 'next/navigation';
 import { useBlockchain } from "@/context/BlockchainProvider";
 import { useContractMethods } from '@/hooks/useContractMethods';
-import { useGlobalState, Web2Item, Web3Item } from '@/context/GlobalStateContext';
+import { useGlobalState } from '@/context/GlobalStateContext';
+import { parseProfileData } from '@/lib/utils';
 
 
 export default function UserProfile() {
@@ -45,7 +46,7 @@ export default function UserProfile() {
     if (isConnected && signer && username.length > 0 && !isFetching) {
       setIsFetching(true);
       getProfileByUsername(username).then(res => {
-        const cleanedData = parseResult(res);
+        const cleanedData = parseProfileData(res);
         setUserProfile(
           {
             avatar: '',//todo what to do?
@@ -63,42 +64,6 @@ export default function UserProfile() {
     }
   }, [isConnected, signer, username, getProfileByUsername, setUserProfile]);
 
-  function parseResult(result: string[]) {
-    // Initialize arrays for Web2 and Web3 items
-    const web2Items: Web2Item[] = [];
-    const web3Items: Web3Item[] = [];
-
-    // Loop through the result and process each item
-    for (let i = 0; i < result.length; i++) {
-      // Determine if the item is a Web2 item (icon URL and full URL)
-      if (i % 2 === 0) {
-        // Check if the next item exists and is a valid URL
-        if (i + 1 < result.length && /^https?:\/\//.test(result[i + 1])) {
-          web2Items.push({
-            iconUrl: result[i],
-            fullURL: result[i + 1]
-          });
-        }
-      }
-      // Determine if the item is a Web3 item (icon URL and wallet address)
-      else {
-        // Check if the current item is a valid wallet address
-        if (/^0x[a-fA-F0-9]{40}$/.test(result[i])) {
-          web3Items.push({
-            icon: result[i - 1],
-            walletAddress: result[i]
-          });
-        }
-      }
-    }
-
-    // Return the organized object
-    return {
-      web2Items,
-      web3Items
-    };
-  }
-
   // fetch the profile data using a public rpc node
   // set the profile data into the global state 
   return (
@@ -108,7 +73,7 @@ export default function UserProfile() {
         {isConnected && isFetching ? <span className='pt-32'>Reading Blockchain Data ...</span> : ''}
       </div>
 
-      {isConnected && !isFetching ? <Preview /> : ''}
+      {isConnected && !isFetching ? <Preview isPreview={false} /> : ''}
 
     </div>
   );

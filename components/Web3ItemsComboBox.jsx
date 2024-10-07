@@ -65,6 +65,7 @@ const Web3ItemsComboBox = forwardRef(({ onSelect }, ref) => {
               style={{ width: 20, marginRight: 10 }}
               width={20}
               height={20}
+              loading="lazy"
             />
             {option.label}
           </div>

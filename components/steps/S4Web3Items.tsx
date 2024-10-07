@@ -66,7 +66,7 @@ const S4Web3Items = () => {
 
     return (
         <div className="flex flex-col text-center gap-8">
-            <h2 className="mb-8 text-lg lg:text-4xl md:text-2xl">Add your destination Wallet addresses you like to share with your fans!</h2>
+            <h2 className="text-xl lg:text-4xl md:text-2xl">Add your wallet addresses</h2>
             {/* @ts-expect-error error*/}
             <ChainsComboBox ref={comboBoxRef} onSelect={handleSelectChain} />
 
@@ -77,16 +77,16 @@ const S4Web3Items = () => {
                     name="walletAddress"
                     value={web3Item.walletAddress}
                     onChange={handleWeb3ItemInputChange}
-                    placeholder="Wallet address eg. 0x15e69F13Ef2C5b81D40342AB6dc84A887866B146"
+                    placeholder="Wallet address (eg. 0x15e69F13Ef2C5b81D40342AB6dc84A887866B146)"
                     required
                 />
                 {web3Item.icon ?
                     <Button
-                        className="rounded-full bg-foreground text-background text-base h-8"
+                        className="rounded-full bg-foreground text-background text-base h-8 p-6"
                         type="button"
                         onClick={handleAddItem}
                     >
-                        +
+                        <strong>+</strong>
                     </Button>
                     : <></>
                 }
@@ -95,7 +95,7 @@ const S4Web3Items = () => {
             {userProfile.web3Items.length > 0 ? (
 
                 <div className="mt-2 p-6">
-                    <p className="text-2xl font-bold">Summary:</p>
+                    <p className="text-2xl font-bold">Your draft:</p>
                     <div className="flex flex-col pt-3 items-center">
 
                         <table className="min-w-full border border-gray-200 border-collapse">
@@ -113,6 +113,7 @@ const S4Web3Items = () => {
                                             <Image src={item.icon} alt={item.icon}
                                                 width={30}
                                                 height={30}
+                                                loading="lazy"
                                             />
                                         </td>
                                         <td className="px-4 py-2 border-b">

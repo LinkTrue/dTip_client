@@ -15,9 +15,8 @@ const EllipsifiedAddress = ({ walletAddress }: { walletAddress: string }) => {
             <Tooltip>
                 <TooltipTrigger asChild>
                     <Button
+                        className='hover:bg-gray-200'
                         variant="outline"
-                        //    className="text-blue-500 underline hover:text-blue-700 no-underline"
-
                         onClick={() => {
                             copyToClipboard(walletAddress)
 
