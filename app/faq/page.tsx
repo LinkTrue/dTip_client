@@ -31,7 +31,7 @@ export default function FAQ() {
         },
         {
             question: "How can I add a new blockchain network or social media icons to LinkTrue?",
-            answer: "You can easily contribute by adding the desired icon and submitting a pull request to the source code on GitHub."
+            answer: "You can easily contribute by adding the desired icon and submitting a pull request to the source code on GitHub. Here is an example commit I pushed to add Ton Blockchain network Icon: https://github.com/LinkTrue/linktrue_client/commit/5d411900157913843be05a6b07cf23b92b4f191a"
         },
         {
             question: "Is it really impossible to manipulate my data?",
