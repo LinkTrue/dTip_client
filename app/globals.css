@@ -27,9 +27,11 @@ body {
 }
 
 .spinner {
-  border: 3px solid rgb(0, 0, 0); /* Light grey background */
+  border: 3px solid rgb(0, 0, 0);
+  /* Light grey background */
   border-radius: 50%;
-  border-top: 3px solid rgb(255, 255, 255); /* Red spinner color */
+  border-top: 3px solid rgb(255, 255, 255);
+  /* Red spinner color */
   width: 16px;
   height: 16px;
   animation: spin 0.9s linear infinite;
@@ -40,14 +42,28 @@ body {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
 
 footer {
-  position: relative; /* Change to relative */
-  bottom: 0; /* Ensures it stays at the bottom */
-  left: 0; 
-  right: 0; 
+  position: relative;
+  /* Change to relative */
+  bottom: 0;
+  /* Ensures it stays at the bottom */
+  left: 0;
+  right: 0;
+}
+
+.badge {
+  position: absolute;
+  top: 25px;
+  padding: 5px 10px;
+  background-color: #ea6e6e;
+  color: #fff;
+  border-radius: 15px;
+  z-index: 999;
+  transform: rotate(-45deg);
 }

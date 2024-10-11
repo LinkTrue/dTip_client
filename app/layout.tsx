@@ -78,6 +78,9 @@ export default function RootLayout({
           <Toaster position="top-center" expand={true} />
           <SimpleToast />
         </LoggerProvider>
+        <div className="badge">
+          {"TESTNET"}
+        </div>
       </body>
     </html>
   );
