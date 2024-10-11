@@ -1,6 +1,6 @@
 "use client"
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'; // Change this
+import { useParams } from 'next/navigation';
 import Preview from '@/components/Preview';
 import { useBlockchain } from "@/context/BlockchainProvider";
 import { useContractMethods } from '@/hooks/useContractMethods';
