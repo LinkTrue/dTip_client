@@ -11,41 +11,42 @@ export default function FAQ() {
     const faqItems = [
         {
             question: "What is LinkTrue?",
-            answer: "An open-source & free dApp allowing you to consolidate crypto links and wallet addresses on a single page while maintaining control over your data; perfect for tips, donations, or payments."
+            answer: "LinkTrue is an open-source, free decentralized application (dApp) that consolidates crypto links and wallet addresses on a single page. It allows users to maintain control over their data, making it ideal for tips, donations, or payments."
         },
         {
             question: "Who should use LinkTrue?",
-            answer: "Anyone who wants to share their wallet addresses or receive donations securely."
+            answer: "LinkTrue is perfect for anyone wanting to securely share wallet addresses, receive donations, or promote online payment gateways."
         },
         {
             question: "How is LinkTrue different from other bio link tools?",
-            answer: "Only You own your data."
+            answer: "Unlike traditional bio link tools, LinkTrue ensures that only you own and control your data, providing greater security and privacy."
         },
         {
             question: "How is my data stored with LinkTrue?",
-            answer: "Your data is kept on blockchain and secured by Ethereum Layer 2 Optimism."
+            answer: "Your data is securely stored on the blockchain and protected by Ethereum Layer 2 Optimism, ensuring high availability and integrity."
         },
         {
             question: "Is it really free?",
-            answer: "The platform is free and open-source, but to keep your data on blockchain, you need to pay the network fee which is typically less than $0.1 OP ETH."
+            answer: "LinkTrue is completely free and open-source. However, to store data on the blockchain, users must pay a network fee, which is typically less than $0.10 in OP ETH."
         },
         {
-            question: "How to add a new blockchain network or a new social media icons to LinkTrue?",
-            answer: "Add the icon and open a pull request on the source code."
+            question: "How can I add a new blockchain network or social media icons to LinkTrue?",
+            answer: "You can easily contribute by adding the desired icon and submitting a pull request to the source code on GitHub."
         },
         {
             question: "Is it really impossible to manipulate my data?",
-            answer: "Your data is owned by your wallet address or your private key. If you lose them, then you lost the security guarantee. If you keep your wallet safe, then you have the promise of the Ethereum and its Layer 2 security. It’s worth mentioning that at the moment of writing this FAQ, $661M is the Total Value Locked on Optimism."
+            answer: "Your data is securely tied to your wallet address or private key. Losing access to them means losing your data. As long as you protect your wallet, the security of Ethereum and its Layer 2 guarantees your data's integrity. As of now, $661M is the Total Value Locked on Optimism, showcasing its robustness."
         },
         {
-            question: "Why Optimism? Why Ethereum?",
-            answer: "LinkTrue is EVM compatible, so it can be easily deployed on any EVM chain. We start with Ethereum Layer 2."
+            question: "Why choose Optimism and Ethereum?",
+            answer: "LinkTrue is EVM compatible, enabling easy deployment on any EVM chain, starting with Ethereum Layer 2 for enhanced scalability and lower transaction costs."
         },
         {
             question: "Can I fork LinkTrue and deploy it for my own use?",
-            answer: "Feel free to do so."
+            answer: "Absolutely! LinkTrue is free and open-source, so feel free to fork the project and customize it for your needs."
         }
     ];
+
 
     return (
         <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md min-h-screen">
