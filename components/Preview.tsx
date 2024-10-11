@@ -38,7 +38,7 @@ const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
 
     useEffect(() => {
         if (userProfile.username)
-            setPageUrl(`https://miladtsx.github.io/linktrue_client/${userProfile.username}`);
+            setPageUrl(`https://linktrue.vercel.app/${userProfile.username}`);
     }, [userProfile.username])
 
     return (
