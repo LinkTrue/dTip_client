@@ -92,7 +92,7 @@ const S1Main = () => {
                             View your profile{' '}
                             <i className="fas fa-external-link-alt"></i>
                         </Link> :
-                        <Link href={'/@qwe'} target='_blank'>
+                        <Link href={'/@milad'} target='_blank'>
                             View a sample profile{' '}
                             <i className="fas fa-external-link-alt"></i>
                         </Link>

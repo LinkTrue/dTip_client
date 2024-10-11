@@ -139,7 +139,7 @@ const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
                             <p className="">Profile Not Found!</p>
 
                             <div className="pt-32">
-                                <a href={'/@qwe'}>
+                                <a href={'/@milad'}>
                                     View a sample profile{' '}
                                     <i className="fas fa-external-link-alt"></i>
                                 </a>
