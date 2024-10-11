@@ -9,7 +9,7 @@ import { parseProfileData } from '@/lib/utils';
 
 
 export default function UserProfile() {
-  const { username } = useParams(); // Adjusted for react-router
+  const params = useParams();
 
   const {
     handleConnectWallet,
@@ -24,7 +24,16 @@ export default function UserProfile() {
 
   const { getProfileByUsername } = useContractMethods();
 
+  const [username, setUsername] = useState<string>("")
   const [isFetching, setIsFetching] = useState<boolean>(false);
+
+
+  // Ensure that username is treated as a string and decode it from URL encoding
+  useEffect(() => {
+    const rawUsername = Array.isArray(params.username) ? params.username[0] : params.username;
+    const cleanUsername = decodeURIComponent(rawUsername).startsWith('@') ? rawUsername.slice(3) : rawUsername;
+    setUsername(cleanUsername);
+  }, [params.username]);
 
   useEffect(() => {
     if (isConnecting) return;
