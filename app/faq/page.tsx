@@ -11,15 +11,19 @@ export default function FAQ() {
     const faqItems = [
         {
             question: "What is LinkTrue?",
-            answer: "LinkTrue is an open-source, free decentralized application (dApp) that consolidates crypto links and wallet addresses on a single page. It allows users to maintain control over their data, making it ideal for tips, donations, or payments."
+            answer: "LinkTrue is an open-source, free decentralized application (dApp) that consolidates crypto links and wallet addresses on a single page. It allows you to maintain control over your data, making it ideal for tips, donations, or payments."
         },
         {
             question: "Who should use LinkTrue?",
             answer: "LinkTrue is perfect for anyone wanting to securely share wallet addresses, receive donations, or promote online payment gateways."
         },
         {
+            question: "How to use LinkTrue?",
+            answer: "Build a profile and share a single link in your social media bio."
+        },
+        {
             question: "How is LinkTrue different from other bio link tools?",
-            answer: "Unlike traditional bio link tools, LinkTrue ensures that only you own and control your data, providing greater security and privacy."
+            answer: "Unlike traditional bio link tools, LinkTrue ensures that only you own and control your data, providing exceptional security and integrity."
         },
         {
             question: "How is my data stored with LinkTrue?",
