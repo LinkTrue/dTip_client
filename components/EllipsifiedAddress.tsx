@@ -33,7 +33,7 @@ const EllipsifiedAddress = ({ walletAddress }: { walletAddress: string }) => {
                     </Button>
                 </TooltipTrigger>
                 <TooltipContent>
-                    <p>{walletAddress}</p>
+                    <p className='bg-white'>{walletAddress}</p>
                 </TooltipContent>
             </Tooltip>
         </TooltipProvider>
