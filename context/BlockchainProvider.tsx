@@ -131,6 +131,8 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
         } catch (error: any) {
             if (error.message.includes("User rejected the request")) {
                 toast.warning("To own a profile, connect your wallet and change the network to Ethereum Layer 2 (Optimism).")
+            } else if (error.message.includes("No MetaMask browser extension found. Please install MetaMask")) {
+                toast.warning(error.message);
             } else {
                 debugger
                 log("Failed to connect wallet:");
