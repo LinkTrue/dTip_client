@@ -232,8 +232,7 @@ export function SmartContractService(signer: JsonRpcSigner, chainId: number):
     BlockchainServiceInterface {
 
     const getContractAddress = (chainId: number): string => {
-        if (chainId === 10) throw new Error("Not implemented yet!"); //return '0xYourContractAddressOnOptimism';
-        if (chainId === 11155420) return '0x5Fa239e5B8BCD791500376aB5CfE9c97D0C7A1fE';
+        if (chainId === 43114) return '0x8faC1b937a41cE91E51569451afBFbD5998c1CEC';
         throw new Error("Unsupported network");
     }
 

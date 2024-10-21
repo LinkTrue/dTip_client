@@ -31,7 +31,7 @@ export default function FAQ() {
         },
         {
             question: "Is it really free?",
-            answer: "LinkTrue is completely free and open-source. However, to store data on the blockchain, users must pay a network fee, which is typically less than $0.10 in OP ETH."
+            answer: "LinkTrue is completely free and open-source. However, to store data on the blockchain, users must pay a network fee, which costs 0.02 $avax"
         },
         {
             question: "How can I add a new blockchain network or social media icons to LinkTrue?",

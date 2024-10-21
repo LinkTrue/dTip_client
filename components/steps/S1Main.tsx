@@ -107,7 +107,7 @@ const S1Main = () => {
                                 className="rounded-full border-2 border-white transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
                                 onClick={nextStep}
                             >
-                                Build a profile
+                                Build a profile now
                             </button>
                         )}
                     </div>

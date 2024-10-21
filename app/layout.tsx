@@ -57,7 +57,7 @@ export default function RootLayout({
                       <div className="">
                         <a
                           className="flex justify-center gap-2 hover:underline hover:underline-offset-4"
-                          href="https://github.com/orgs/LinkTrue/repositories"
+                          href="https://github.com/LinkTrue/linktrue_web3"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -78,9 +78,6 @@ export default function RootLayout({
           <Toaster position="top-center" expand={true} />
           <SimpleToast />
         </LoggerProvider>
-        <div className="badge">
-          {"TESTNET"}
-        </div>
       </body>
     </html>
   );

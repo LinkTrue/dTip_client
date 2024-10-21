@@ -60,7 +60,7 @@ const ChainsComboBox = forwardRef(({ onSelect }, ref) => {
             {option.label}
           </div>
         )}
-        placeholder="Select the blockchain network (e.g., ETH, BTC)"
+        placeholder="network"
         isClearable
       />
     </div>

@@ -37,7 +37,7 @@ export const useContractMethods = () => {
           // Check if the error message contains the specific message
           if (revertReason.includes("Username does not exist")) {
             toast.info(
-              `This profile is not found!`, { duration: 10000 }
+              `This profile is free to reserve; join now!`, { duration: 1000 }
             );
           } else if (revertReason.includes("Username is reserved or contains a reserved prefix")) {
             toast.warning(`This username might confuse users, please choose your brand name`);
@@ -123,7 +123,7 @@ export const useContractMethods = () => {
   ) => {
     if (!smartContractService) {
       toast.info(
-        "For now we only support Optimism [mainnet & testnet]."
+        "Make sure Network is set to Avalanche."
       )
     } else {
       try {

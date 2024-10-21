@@ -70,7 +70,7 @@ const Web3ItemsComboBox = forwardRef(({ onSelect }, ref) => {
             {option.label}
           </div>
         )}
-        placeholder={`Select a wallet address`}
+        placeholder={`web3 wallets`}
         isClearable
         className="
         border-2 

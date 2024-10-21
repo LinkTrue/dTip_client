@@ -47,10 +47,10 @@ export default function Home() {
           <div>
             <EllipsifiedWalletAddress walletAddress={signer?.address} />
             {balance && balance > 0 ? (
-              <p className="text-xs pt-2 pb-4 text-center"><strong>Balance</strong>: {balance} $OP_ETH</p>
+              <p className="text-xs pt-2 pb-4 text-center"><strong>Balance</strong>: {balance} $avax</p>
             ) : (
               <p className="text-sm" title="You need some $ETH on the Optimism network to reserve your profile">
-                Low Balance! Top up Optimism $ETH to build a profile.
+                Low Balance! Top up some $avax to reserve a profile.
               </p>
             )}
           </div>
