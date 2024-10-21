@@ -5,8 +5,8 @@ LinkTrue unifies your crypto links and wallet addresses on a single page, making
 Third-party bio link services seem convenient, but they control your data. You can’t verify their security, and your data might change without your knowledge.
 
 # Solution
-LinkTrue ensures data integrity—your data remains under your control, tied to your wallet, and securely stored on Ethereum Layer-2 Optimism, preventing tampering.
+LinkTrue ensures data integrity—your data remains under your control, tied to your wallet, and securely stored on Avalanche, preventing tampering.
 
 # Infrastructure
-LinkTrue operates on Ethereum Layer-2 Optimism, reducing costs while retaining the robust security and decentralization benefits of the Ethereum network.
+LinkTrue operates on Avalanche, reducing costs while retaining the robust security and decentralization benefits of the Ethereum network.
 
