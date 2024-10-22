@@ -2,6 +2,7 @@
 import React, { createContext, useContext, ReactNode, useState, useEffect } from "react";
 import { SmartContractService, BlockchainServiceInterface } from "@/lib/SmartContractService";
 import { useBlockchain } from "./BlockchainProvider";
+import { toast } from "sonner";
 
 interface SmartContractContextType {
     smartContractService: BlockchainServiceInterface | null;
@@ -12,15 +13,19 @@ const SmartContractContext = createContext<SmartContractContextType | undefined>
 export const SmartContractProvider: React.FC<
     { children: ReactNode }
 > = ({ children }) => {
-    const { chainId, signer } = useBlockchain();
+    const { signer } = useBlockchain();
     const [smartContractService, setSmartContractService] = useState<BlockchainServiceInterface | null>(null);
 
     useEffect(() => {
-        if (!smartContractService && signer && chainId) {
-            const service = SmartContractService(signer, chainId);
-            setSmartContractService(service);
+        if (!smartContractService && signer) {
+            try {
+                const service = SmartContractService(signer)
+                setSmartContractService(service);
+            } catch (error: any) {
+                toast.error("Failed to setup Web3!")
+            }
         }
-    }, [signer, chainId]);
+    }, [signer]);
 
 
     return (

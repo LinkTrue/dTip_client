@@ -228,15 +228,15 @@ export interface BlockchainServiceInterface {
     callStatic(methodName: string, ...args: any[]): Promise<ethers.Result>;
 }
 
-export function SmartContractService(signer: JsonRpcSigner, chainId: number):
+export function SmartContractService(signer: JsonRpcSigner, chainId?: number):
     BlockchainServiceInterface {
 
-    const getContractAddress = (chainId: number): string => {
-        if (chainId === 43114) return '0x8faC1b937a41cE91E51569451afBFbD5998c1CEC';
+    const getContractAddress = (chainId?: number): string => {
+        if (!chainId || chainId === 43114) return '0x8faC1b937a41cE91E51569451afBFbD5998c1CEC';
         throw new Error("Unsupported network");
     }
 
-    const contractAddress = getContractAddress(chainId);
+    const contractAddress = getContractAddress();
     if (!contractAddress) {
         throw new Error(`Contract address not found for chainId: ${chainId}`);
     }

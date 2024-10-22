@@ -43,7 +43,8 @@ const S3Web2Items = () => {
     const handleSelect = (selectedOption: any) => {
         setWeb2Item({
             ...web2Item,
-            iconUrl: selectedOption ? selectedOption.value : "", // Update form with selected icon URL
+            iconUrl: selectedOption ? selectedOption.value : "",
+            fullURL: selectedOption.label === 'email' ? "mailto:" : ''
         });
     };
 

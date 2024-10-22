@@ -35,8 +35,13 @@ export function parseProfileData(result: string[]) {
   for (let i = 0; i < result.length; i++) {
     // Determine if the item is a Web2 item (icon URL and full URL)
     if (i % 2 === 0) {
-      // Check if the next item exists and is a valid URL
-      if (i + 1 < result.length && /^https?:\/\//.test(result[i + 1])) {
+      // Check if the next item exists
+      if (i + 1 < result.length &&
+        (
+          /^https?:\/\//.test(result[i + 1]) ||
+          /^mailto:/.test(result[i + 1])
+        )
+      ) {
         web2Items.push({
           iconUrl: result[i],
           fullURL: result[i + 1]

@@ -80,7 +80,7 @@ export const useContractMethods = () => {
 
         log(`Error calling method getProfile:`);
         logException(error);
-        throw new Error(`Failed to call method getProfile`);
+        throw new Error(`Something went wrong; please refresh LinkTrue and try again.`);
       }
 
   }, [smartContractService]);
