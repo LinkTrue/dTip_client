@@ -50,11 +50,10 @@ const S1Main = () => {
             <div className='flex flex-col justify-start gap-y-14  p-4 text-center bg-gray-50 rounded-lg shadow-md'>
                 {!isConnected &&
                     <div className="max-w-md mx-auto p-4 text-center bg-gray-50 rounded-lg shadow-md">
-                        <h2 className="mb-2">Enable crypto donations with</h2>
+                        <h2 className="mb-2">One link for all your wallet addresses!</h2>
                         <ul>
-                            <li>confidence</li>
-                            <li>&</li>
-                            <li>full ownership</li>
+                            <li>+</li>
+                            <li>Full Ownership</li>
                         </ul>
                     </div>
                 }
@@ -79,7 +78,7 @@ const S1Main = () => {
                                         </>
                                         :
                                         <>
-                                            A Bio Link You Control, Forever.
+                                            A BioLink You Control, Forever.
                                         </>
                                 }
                             </span>
