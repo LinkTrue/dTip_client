@@ -40,7 +40,7 @@ export default function RootLayout({
       >
         <Link href="/" className="flex text-center justify-center pt-8 text-2xl">
           <img style={{ height: '10px', widows: '10px' }} src="/avalanche.svg" alt="" />
-          <strong>L</strong>ink<strong>T</strong>rue<sup><span className="text-xs">Join now!</span></sup>
+          <strong>L</strong>ink<strong>T</strong>rue
         </Link>
         <LoggerProvider>
           <BlockchainProvider>

@@ -49,8 +49,8 @@ export default function Home() {
             {balance && balance > 0 ? (
               <p className="text-xs pt-2 pb-4 text-center"><strong>Balance</strong>: {balance} $avax</p>
             ) : (
-              <p className="text-sm" title="You need some $ETH on the Optimism network to reserve your profile">
-                Low Balance! Top up some $avax to reserve a profile.
+              <p className="text-xs" title="You need some $avax to reserve your profile">
+                Low Balance! Top up some $avax to reserve your profile.
               </p>
             )}
           </div>
