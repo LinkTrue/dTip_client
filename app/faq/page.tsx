@@ -27,7 +27,7 @@ export default function FAQ() {
         },
         {
             question: "How is my data stored with LinkTrue?",
-            answer: "Your data is securely stored on the blockchain and protected by Ethereum Layer 2 Optimism, ensuring high availability and integrity."
+            answer: "Your data is securely stored on the blockchain, which is why a small transaction fee is required. This storage is protected by the Avalanche network, ensuring high availability and data integrity."
         },
         {
             question: "Is it really free?",
@@ -39,11 +39,11 @@ export default function FAQ() {
         },
         {
             question: "Is it really impossible to manipulate my data?",
-            answer: "Your data is securely tied to your wallet address or private key. Losing access to them means losing your data. As long as you protect your wallet, the security of Ethereum and its Layer 2 guarantees your data's integrity. As of now, $661M is the Total Value Locked on Optimism, showcasing its robustness."
+            answer: "Your data is securely tied to your wallet address or private key and the security of the Avalanche Blockchain Network. Losing access to your key or wallet, means losing access to your data."
         },
         {
-            question: "Why choose Optimism and Ethereum?",
-            answer: "LinkTrue is EVM compatible, enabling easy deployment on any EVM chain, starting with Ethereum Layer 2 for enhanced scalability and lower transaction costs."
+            question: "Which blockchain networks LinkTrue support?",
+            answer: "LinkTrue enables you to share wallet addresses from any blockchain network. However, LinkTrue's database is set up on the Avalanche blockchain."
         },
         {
             question: "Can I fork LinkTrue and deploy it for my own use?",
