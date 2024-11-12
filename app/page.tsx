@@ -68,6 +68,17 @@ const LandingPage = () => {
               <li>Free and open-source, forever</li>
             </ul>
           </div>
+          <div>
+            <h2 className="text-3xl font-semibold mb-4">Who Should Use LinkTrue?</h2>
+            <p className="text-lg mb-8 break-all">LinkTrue is designed to simplify the donation process for various groups, including:</p>
+            <ul className="list-disc list-inside mb-8 space-y-2">
+              <li>Non-profit organizations</li>
+              <li>Content creators</li>
+              <li>Individuals supporting a cause</li>
+              <li>Anyone receiving donations</li>
+            </ul>
+            <p className="text-lg mb-8 break-all">By providing a seamless way to accept cryptocurrency donations, LinkTrue empowers users from all backgrounds to engage with their communities and receive support without the hassle of traditional payment systems.</p>
+          </div>
         </div>
 
         <div className="flex justify-between">
