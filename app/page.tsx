@@ -68,16 +68,25 @@ const LandingPage = () => {
               <li>Free and open-source, forever</li>
             </ul>
           </div>
-          <div>
-            <h2 className="text-3xl font-semibold mb-4">Who Should Use LinkTrue?</h2>
-            <p className="text-lg mb-8 break-all">LinkTrue is designed to simplify the donation process for various groups, including:</p>
-            <ul className="list-disc list-inside mb-8 space-y-2">
-              <li>Non-profit organizations</li>
-              <li>Content creators</li>
-              <li>Individuals supporting a cause</li>
-              <li>Anyone receiving donations</li>
-            </ul>
-            <p className="text-lg mb-8 break-all">By providing a seamless way to accept cryptocurrency donations, LinkTrue empowers users from all backgrounds to engage with their communities and receive support without the hassle of traditional payment systems.</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <h2 className="text-3xl font-semibold mb-4 w-full">Who Should Use LinkTrue?</h2>
+            <div className="p-4 bg-white rounded-lg shadow-md w-1/2 md:w-1/4 transition-transform duration-200 ease-in-out transform hover:scale-110 flex items-center hover:bg-blue-100">
+              <i className="fa fa-hand-holding-heart text-2xl mr-2"></i>
+              <p className="text-lg mb-2">Non-profits</p>
+            </div>
+            <div className="p-4 bg-white rounded-lg shadow-md w-1/2 md:w-1/4 transition-transform duration-200 ease-in-out transform hover:scale-110 flex items-center hover:bg-green-100">
+              <i className="fa fa-video-camera text-2xl mr-2"></i>
+              <p className="text-lg mb-2">Creators</p>
+            </div>
+            <div className="p-4 bg-white rounded-lg shadow-md w-1/2 md:w-1/4 transition-transform duration-200 ease-in-out transform hover:scale-110 flex items-center hover:bg-yellow-100">
+              <i className="fa fa-handshake text-2xl mr-2"></i>
+              <p className="text-lg mb-2">Cause supporters</p>
+            </div>
+            <div className="p-4 bg-white rounded-lg shadow-md w-1/2 md:w-1/4 transition-transform duration-200 ease-in-out transform hover:scale-110 flex items-center hover:bg-red-100">
+              <i className="fa fa-gift text-2xl mr-2"></i>
+              <p className="text-lg mb-2">Donation recipients</p>
+            </div>
+            <p className="text-lg mb-8 break-all w-full">LinkTrue simplifies cryptocurrency donations for users from all backgrounds, fostering community engagement and support.</p>
           </div>
         </div>
 
