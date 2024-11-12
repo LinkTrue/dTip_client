@@ -26,43 +26,42 @@ export default function FAQ() {
             answer: "LinkTrue is perfect for anyone wanting to securely share wallet addresses, receive donations, or promote online payment gateways."
         },
         {
-            question: "How to use LinkTrue?",
-            answer: "Build a profile and share a single link in your social media bio."
-        },
-        {
             question: "How is LinkTrue different from other bio link tools?",
             answer: "Unlike traditional bio link tools, LinkTrue ensures that only you own and control your data, providing exceptional security and integrity."
         },
         {
+            question: "How to use LinkTrue?",
+            answer: "Build a profile and share a single link in your social media bio."
+        },
+        {
+            question: "Which blockchain networks does LinkTrue support?",
+            answer: "Any blockchain network."
+        },
+        {
             question: "How is my data stored with LinkTrue?",
-            answer: "Your data is securely stored on the blockchain, which is why a small transaction fee is required. This storage is protected by the Avalanche network, ensuring high availability and data integrity."
+            answer: "Your data is securely stored on the blockchain, which is why a small transaction fee is required to mint your profile. This storage is protected by the Avalanche network, ensuring high availability and data integrity."
         },
         {
             question: "Is it really free?",
-            answer: "LinkTrue is completely free and open-source. However, to mint your profile on the blockchain, you need to pay the blockchain network fee, which costs around 0.02 in $avax"
-        },
-        {
-            question: "How can I add a new blockchain network or social media icons to LinkTrue?",
-            answer: "You can easily contribute by adding the desired icon and submitting a pull request to the source code on GitHub. Here is an example commit I pushed to add Ton Blockchain network Icon: https://github.com/LinkTrue/linktrue_client/commit/5d411900157913843be05a6b07cf23b92b4f191a"
+            answer: "LinkTrue is completely free and open-source. However, to mint your profile on the blockchain, you need to pay the blockchain network fee, which costs around $0.02 in $avax."
         },
         {
             question: "Is it really impossible to manipulate my data?",
-            answer: "Your data is securely tied to your wallet address or private key and the security of the Avalanche Blockchain Network. Losing access to your key or wallet, means losing access to your data."
+            answer: "Your data is securely tied to your wallet address or private key and the security of the Avalanche Blockchain Network. Losing access to your key or wallet means losing access to your data."
         },
         {
-            question: "Which blockchain networks LinkTrue support?",
-            answer: "LinkTrue enables you to share wallet addresses from any blockchain network. However, LinkTrue's database is set up on the Avalanche blockchain."
+            question: "My desired blockchain is not listed when building my profile!",
+            answer: "We can easily add new blockchain or website icons by simply adding the desired icon and submitting a pull request to the source code on GitHub. Here is how I added Ton Blockchain network Icon: https://github.com/LinkTrue/linktrue_client/commit/5d411900157913843be05a6b07cf23b92b4f191a."
         },
         {
-            question: "Can I fork LinkTrue and deploy it for my own use?",
-            answer: "Absolutely! LinkTrue is free and open-source, so feel free to fork the project and customize it for your needs."
+            question: "Can I contribute to LinkTrue anyhow?",
+            answer: "Absolutely! Any contribution is highly welcome!"
         }
     ];
 
-
     return (
         <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md min-h-screen">
-            <h1 className="text-2xl font-bold mb-4 text-center">Frequently Asked Questions</h1>
+            <h1 className="text-2xl font-bold mb-4 text-center">Got questions?</h1>
 
             <div className="space-y-4">
                 {faqItems.map((item, index) => (
