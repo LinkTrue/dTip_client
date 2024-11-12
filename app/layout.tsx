@@ -38,7 +38,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Link href="/" className="flex text-center justify-center pt-8 text-2xl">
+        <Link href="/" className="flex text-center justify-center pt-8 text-2xl animate-pulse">
           <strong>L</strong>ink<strong>T</strong>rue
         </Link>
         <LoggerProvider>
@@ -64,11 +64,14 @@ export default function RootLayout({
                           <span>
                             <i className="fa-brands fa-github text-xs"></i>
                           </span>
-                          Explore source code
+                          TRUST BUT VERIFY
                         </a>
                       </div>
 
                       <Link href="/roadmap">ROADMAP</Link>
+                      <p className="text-gray-500">
+                        &copy; {new Date().getFullYear()} LinkTrue.
+                      </p>
                     </footer>
                   </div>
                 </SmartContractProvider>
