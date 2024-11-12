@@ -57,7 +57,7 @@ export default function RootLayout({
                       <div className="">
                         <a
                           className="flex justify-center gap-2 hover:underline hover:underline-offset-4"
-                          href="https://github.com/LinkTrue/linktrue_web3"
+                          href="https://github.com/orgs/LinkTrue/repositories"
                           target="_blank"
                           rel="noopener noreferrer"
                         >
