@@ -12,20 +12,21 @@ export default function Roadmap() {
         {
             date: "O4 2024",
             tasks: [
-                { task: "TESTNET Launch: Mint your profile now!", status: taskStatus.completed },
-                { task: "Add FAQ section.", status: taskStatus.completed },
-                { task: "Add a minimal and clear landing page", status: taskStatus.ongoing },
+                { task: "TESTNET: Mint your profile now!", status: taskStatus.completed },
+                { task: "FAQ page.", status: taskStatus.completed },
+                { task: "Landing page", status: taskStatus.ongoing },
                 { task: "Add progress bar at on-boarding", status: taskStatus.upcoming },
                 { task: "Integrate Fiat-On-Ramp for $AVAX.", status: taskStatus.upcoming },
                 { task: "Setup CICD.", status: taskStatus.upcoming },
                 { task: "Show the preview side by side", status: taskStatus.upcoming },
-                { task: "Allow users to send a Feedback easily.", status: taskStatus.upcoming },
+                { task: "Enable easy Feedback.", status: taskStatus.upcoming },
                 { task: "Add Dark Mode.", status: taskStatus.upcoming },
             ],
         },
         {
             date: "Q1 2025",
             tasks: [
+                { task: "MAINNET: Mint your profile now!", status: taskStatus.upcoming },
                 { task: "Allow MODIFICATION of the profile.", status: taskStatus.upcoming },
                 { task: "Polish the Design.", status: taskStatus.upcoming },
             ],
