@@ -50,28 +50,30 @@ export default function RootLayout({
                     <div className="mx-4 my-4">
                       {children}
                     </div>
-                    <footer className="flex flex-col text-center bg-gray-200 bg-foreground pt-1 gap-4">
-
-                      <Link href="/faq">FAQ</Link>
-
-                      <div className="">
+                    {/* Footer */}
+                    <footer className="relative z-10 mt-10 p-4 bg-gray-800 text-white text-center rounded-lg shadow-lg w-full mx-auto flex flex-col items-center justify-center">
+                      <p className="text-sm mb-4">
+                        &copy; {new Date().getFullYear()} LinkTrue. All rights reserved.
+                      </p>
+                      <div className="flex justify-between w-full mt-2">
+                        <Link href="/faq" className="hover:underline flex items-center">
+                          <i className="fa-solid fa-question-circle fa-lg mr-2"></i>
+                          FAQ
+                        </Link>
+                        <Link href="/roadmap" className="hover:underline flex items-center">
+                          <i className="fa-solid fa-road fa-lg mr-2"></i>
+                          Roadmap
+                        </Link>
                         <a
-                          className="flex justify-center gap-2 hover:underline hover:underline-offset-4"
                           href="https://github.com/orgs/LinkTrue/repositories"
                           target="_blank"
                           rel="noopener noreferrer"
+                          className="hover:underline flex items-center"
                         >
-                          <span>
-                            <i className="fa-brands fa-github text-xs"></i>
-                          </span>
-                          TRUST BUT VERIFY
+                          <i className="fa-brands fa-github fa-lg mr-2"></i>
+                          trust but VERIFY
                         </a>
                       </div>
-
-                      <Link href="/roadmap">ROADMAP</Link>
-                      <p className="text-gray-500">
-                        &copy; {new Date().getFullYear()} LinkTrue.
-                      </p>
                     </footer>
                   </div>
                 </SmartContractProvider>

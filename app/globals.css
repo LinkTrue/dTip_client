@@ -67,3 +67,35 @@ footer {
   z-index: 999;
   transform: rotate(-45deg);
 }
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-float-slow-1 {
+  animation: float 9s ease-in-out infinite;
+}
+
+.animate-float-slow-2 {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-slow-3 {
+  animation: float 7s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float 2s ease-in-out infinite;
+}

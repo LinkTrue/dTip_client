@@ -5,102 +5,161 @@ import Image from "next/image";
 
 const LandingPage = () => {
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <header className="text-center mb-10">
-        <div className="flex flex-col text-lg font-bold text-red-500 mb-12">
-          <p className="mb-4">Lost donations?</p>
-          <p className="mb-4">Too much platform Fees?</p>
-          <p className="mb-4">Must trust, but can&apos;t verify?</p>
-          <p className="mb-4">Payment processing taking too long?</p>
-        </div>
-        <div className="flex justify-center my-4">
-          <Image src="/images/donation_neon.png" alt="Bitcoin"
-            width={160} height={160} className="opacity-70 rounded-2xl" style={{ filter: 'brightness(80%)' }} />
-        </div>
+    <main className="relative flex flex-col items-center justify-center min-h-screen">
 
-        {/* {<h1 className="text-5xl font-bold mb-4"> <span>&#8383;</span></h1>} */}
-        <p className="mt-4 text-lg text-gray-600">
-          Enable Crypto Donations on <br />
-          <span
-            className="text-red-500 font-bold animate-pulse shadow-sm rounded-lg p-1 border-red-500">
-            ANY BLOCKCHAIN
-          </span>
-          network!
-        </p>
-
-        <div className="flex justify-center my-6 opacity-55">
-          {'{'}
-          <Image src="icons/chains/ada.svg" alt="supported_chain_ada" width={24} height={24} className="mr-1" />
-          <Image src="icons/chains/algo.svg" alt="supported_chain_algo" width={24} height={24} className="mr-1" />
-          <Image src="icons/chains/avax.svg" alt="supported_chain_avax" width={24} height={24} className="mr-1" />
-          <Image src="icons/chains/bnb.svg" alt="supported_chain_bnb" width={24} height={24} className="mr-1" />
-          <Image src="icons/chains/btc.svg" alt="supported_chain_btc" width={24} height={24} className="mr-1" />
-          <Image src="icons/chains/dot.svg" alt="supported_chain_dot" width={24} height={24} className="mr-1" />
-          <Image src="icons/chains/eth.svg" alt="supported_chain_eth" width={24} height={24} className="mr-1" />
+      {/* Background Decorative Shapes */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-blue-400 opacity-20 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-500 opacity-30 rounded-full blur-2xl"></div>
 
 
-          <span className="w-6 h-6 mr-1">
-            ...
-          </span>
-
-          <Image src="icons/chains/matic.svg" alt="supported_chain_matic" width={24} height={24} className="mr-1" />
-          <Image src="icons/chains/sol.svg" alt="supported_chain_sol" width={24} height={24} className="mr-1" />
-          <Image src="icons/chains/ton.svg" alt="supported_chain_ton" width={24} height={24} className="mr-1" />
-          <Image src="icons/chains/trx.svg" alt="supported_chain_trx" width={24} height={24} className="mr-1" />
-          {'}'}
-
+      {/* Hero Section */}
+      <header className="relative z-10 flex flex-col lg:flex-row items-center justify-between w-full max-w-6xl mx-auto p-6 lg:p-12 rounded-lg">
+        {/* Hero Message */}
+        <div className="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0">
+          <h1 className="text-3xl lg:text-4xl font-extrabold text-gray-800">
+            Secure Crypto Donations
+          </h1>
+          <p className="mt-4 text-lg text-gray-600">
+            Share your decentralized BioLink + wallet addresses.
+          </p>
+          <div className="flex justify-center lg:justify-start gap-6 mt-8">
+            <Link
+              href="/faq"
+              className="px-6 py-3 bg-blue-200 text-white rounded-lg hover:bg-blue-400 transition-shadow"
+            >
+              Learn More
+            </Link>
+            <Link
+              href="/main"
+              className="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-300 transition-shadow"
+            >
+              Launch App!
+            </Link>
+          </div>
         </div>
 
+        {/* Floating Images */}
+        <div className="lg:w-1/2 relative h-80 md:h-96 lg:h-[28rem] w-full flex items-center justify-center mt-10 opacity-30">
+          <div className="relative w-full h-full">
+            {/* Image 1 */}
+            <Image
+              src="/icons/chains/ton.svg"
+              alt="TON Blockchain Icon"
+              width={80}
+              height={80}
+              className="absolute top-5 left-8 md:left-16 lg:left-20 animate-float-slow-1"
+            />
+            {/* Image 2 */}
+            <Image
+              src="/icons/chains/btc.svg"
+              alt="Bitcoin Blockchain Icon"
+              width={600}
+              height={600}
+              className="absolute top-24 left-6 md:left-16 lg:left-24 animate-float-fast opacity-40 hover:opacity-100"
+            />
+            {/* Image 3 */}
+            <Image
+              src="/icons/landing/youtube.svg"
+              alt="Youtube Icon"
+              width={90}
+              height={90}
+              className="absolute top-1 right-1 md:right-14 lg:right-24 animate-float-slow-3"
+            />
+            {/* Image 4 */}
+            <Image
+              src="/icons/landing/mastercard.svg"
+              alt="Master Card Icon"
+              width={80}
+              height={80}
+              className="absolute bottom-12 right-6 md:right-16 lg:right-28 animate-float-slow-2"
+            />
+            {/* Image 5 */}
+            <Image
+              src="/icons/landing/shopify.svg"
+              alt="Shopify Icon"
+              width={100}
+              height={100}
+              className="absolute top-32 right-12 md:right-20 lg:right-28 animate-float-medium"
+            />
+            {/* Image 6 */}
+            <Image
+              src="/icons/landing/twitch.svg"
+              alt="Twitch Icon"
+              width={80}
+              height={80}
+              className="absolute top-32 left-12 md:left-16 lg:left-24 animate-float-slow-2"
+            />
+            {/* Image 7 */}
+            <Image
+              src="/icons/landing/discord.svg"
+              alt="Discord Icon"
+              width={80}
+              height={80}
+              className="absolute bottom-12 left-8 md:left-24 lg:left-32 animate-float-medium"
+            />
+          </div>
+        </div>
       </header>
 
-      <section className="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-md">
-        <div className="flex flex-col space-y-8">
-          <div>
-            <h2 className="text-3xl font-semibold mb-4">Why <span>&#8383;</span>?</h2>
-            <p className="text-lg mb-8 break-all">Cryptocurrencies offer a decentralized, secure, and transparent way to transfer value. They empower individuals to take control of their financial transactions, free from intermediaries and their associated fees.</p>
-          </div>
-          <div>
-            <h2 className="text-3xl font-semibold mb-4">Why LinkTrue?</h2>
-            <ul className="list-disc list-inside mb-8 space-y-2">
-              <li>Share a single link</li>
-              <li>Full ownership and control</li>
-              <li>Secure and transparent as <span>&#8383;</span></li>
-              <li>Free and open-source, forever</li>
-            </ul>
-          </div>
-          <div className="flex flex-wrap justify-center gap-4">
-            <h2 className="text-3xl font-semibold mb-4 w-full">Who Should Use LinkTrue?</h2>
-            <div className="p-4 bg-white rounded-lg shadow-md w-1/2 md:w-1/4 transition-transform duration-200 ease-in-out transform hover:scale-110 flex items-center hover:bg-blue-100">
-              <i className="fa fa-hand-holding-heart text-2xl mr-2"></i>
-              <p className="text-lg mb-2">Non-profits</p>
-            </div>
-            <div className="p-4 bg-white rounded-lg shadow-md w-1/2 md:w-1/4 transition-transform duration-200 ease-in-out transform hover:scale-110 flex items-center hover:bg-green-100">
-              <i className="fa fa-video-camera text-2xl mr-2"></i>
-              <p className="text-lg mb-2">Creators</p>
-            </div>
-            <div className="p-4 bg-white rounded-lg shadow-md w-1/2 md:w-1/4 transition-transform duration-200 ease-in-out transform hover:scale-110 flex items-center hover:bg-yellow-100">
-              <i className="fa fa-handshake text-2xl mr-2"></i>
-              <p className="text-lg mb-2">Cause supporters</p>
-            </div>
-            <div className="p-4 bg-white rounded-lg shadow-md w-1/2 md:w-1/4 transition-transform duration-200 ease-in-out transform hover:scale-110 flex items-center hover:bg-red-100">
-              <i className="fa fa-gift text-2xl mr-2"></i>
-              <p className="text-lg mb-2">Donation recipients</p>
-            </div>
-            <p className="text-lg mb-8 break-all w-full">LinkTrue simplifies cryptocurrency donations for users from all backgrounds, fostering community engagement and support.</p>
-          </div>
+      {/* Features Section */}
+      <section className="relative z-10 max-w-7xl mx-auto p-6 lg:p-12 mt-64 rounded-lg">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-800">
+            Why Choose <span className="text-indigo-600">LinkTrue?</span>
+          </h2>
+          <p className="text-md break-text font-semibold text-gray-800 mb-4 text-center">
+            Share a single link and receive crypto donations on any blockchain network.
+            <br />
+            <br />
+            LinkTrue makes your Crypto Donation process easier!
+          </p>
         </div>
 
-        <div className="flex justify-between">
-          <Link href="/faq" className="inline-block px-4 py-2 text-white bg-gray-500 rounded hover:bg-blue-300 mr-2">
-            Learn More
-          </Link>
-          <Link href="/main" className="inline-block px-4 py-2 text-white bg-orange-600 rounded hover:bg-blue-700">
-            MINT yours now!
-          </Link>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="p-6 bg-gradient-to-r from-gray-700 to-blue-700 text-white rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:scale-105">
+            <i className="fa-solid fa-shield-alt text-4xl mb-6"></i>
+            <h3 className="text-xl font-semibold">Secure</h3>
+            <p className="text-center mt-2">
+              Verify at will.
+            </p>
+          </div>
+
+          <div className="p-6 bg-gradient-to-r from-green-400 to-blue-400 text-white rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:scale-105">
+            <i className="fa-solid fa-key text-4xl mb-6"></i>
+            <h3 className="text-xl font-semibold">Control</h3>
+            <p className="text-center mt-2">
+              Own and manage your data.
+            </p>
+          </div>
+
+          <div className="p-6 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:scale-105">
+            <i className="fa-solid fa-link text-4xl mb-6"></i>
+            <h3 className="text-xl font-semibold">Single Link</h3>
+            <p className="text-center mt-2">
+              Share all with one link.
+            </p>
+          </div>
+
+
+
+          <div className="p-6 bg-gradient-to-r from-indigo-400 to-pink-400 text-white rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:scale-105">
+            <i className="fa-solid fa-code text-4xl mb-6"></i>
+            <h3 className="text-xl font-semibold">No Fees</h3>
+            <p className="text-center mt-2">
+              Open-source, no cost.
+            </p>
+          </div>
         </div>
       </section>
+
+      <div className="text-indigo-400 hover:text-indigo-700 mt-16 pb-6">
+        <Link href={'/@milad'} target='_blank' className="text-2xl">
+          See an example profile{' '}
+          <i className="fas fa-external-link-alt"></i>
+        </Link>
+      </div>
     </main>
   );
 };
 
-export default LandingPage; 
+export default LandingPage;
