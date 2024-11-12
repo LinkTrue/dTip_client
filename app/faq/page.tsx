@@ -1,17 +1,25 @@
 "use client"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function FAQ() {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [answerHeight, setAnswerHeight] = useState(0);
 
     const toggleAnswer = (index: number) => {
         setActiveIndex(index);
     };
 
+    useEffect(() => {
+        const answerElement = document.querySelector(`#answer-${activeIndex}`);
+        if (answerElement) {
+            setAnswerHeight(answerElement.scrollHeight);
+        }
+    }, [activeIndex]);
+
     const faqItems = [
         {
             question: "What is LinkTrue?",
-            answer: "LinkTrue is an open-source, free decentralized application (dApp) that consolidates crypto links and wallet addresses on a single page. It allows you to maintain control over your data, making it ideal for tips, donations, or payments."
+            answer: "LinkTrue is an open-source, free decentralized application (dApp) that consolidates crypto links and wallet addresses on a single page. Ideal for vigilant individuals who value transparency and control, empowering you to trust but verify."
         },
         {
             question: "Who should use LinkTrue?",
@@ -31,7 +39,7 @@ export default function FAQ() {
         },
         {
             question: "Is it really free?",
-            answer: "LinkTrue is completely free and open-source. However, to store data on the blockchain, users must pay a network fee, which costs 0.02 $avax"
+            answer: "LinkTrue is completely free and open-source. However, to mint your profile on the blockchain, you need to pay the blockchain network fee, which costs around 0.02 in $avax"
         },
         {
             question: "How can I add a new blockchain network or social media icons to LinkTrue?",
@@ -54,22 +62,30 @@ export default function FAQ() {
 
     return (
         <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md min-h-screen">
-            <h1 className="text-2xl font-bold mb-4">Welcome to FAQ</h1>
+            <h1 className="text-2xl font-bold mb-4 text-center">Frequently Asked Questions</h1>
 
             <div className="space-y-4">
                 {faqItems.map((item, index) => (
-                    <div key={index}>
+                    <div key={index} className={`border-gray-200 pb-4 border-x-2 rounded-xl p-2 cursor-pointer ${activeIndex === index ? 'bg-gray-100' : ''}`}
+                        onClick={() => toggleAnswer(index)}
+                    >
                         <h2
-                            className="text-lg font-semibold cursor-pointer"
-                            onClick={() => toggleAnswer(index)}
+                            className="text-lg font-semibold mb-2"
+
                         >
-                            {item.question}
+                            <div className='flex justify-between'>
+                                {item.question}
+                                <span className="text-xl">{activeIndex === index ? '-' : '+'}</span>
+                            </div>
                         </h2>
-                        {activeIndex === index && (
-                            <p className="text-gray-700">
+                        <div
+                            id={`answer-${index}`}
+                            style={{ maxHeight: activeIndex === index ? `${answerHeight}px` : '0', transition: 'max-height 0.5s ease-in-out', overflow: 'hidden' }}
+                        >
+                            <p className="text-gray-700 text-sm leading-relaxed">
                                 {item.answer}
                             </p>
-                        )}
+                        </div>
                     </div>
                 ))}
             </div>
