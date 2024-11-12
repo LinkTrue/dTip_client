@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 const LandingPage = () => {
   return (
@@ -9,13 +10,12 @@ const LandingPage = () => {
         <div className="flex flex-col text-lg font-bold text-red-500 mb-12">
           <p className="mb-4">Lost donations?</p>
           <p className="mb-4">Too much platform Fees?</p>
-          <p className="mb-4">Must trust, but can't verify?</p>
+          <p className="mb-4">Must trust, but can&apos;t verify?</p>
           <p className="mb-4">Payment processing taking too long?</p>
         </div>
-
         <div className="flex justify-center my-4">
-          <img src="images/donation_neon.png" alt="Bitcoin"
-            className="w-40 h-40 opacity-70 rounded-2xl" style={{ filter: 'brightness(80%)' }} />
+          <Image src="/images/donation_neon.png" alt="Bitcoin"
+            width={160} height={160} className="opacity-70 rounded-2xl" style={{ filter: 'brightness(80%)' }} />
         </div>
 
         {/* {<h1 className="text-5xl font-bold mb-4"> <span>&#8383;</span></h1>} */}
@@ -23,30 +23,30 @@ const LandingPage = () => {
           Enable Crypto Donations on <br />
           <span
             className="text-red-500 font-bold animate-pulse shadow-sm rounded-lg p-1 border-red-500">
-            ANY BLOCKCHAIN 
+            ANY BLOCKCHAIN
           </span>
           network!
         </p>
 
         <div className="flex justify-center my-6 opacity-55">
           {'{'}
-          <img src="icons/chains/ada.svg" alt="supported_chain_ada" className="w-6 h-6 mr-1" />
-          <img src="icons/chains/algo.svg" alt="supported_chain_algo" className="w-6 h-6 mr-1" />
-          <img src="icons/chains/avax.svg" alt="supported_chain_avax" className="w-6 h-6 mr-1" />
-          <img src="icons/chains/bnb.svg" alt="supported_chain_bnb" className="w-6 h-6 mr-1" />
-          <img src="icons/chains/btc.svg" alt="supported_chain_btc" className="w-6 h-6 mr-1" />
-          <img src="icons/chains/dot.svg" alt="supported_chain_dot" className="w-6 h-6 mr-1" />
-          <img src="icons/chains/eth.svg" alt="supported_chain_eth" className="w-6 h-6 mr-1" />
+          <Image src="icons/chains/ada.svg" alt="supported_chain_ada" width={24} height={24} className="mr-1" />
+          <Image src="icons/chains/algo.svg" alt="supported_chain_algo" width={24} height={24} className="mr-1" />
+          <Image src="icons/chains/avax.svg" alt="supported_chain_avax" width={24} height={24} className="mr-1" />
+          <Image src="icons/chains/bnb.svg" alt="supported_chain_bnb" width={24} height={24} className="mr-1" />
+          <Image src="icons/chains/btc.svg" alt="supported_chain_btc" width={24} height={24} className="mr-1" />
+          <Image src="icons/chains/dot.svg" alt="supported_chain_dot" width={24} height={24} className="mr-1" />
+          <Image src="icons/chains/eth.svg" alt="supported_chain_eth" width={24} height={24} className="mr-1" />
 
 
           <span className="w-6 h-6 mr-1">
-          ...
+            ...
           </span>
 
-          <img src="icons/chains/matic.svg" alt="supported_chain_matic" className="w-6 h-6 mr-1" />
-          <img src="icons/chains/sol.svg" alt="supported_chain_sol" className="w-6 h-6 mr-1" />
-          <img src="icons/chains/ton.svg" alt="supported_chain_ton" className="w-6 h-6 mr-1" />
-          <img src="icons/chains/trx.svg" alt="supported_chain_trx" className="w-6 h-6 mr-1" />
+          <Image src="icons/chains/matic.svg" alt="supported_chain_matic" width={24} height={24} className="mr-1" />
+          <Image src="icons/chains/sol.svg" alt="supported_chain_sol" width={24} height={24} className="mr-1" />
+          <Image src="icons/chains/ton.svg" alt="supported_chain_ton" width={24} height={24} className="mr-1" />
+          <Image src="icons/chains/trx.svg" alt="supported_chain_trx" width={24} height={24} className="mr-1" />
           {'}'}
 
         </div>
