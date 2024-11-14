@@ -26,7 +26,7 @@ const S1Main = () => {
                 if (cleanedData.username) {
                     setUserProfile(
                         {
-                            avatar: '',//todo what to do?
+                            avatar: '',//todo add
                             username: cleanedData.username,
                             web2Items: cleanedData.web2Items,
                             web3Items: cleanedData.web3Items
@@ -49,12 +49,10 @@ const S1Main = () => {
             :
             <div className='flex flex-col justify-start gap-y-14  p-4 text-center bg-gray-50 rounded-lg shadow-md'>
                 {!isConnected &&
-                    <div className="max-w-md mx-auto p-4 text-center bg-gray-50 rounded-lg shadow-md">
-                        <h2 className="mb-2">One link for all your wallet addresses!</h2>
-                        <ul>
-                            <li>+</li>
-                            <li>Full Ownership</li>
-                        </ul>
+                    <div className="max-w-md mx-auto">
+                        <h2 className="mb-2">Unify Your Wallet Addresses</h2>
+                        <h3 className="mb-2">Decentralized and Trustless</h3>
+                        <h4 className="mb-2">Leveraging Blockchain Technology</h4>
                     </div>
                 }
 
@@ -85,18 +83,18 @@ const S1Main = () => {
                         </li>
                     }
                 </ul>
-                <span className="p-10">
-                    {isConnected && isOwner ?
+                {isConnected && isOwner &&
+                    <span className="p-10">
                         <Link href={`/${userProfile.username}`} target='_blank'>
                             View your profile{' '}
                             <i className="fas fa-external-link-alt"></i>
                         </Link> :
-                        <Link href={'/@milad'} target='_blank'>
-                            View a sample profile{' '}
+                        <Link href={'/main/@miladtsx'} target='_blank'>
+                            Example Profile{' '}
                             <i className="fas fa-external-link-alt"></i>
                         </Link>
-                    }
-                </span>
+                    </span>
+                }
 
                 <div className="flex gap-4 items-center flex-col">
                     <div>
