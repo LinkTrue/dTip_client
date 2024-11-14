@@ -52,10 +52,8 @@ export default function RootLayout({
                     </div>
                     {/* Footer */}
                     <footer className="relative z-10 mt-10 p-4 bg-gray-800 text-white text-center rounded-lg shadow-lg w-full mx-auto flex flex-col items-center justify-center">
-                      <p className="text-sm mb-4">
-                        &copy; {new Date().getFullYear()} LinkTrue. All rights reserved.
-                      </p>
-                      <div className="flex justify-between w-full mt-2">
+                  
+                      <div className="flex justify-between w-full mt-6">
                         <Link href="/faq" className="hover:underline flex items-center">
                           <i className="fa-solid fa-question-circle fa-lg mr-2"></i>
                           FAQ
@@ -74,6 +72,9 @@ export default function RootLayout({
                           trust but VERIFY
                         </a>
                       </div>
+                      <p className="text-sm mt-16">
+                        &copy; {new Date().getFullYear()} LinkTrue.
+                      </p>
                     </footer>
                   </div>
                 </SmartContractProvider>

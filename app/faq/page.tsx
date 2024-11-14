@@ -18,8 +18,12 @@ export default function FAQ() {
 
     const faqItems = [
         {
-            question: "What is LinkTrue?",
-            answer: "LinkTrue is an open-source, free decentralized application (dApp) that consolidates crypto links and wallet addresses on a single page. Ideal for vigilant individuals who value transparency and control, empowering you to trust but verify."
+            question: "What is the problem?",
+            answer: "Cryptocurrency donations often involve multiple wallets, shared through non-transparent third-party services. This contradicts cryptocurrency's core principles of security and verifiability, risking lost donations and confusion due to potential wallet address alteration."
+        },
+        {
+            question: "What is the solution?",
+            answer: "LinkTrue is a free, open-source dApp that uses blockchain to consolidate crypto links and wallet addresses, giving you transparency and control."
         },
         {
             question: "Who should use LinkTrue?",

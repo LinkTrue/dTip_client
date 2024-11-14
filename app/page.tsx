@@ -17,10 +17,10 @@ const LandingPage = () => {
         {/* Hero Message */}
         <div className="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0">
           <h1 className="text-3xl lg:text-4xl font-extrabold text-gray-800">
-            Secure Crypto Donations
+            Want to Accept Crypto Donations?
           </h1>
           <p className="mt-4 text-lg text-gray-600">
-            Share your decentralized BioLink + wallet addresses.
+            Make it easy with a single link.
           </p>
           <div className="flex justify-center lg:justify-start gap-6 mt-8">
             <Link
@@ -105,48 +105,44 @@ const LandingPage = () => {
       <section className="relative z-10 max-w-7xl mx-auto p-6 lg:p-12 mt-64 rounded-lg">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-800">
-            Why Choose <span className="text-indigo-600">LinkTrue?</span>
+            Unlock <span className="text-indigo-600">LinkTrue</span> Benefits
           </h2>
-          <p className="text-md break-text font-semibold text-gray-800 mb-4 text-center">
-            Share a single link and receive crypto donations on any blockchain network.
-            <br />
-            <br />
-            LinkTrue makes your Crypto Donation process easier!
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="p-6 bg-gradient-to-r from-gray-700 to-blue-700 text-white rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:scale-105">
-            <i className="fa-solid fa-shield-alt text-4xl mb-6"></i>
-            <h3 className="text-xl font-semibold">Secure</h3>
-            <p className="text-center mt-2">
-              Verify at will.
-            </p>
-          </div>
-
-          <div className="p-6 bg-gradient-to-r from-green-400 to-blue-400 text-white rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:scale-105">
-            <i className="fa-solid fa-key text-4xl mb-6"></i>
-            <h3 className="text-xl font-semibold">Control</h3>
-            <p className="text-center mt-2">
-              Own and manage your data.
-            </p>
-          </div>
-
+          {/* Feature 1: Single Decentralized Link */}
           <div className="p-6 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:scale-105">
             <i className="fa-solid fa-link text-4xl mb-6"></i>
-            <h3 className="text-xl font-semibold">Single Link</h3>
+            <h3 className="text-xl font-semibold">Unified Crypto Link</h3>
             <p className="text-center mt-2">
-              Share all with one link.
+              Get all your crypto wallets in one link.
             </p>
           </div>
 
-
-
-          <div className="p-6 bg-gradient-to-r from-indigo-400 to-pink-400 text-white rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:scale-105">
-            <i className="fa-solid fa-code text-4xl mb-6"></i>
-            <h3 className="text-xl font-semibold">No Fees</h3>
+          {/* Feature 2: Easy & Secure Donations */}
+          <div className="p-6 bg-gradient-to-r from-green-400 to-blue-400 text-white rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:scale-105">
+            <i className="fa-solid fa-shield-alt text-4xl mb-6"></i>
+            <h3 className="text-xl font-semibold">Secure Donations</h3>
             <p className="text-center mt-2">
-              Open-source, no cost.
+              Make donations across blockchains easy and secure.
+            </p>
+          </div>
+
+          {/* Feature 3: Control Over Your Data */}
+          <div className="p-6 bg-gradient-to-r from-gray-700 to-blue-700 text-white rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:scale-105">
+            <i className="fa-solid fa-key text-4xl mb-6"></i>
+            <h3 className="text-xl font-semibold">Data Ownership</h3>
+            <p className="text-center mt-2">
+              Keep full control over your data.
+            </p>
+          </div>
+
+          {/* Feature 4: No Fees from LinkTrue */}
+          <div className="p-6 bg-gradient-to-r from-indigo-400 to-pink-400 text-white rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:scale-105">
+            <i className="fa-solid fa-coins text-4xl mb-6"></i>
+            <h3 className="text-xl font-semibold">No Hidden Fees</h3>
+            <p className="text-center mt-2">
+              Only pay the blockchain network fee once.
             </p>
           </div>
         </div>
@@ -154,7 +150,7 @@ const LandingPage = () => {
 
       <div className="text-indigo-400 hover:text-indigo-700 mt-16 pb-6">
         <Link href={'/@milad'} target='_blank' className="text-2xl">
-          See an example profile{' '}
+          Example Profile{' '}
           <i className="fas fa-external-link-alt"></i>
         </Link>
       </div>
