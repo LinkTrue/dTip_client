@@ -149,7 +149,7 @@ const LandingPage = () => {
       </section>
 
       <div className="text-indigo-400 hover:text-indigo-700 mt-16 pb-6">
-        <Link href={'/@milad'} target='_blank' className="text-2xl">
+        <Link href={'/main/@miladtsx'} target='_blank' className="text-2xl">
           Example Profile{' '}
           <i className="fas fa-external-link-alt"></i>
         </Link>
