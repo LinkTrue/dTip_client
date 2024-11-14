@@ -30,7 +30,7 @@ const LandingPage = () => {
               Learn More
             </Link>
             <Link
-              href="/main"
+              href="/start"
               className="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-300 transition-shadow"
             >
               Launch App!
@@ -149,7 +149,7 @@ const LandingPage = () => {
       </section>
 
       <div className="text-indigo-400 hover:text-indigo-700 mt-16 pb-6">
-        <Link href={'/main/@miladtsx'} target='_blank' className="text-2xl">
+        <Link href={'/@miladtsx'} target='_blank' className="text-2xl">
           Example Profile{' '}
           <i className="fas fa-external-link-alt"></i>
         </Link>

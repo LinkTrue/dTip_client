@@ -83,16 +83,19 @@ const S1Main = () => {
                         </li>
                     }
                 </ul>
-                {isConnected && isOwner &&
+                {isConnected &&
                     <span className="p-10">
-                        <Link href={`/${userProfile.username}`} target='_blank'>
-                            View your profile{' '}
-                            <i className="fas fa-external-link-alt"></i>
-                        </Link> :
-                        <Link href={'/main/@miladtsx'} target='_blank'>
-                            Example Profile{' '}
-                            <i className="fas fa-external-link-alt"></i>
-                        </Link>
+                        {
+                            isOwner ?
+                                <Link href={`/${userProfile.username}`} target='_blank'>
+                                    View your profile{' '}
+                                    <i className="fas fa-external-link-alt"></i>
+                                </Link> :
+                                <Link href={'/@miladtsx'} target='_blank'>
+                                    Example Profile{' '}
+                                    <i className="fas fa-external-link-alt"></i>
+                                </Link>
+                        }
                     </span>
                 }
 
