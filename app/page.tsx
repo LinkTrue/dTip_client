@@ -9,7 +9,7 @@ const LandingPage = () => {
 
       {/* Background Decorative Shapes */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-blue-400 opacity-20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-500 opacity-30 rounded-full blur-2xl"></div>
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-500 opacity-30 rounded-full blur-2xl z-0"></div>
 
 
       {/* Hero Section */}
@@ -148,7 +148,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <div className="text-indigo-400 hover:text-indigo-700 mt-16 pb-6">
+      <div className="text-indigo-400 hover:text-indigo-700 mt-16 pb-6 z-20">
         <Link href={'/@miladtsx'} target='_blank' className="text-2xl">
           Example Profile{' '}
           <i className="fas fa-external-link-alt"></i>
