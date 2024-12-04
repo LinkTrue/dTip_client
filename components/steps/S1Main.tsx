@@ -26,7 +26,7 @@ const S1Main = () => {
                 if (cleanedData.username) {
                     setUserProfile(
                         {
-                            avatar: '',//todo add
+                            bio: '',//todo add
                             username: cleanedData.username,
                             web2Items: cleanedData.web2Items,
                             web3Items: cleanedData.web3Items
@@ -51,7 +51,7 @@ const S1Main = () => {
                 {!isConnected &&
                     <div className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg">
                         <p className="text-lg font-semibold text-gray-800 mb-2">
-                            Show which blockchains you use and accept donations.
+                            Show which blockchains you use and accept donations
                         </p>
                         <p className="text-lg text-gray-600 mb-4">In 3 steps:</p>
                         <ol className="list-decimal list-inside space-y-2 text-gray-700">
@@ -122,7 +122,7 @@ const S1Main = () => {
                                 className="rounded-full border-2 border-white transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
                                 onClick={nextStep}
                             >
-                                Join now!
+                                Mint your profile
                             </button>
                         )}
                     </div>
