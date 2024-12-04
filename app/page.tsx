@@ -17,10 +17,10 @@ const LandingPage = () => {
         {/* Hero Message */}
         <div className="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0">
           <h1 className="text-3xl lg:text-4xl font-extrabold text-gray-800">
-            Want to Accept Crypto Donations?
+            Crypto Donation Platform
           </h1>
           <p className="mt-4 text-lg text-gray-600">
-            Make it easy with a single link.
+            Receive value to multiple blockchain wallets through one simple link.
           </p>
           <div className="flex justify-center lg:justify-start gap-6 mt-8">
             <Link
@@ -39,7 +39,7 @@ const LandingPage = () => {
         </div>
 
         {/* Floating Images */}
-        <div className="lg:w-1/2 relative h-80 md:h-96 lg:h-[28rem] w-full flex items-center justify-center mt-10 opacity-30">
+        <div className="lg:w-1/2 relative h-80 md:h-96 lg:h-[28rem] w-full flex items-center justify-center mt-2 opacity-30">
           <div className="relative w-full h-full">
             {/* Image 1 */}
             <Image
@@ -102,7 +102,7 @@ const LandingPage = () => {
       </header>
 
       {/* Features Section */}
-      <section className="relative z-10 max-w-7xl mx-auto p-6 lg:p-12 mt-64 rounded-lg">
+      <section className="relative z-10 max-w-7xl mx-auto p-6 lg:p-12 mt-12 rounded-lg">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-800">
             Unlock <span className="text-indigo-600">LinkTrue</span> Benefits
