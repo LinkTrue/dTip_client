@@ -20,7 +20,7 @@ const LandingPage = () => {
             Crypto Donation Platform
           </h1>
           <p className="mt-4 text-lg text-gray-600">
-            Receive value to multiple blockchain wallets through one simple link.
+            Share multiple blockchain wallet addresses with a single link.
           </p>
           <div className="flex justify-center lg:justify-start gap-6 mt-8">
             <Link

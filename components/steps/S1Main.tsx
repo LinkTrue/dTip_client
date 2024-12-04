@@ -49,10 +49,25 @@ const S1Main = () => {
             :
             <div className='flex flex-col justify-start gap-y-14  p-4 text-center bg-gray-50 rounded-lg shadow-md'>
                 {!isConnected &&
-                    <div className="max-w-md mx-auto">
-                        <h2 className="mb-2">Unify Your Wallet Addresses</h2>
-                        <h3 className="mb-2">Decentralized and Trustless</h3>
-                        <h4 className="mb-2">Leveraging Blockchain Technology</h4>
+                    <div className="max-w-md mx-auto p-6 bg-white shadow-lg rounded-lg">
+                        <p className="text-lg font-semibold text-gray-800 mb-2">
+                            Show which blockchains you use and accept donations.
+                        </p>
+                        <p className="text-lg text-gray-600 mb-4">In 3 steps:</p>
+                        <ol className="list-decimal list-inside space-y-2 text-gray-700">
+                            <li className="flex items-center">
+                                <span className="mr-2 text-blue-500">&#9673;</span>
+                                Connect your wallet
+                            </li>
+                            <li className="flex items-center">
+                                <span className="mr-2 text-green-500">&#9673;</span>
+                                Mint your profile
+                            </li>
+                            <li className="flex items-center">
+                                <span className="mr-2 text-purple-500">&#9673;</span>
+                                Share your link
+                            </li>
+                        </ol>
                     </div>
                 }
 
