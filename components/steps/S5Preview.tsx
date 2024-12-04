@@ -85,7 +85,7 @@ const S5Preview = () => {
                     >
                         {isPublishing ?
                             (<div className="spinner"></div>)
-                            : "Publish"
+                            : "Mint now!"
                         }
                     </button>
                 </div>

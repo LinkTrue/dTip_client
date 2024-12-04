@@ -50,7 +50,7 @@ export default function Home() {
               <p className="text-xs pt-2 pb-4 text-center"><strong>Balance</strong>: {balance} $avax</p>
             ) : (
               <p className="text-xs" title="You need some $avax to reserve your profile">
-                Low Balance! Top up some $avax to reserve your profile.
+                Low Balance! Top up at least 0.1 $AVAX for minting.
               </p>
             )}
           </div>
