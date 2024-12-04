@@ -48,7 +48,7 @@ export default function UserProfile() {
       getProfileByUsername(username).then(res => {
         const cleanedData = parseProfileData(res);
         setUserProfile({
-          avatar: '', // placeholder, adjust if needed
+          avatar: '',
           username: username,
           web2Items: cleanedData.web2Items,
           web3Items: cleanedData.web3Items,
