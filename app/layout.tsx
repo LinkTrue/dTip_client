@@ -52,15 +52,11 @@ export default function RootLayout({
                     </div>
                     {/* Footer */}
                     <footer className="relative z-10 mt-10 p-4 bg-gray-800 text-white text-center rounded-lg shadow-lg w-full mx-auto flex flex-col items-center justify-center">
-                  
+
                       <div className="flex justify-between w-full mt-6">
                         <Link href="/faq" className="hover:underline flex items-center">
                           <i className="fa-solid fa-question-circle fa-lg mr-2"></i>
                           FAQ
-                        </Link>
-                        <Link href="https://t.me/+nGn36o2JAv42ODAx" target="_blank" className="hover:underline flex items-center">
-                          <i className="fa-solid fa-question-circle fa-lg mr-2"></i>
-                          Support
                         </Link>
                         <Link href="/roadmap" className="hover:underline flex items-center">
                           <i className="fa-solid fa-road fa-lg mr-2"></i>
@@ -76,7 +72,11 @@ export default function RootLayout({
                           trust but VERIFY
                         </a>
                       </div>
-                      <p className="text-sm mt-16">
+                      <Link href="https://t.me/+nGn36o2JAv42ODAx" target="_blank" className="hover:underline flex items-center mt-8">
+                        <i className="fa-solid fa-question-circle fa-lg mr-2"></i>
+                        Join the Community
+                      </Link>
+                      <p className="text-sm mt-12">
                         &copy; {new Date().getFullYear()} LinkTrue.
                       </p>
                     </footer>
