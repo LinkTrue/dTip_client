@@ -58,6 +58,10 @@ export default function RootLayout({
                           <i className="fa-solid fa-question-circle fa-lg mr-2"></i>
                           FAQ
                         </Link>
+                        <Link href="https://t.me/+nGn36o2JAv42ODAx" target="_blank" className="hover:underline flex items-center">
+                          <i className="fa-solid fa-question-circle fa-lg mr-2"></i>
+                          Support
+                        </Link>
                         <Link href="/roadmap" className="hover:underline flex items-center">
                           <i className="fa-solid fa-road fa-lg mr-2"></i>
                           Roadmap

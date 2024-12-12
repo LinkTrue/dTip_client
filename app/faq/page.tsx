@@ -60,6 +60,10 @@ export default function FAQ() {
         {
             question: "Can I contribute to LinkTrue anyhow?",
             answer: "Absolutely! Any contribution is highly welcome!"
+        },
+        {
+            question: "Need a human support?",
+            answer: "Join the Telegram Group > https://t.me/+nGn36o2JAv42ODAx"
         }
     ];
 
