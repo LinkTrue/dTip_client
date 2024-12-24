@@ -1,12 +1,24 @@
 "use client";
-
+import Script from 'next/script';
 import Link from "next/link";
 import Image from "next/image";
 
 const LandingPage = () => {
   return (
     <main className="relative flex flex-col items-center justify-center min-h-screen">
-
+      <Script id="crisp-chat" strategy="afterInteractive">
+        {`
+          window.$crisp=[];
+          window.CRISP_WEBSITE_ID="93fda1e3-5302-4589-bb05-d8b8c79aa382";
+          (function(){
+            var d = document;
+            var s = d.createElement("script");
+            s.src = "https://client.crisp.chat/l.js";
+            s.async = 1;
+            d.getElementsByTagName("head")[0].appendChild(s);
+          })();
+        `}
+      </Script>
       {/* Background Decorative Shapes */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-blue-400 opacity-20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-500 opacity-30 rounded-full blur-2xl z-0"></div>

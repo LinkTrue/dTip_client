@@ -51,7 +51,7 @@ export default function RootLayout({
                       {children}
                     </div>
                     {/* Footer */}
-                    <footer className="relative z-10 mt-10 p-4 bg-gray-800 text-white text-center rounded-lg shadow-lg w-full mx-auto flex flex-col items-center justify-center">
+                    <footer className="relative z-10 mt-10 p-4 bg-gray-500 text-white text-center rounded-lg shadow-lg w-full mx-auto flex flex-col items-center justify-center">
 
                       <div className="flex justify-between w-full mt-6">
                         <Link href="/faq" className="hover:underline flex items-center">
