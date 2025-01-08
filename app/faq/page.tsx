@@ -74,7 +74,7 @@ export default function FAQ() {
             <div className="space-y-4">
                 {faqItems.map((item, index) => (
                     <div key={index} className={`border-gray-200 pb-4 border-x-2 rounded-xl p-2 cursor-pointer ${activeIndex === index ? 'bg-gray-100' : ''}`}
-                        onClick={() => toggleAnswer(index)}
+                        onMouseEnter={() => toggleAnswer(index)}
                     >
                         <h2
                             className="text-lg font-semibold mb-2"
