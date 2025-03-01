@@ -29,10 +29,10 @@ const LandingPage = () => {
         {/* Hero Message */}
         <div className="lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0">
           <h1 className="text-3xl lg:text-4xl font-extrabold text-gray-800">
-            Crypto Donation Platform
+            Your Donation Hub
           </h1>
           <p className="mt-4 text-lg text-gray-600">
-            Share multiple blockchain wallet addresses with a single link.
+            Share your links & wallets, trustlessly
           </p>
           <div className="flex justify-center lg:justify-start gap-6 mt-8">
             <Link
@@ -55,11 +55,11 @@ const LandingPage = () => {
           <div className="relative w-full h-full">
             {/* Image 1 */}
             <Image
-              src="/icons/chains/ton.svg"
+              src="/icons/chains/x.svg"
               alt="TON Blockchain Icon"
-              width={80}
-              height={80}
-              className="absolute top-5 left-8 md:left-16 lg:left-20 animate-float-slow-1"
+              width={120}
+              height={120}
+              className="absolute top-2 left-2 md:left-16 lg:left-20 animate-float-slow-1"
             />
             {/* Image 2 */}
             <Image
@@ -117,7 +117,7 @@ const LandingPage = () => {
       <section className="relative z-10 max-w-7xl mx-auto p-6 lg:p-12 mt-12 rounded-lg">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-800">
-            Unlock <span className="text-indigo-600">LinkTrue</span> Benefits
+            What <span className="text-indigo-600">LinkTrue</span> Unlocks
           </h2>
         </div>
 
@@ -127,7 +127,7 @@ const LandingPage = () => {
             <i className="fa-solid fa-link text-4xl mb-6"></i>
             <h3 className="text-xl font-semibold">Unified Crypto Link</h3>
             <p className="text-center mt-2">
-              Get all your crypto wallets in one link.
+              Have all your crypto wallet addresses in one link.
             </p>
           </div>
 
@@ -136,7 +136,7 @@ const LandingPage = () => {
             <i className="fa-solid fa-shield-alt text-4xl mb-6"></i>
             <h3 className="text-xl font-semibold">Secure Donations</h3>
             <p className="text-center mt-2">
-              Make donations across blockchains easy and secure.
+              Enable donations across blockchains securely.
             </p>
           </div>
 
