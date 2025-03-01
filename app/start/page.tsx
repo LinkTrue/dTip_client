@@ -47,10 +47,10 @@ export default function Home() {
           <div>
             <EllipsifiedWalletAddress walletAddress={signer?.address} />
             {balance && balance > 0 ? (
-              <p className="text-xs pt-2 pb-4 text-center"><strong>Balance</strong>: {balance} $avax</p>
+              <p className="text-xs pt-2 pb-4 text-center"><strong>Balance</strong>: {balance} $ETH</p>
             ) : (
-              <p className="text-xs" title="You need some $avax to reserve your profile">
-                Low Balance! Top up at least 0.1 $AVAX for minting.
+              <p className="text-sm text-red-400" title="You need ~$0.1 ETH to reserve your profile">
+                🔴 Low Balance! Top up $0.01 worth of ETH on Soneium L2 to mint.
               </p>
             )}
           </div>

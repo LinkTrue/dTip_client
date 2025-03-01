@@ -5,7 +5,8 @@ import { ethers, VoidSigner, ZeroAddress } from "ethers";
 import { toast } from "sonner";
 
 const supportedBlockchains = [
-    43114
+    1868, // Soneium
+    1946 // Soneium Minato Testnet
 ];
 interface BlockchainContextType {
     isConnected: boolean;
@@ -30,7 +31,7 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
     const [chainId, setChainId] = useState<number>(0);
     const [isConnecting, setIsConnecting] = useState<boolean>(false);
 
-    const CUSTOM_RPC_URL = "https://api.avax.network/ext/bc/C/rpc";
+    const CUSTOM_RPC_URL = "https://rpc.minato.soneium.org";
 
     const handleDisconnectWallet = () => {
         debugger
@@ -51,24 +52,43 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
                 let chainIdRaw = await metaMaskProvider.request({ method: 'eth_chainId' });
                 let chainId = parseInt(chainIdRaw, 16);
 
-                // Add Optimism to MetaMask.
+                // Add supported network to MetaMask.
                 if (!supportedBlockchains.includes(chainId)) {
-                    await (window as any).ethereum.request(
-                        {
-                            method: 'wallet_addEthereumChain',
-                            params: [{
-                                chainId: '0xa86a',
-                                chainName: 'Avalanche Network C-Chain',
-                                nativeCurrency: {
-                                    name: 'Avalanche C-Chain',
-                                    symbol: 'AVAX',
-                                    decimals: 18
-                                },
-                                rpcUrls: ['https://avalanche.blockpi.network/v1/rpc/public	'],
-                                blockExplorerUrls: ['https://snowtrace.io/']
-                            }]
-                        },
-                    );
+
+                    const chainId = '0x79a'; // Minato Chain ID
+
+                    try {
+                        // Attempt to switch to Soneium
+                        await (window as any).ethereum.request({
+                            method: 'wallet_switchEthereumChain',
+                            params: [{ chainId }],
+                        });
+                    }
+                    catch (switchError: any) {
+                        // Error 4902 means the network is not added, so we add it
+                        if (switchError.code === 4902) {
+                            try {
+                                await (window as any).ethereum.request({
+                                    method: 'wallet_addEthereumChain',
+                                    params: [{
+                                        chainId,
+                                        chainName: 'Soneium Testnet Minato',
+                                        nativeCurrency: {
+                                            name: 'Minato',
+                                            symbol: 'ETH',
+                                            decimals: 18
+                                        },
+                                        rpcUrls: ['https://rpc.minato.soneium.org'],
+                                        blockExplorerUrls: ['']
+                                    }]
+                                });
+                            } catch (addError) {
+                                console.error("Failed to add Soneium network:", addError);
+                            }
+                        } else {
+                            console.error("Failed to switch network:", switchError);
+                        }
+                    }
                 }
 
                 chainIdRaw = await metaMaskProvider.request({ method: 'eth_chainId' });
@@ -112,7 +132,7 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
             setIsConnecting(false);
         } catch (error: any) {
             if (error.message.includes("User rejected the request")) {
-                toast.warning("To own a profile, connect your wallet and chose the Avalanche blockchain network.")
+                toast.warning("To own a profile, connect your wallet and chose the Soneium blockchain network.")
             } else if (error.message.includes("No MetaMask browser extension found. Please install MetaMask")) {
                 toast.warning(error.message);
             } else {

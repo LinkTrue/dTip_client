@@ -123,7 +123,7 @@ export const useContractMethods = () => {
   ) => {
     if (!smartContractService) {
       toast.info(
-        "Make sure Network is set to Avalanche."
+        "Make sure Network is set to Soneium."
       )
     } else {
       try {

@@ -232,11 +232,12 @@ export function SmartContractService(signer: JsonRpcSigner, chainId?: number):
     BlockchainServiceInterface {
 
     const getContractAddress = (chainId?: number): string => {
-        if (!chainId || chainId === 43114) return '0x8faC1b937a41cE91E51569451afBFbD5998c1CEC';
+        if (!chainId || chainId === 1946) return '0xB5500E2C3B09Eb7cfb19437BF88f3b3fe739C3b6';
+        if (chainId === 43114) return '0x8faC1b937a41cE91E51569451afBFbD5998c1CEC';
         throw new Error("Unsupported network");
     }
 
-    const contractAddress = getContractAddress();
+    const contractAddress = getContractAddress(chainId);
     if (!contractAddress) {
         throw new Error(`Contract address not found for chainId: ${chainId}`);
     }

@@ -43,15 +43,15 @@ export default function FAQ() {
         },
         {
             question: "How is my data stored with LinkTrue?",
-            answer: "Your data is securely stored on the blockchain, which is why a small transaction fee is required to mint your profile. This storage is protected by the Avalanche network, ensuring high availability and data integrity."
+            answer: "Your data is securely stored on the blockchain, which is why a small transaction fee is required to mint your profile. This storage is protected by the Soneium network, ensuring high availability and data integrity."
         },
         {
             question: "Is it really free?",
-            answer: "LinkTrue is completely free and open-source. However, to mint your profile on the blockchain, you need to pay the blockchain network fee, which costs around $0.02 in $avax."
+            answer: "LinkTrue is completely free and open-source. However, to mint your profile on the blockchain, you need to pay the blockchain network fee, which costs around $0.02 in $ETH."
         },
         {
             question: "Is it really impossible to manipulate my data?",
-            answer: "Your data is securely tied to your wallet address or private key and the security of the Avalanche Blockchain Network. Losing access to your key or wallet means losing access to your data."
+            answer: "Your data is securely tied to your wallet address or private key and the security of the Soneium Blockchain Network. Losing access to your key or wallet means losing access to your data."
         },
         {
             question: "My desired blockchain is not listed when building my profile!",

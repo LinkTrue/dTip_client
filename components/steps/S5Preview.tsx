@@ -34,7 +34,7 @@ const S5Preview = () => {
 
             setIsPublishing(true);
             publish(userProfile.username, keys, values).then(() => {
-                window.location.href += `/${userProfile.username}`
+                window.location.href = window.location.origin + `/${userProfile.username}`
             }).catch((err) => {
                 logException(err);
             }).finally(() => {
@@ -51,11 +51,11 @@ const S5Preview = () => {
             <div className='p-4'>
                 <Preview isPreview={true} />
             </div>
-            <p className='text-left mt-10'>All good?</p>
+            <p className='text-left mt-10'>All good? 👇</p>
             <br />
             <br />
             <p>
-                PUBLISH now to make it <strong>permanently yours</strong>!
+                MINT now to make it <strong>permanently yours</strong>!
             </p>
 
             <div className='m-8'>
@@ -77,15 +77,14 @@ const S5Preview = () => {
                         {"<"}
                     </button>
 
-                    <button className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center 
-          bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#10bdbd] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+                    <button className="rounded-full font-bold border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#10bdbd] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
                         type="button"
                         disabled={isPublishing}
                         onClick={handlePublish}
                     >
                         {isPublishing ?
                             (<div className="spinner"></div>)
-                            : "Mint now!"
+                            : "MINT"
                         }
                     </button>
                 </div>
