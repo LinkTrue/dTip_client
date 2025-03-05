@@ -39,7 +39,7 @@ const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
 
     useEffect(() => {
         if (userProfile.username)
-            setPageUrl(`https://linktrue.vercel.app/${userProfile.username}`);
+            setPageUrl(`https://dTip.vercel.app/${userProfile.username}`);
     }, [userProfile.username])
 
 
@@ -155,7 +155,8 @@ const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
 
                     {!isPreview && showAd &&
                         <span className="text-sm font-bold text-white bg-gradient-to-r from-purple-500 to-indigo-500 px-2 py-4 rounded-lg shadow-md">
-                            ✨ Join {userProfile.username} on LinkTrue!
+                            <img src="/LT.svg" width={24} height={24} />
+                            ✨ Join {userProfile.username} on dTip!
                         </span>
                     }
 

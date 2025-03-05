@@ -117,7 +117,7 @@ const LandingPage = () => {
       <section className="relative z-10 max-w-7xl mx-auto p-6 lg:p-12 mt-12 rounded-lg">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-800">
-            What <span className="text-indigo-600">LinkTrue</span> Unlocks
+            What <span className="text-indigo-600">dTip</span> Unlocks
           </h2>
         </div>
 
@@ -149,7 +149,7 @@ const LandingPage = () => {
             </p>
           </div>
 
-          {/* Feature 4: No Fees from LinkTrue */}
+          {/* Feature 4: No Fees from dTip */}
           <div className="p-6 bg-gradient-to-r from-indigo-400 to-pink-400 text-white rounded-lg shadow-lg flex flex-col items-center transition-transform transform hover:scale-105">
             <i className="fa-solid fa-coins text-4xl mb-6"></i>
             <h3 className="text-xl font-semibold">No Hidden Fees</h3>

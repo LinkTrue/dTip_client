@@ -24,8 +24,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'LinkTrue',
-  description: 'Your uncensorable crypto profile'
+  title: 'dTip',
+  description: 'Decentralized Tip'
 };
 
 export default function RootLayout({
@@ -77,7 +77,7 @@ export default function RootLayout({
                         Join the Community
                       </Link>
                       <p className="text-sm mt-12">
-                        &copy; {new Date().getFullYear()} LinkTrue.
+                        &copy; {new Date().getFullYear()} dTip.
                       </p>
                     </footer>
                   </div>

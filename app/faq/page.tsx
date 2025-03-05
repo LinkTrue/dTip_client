@@ -23,31 +23,31 @@ export default function FAQ() {
         },
         {
             question: "What is the solution?",
-            answer: "LinkTrue is a free, open-source dApp that uses blockchain to consolidate crypto links and wallet addresses, giving you transparency and control."
+            answer: "dTip is a free, open-source dApp that uses blockchain to consolidate crypto links and wallet addresses, giving you transparency and control. It also allows users to receive donations and tips securely."
         },
         {
-            question: "Who should use LinkTrue?",
-            answer: "LinkTrue is perfect for anyone wanting to securely share wallet addresses, receive donations, or promote online payment gateways."
+            question: "Who should use dTip?",
+            answer: "dTip is perfect for anyone wanting to securely share wallet addresses, receive donations or tips, or promote online payment gateways."
         },
         {
-            question: "How is LinkTrue different from other bio link tools?",
-            answer: "Unlike traditional bio link tools, LinkTrue ensures that only you own and control your data, providing exceptional security and integrity."
+            question: "How is dTip different from other bio link tools and donation services?",
+            answer: "dTip is built on the blockchain, ensuring security and decentralization. It is open-source, allowing full transparency. Unlike traditional platforms, dTip does not charge fees for donations or tips. To prevent misuse, KYC will be required for donation receiver as a safeguard against money laundering and malicious activity, ensuring a secure and responsible ecosystem."
         },
         {
-            question: "How to use LinkTrue?",
-            answer: "Build a profile and share a single link in your social media bio."
+            question: "How to use dTip?",
+            answer: "Build a profile on the Soneium blockchain (Ethereum Layer 2) and share a single link in your social media bio to receive payments, donations, or tips."
         },
         {
-            question: "Which blockchain networks does LinkTrue support?",
+            question: "Which blockchain networks does dTip support?",
             answer: "Any blockchain network."
         },
         {
-            question: "How is my data stored with LinkTrue?",
-            answer: "Your data is securely stored on the blockchain, which is why a small transaction fee is required to mint your profile. This storage is protected by the Soneium network, ensuring high availability and data integrity."
+            question: "How is my data stored with dTip?",
+            answer: "Your data is securely stored on the Soneium blockchain, which is why a small transaction fee is required to mint your profile. This storage ensures high availability and data integrity."
         },
         {
             question: "Is it really free?",
-            answer: "LinkTrue is completely free and open-source. However, to mint your profile on the blockchain, you need to pay the blockchain network fee, which costs around $0.02 in $ETH."
+            answer: "dTip is completely free and open-source. However, to mint your profile on the blockchain, you need to pay the blockchain network fee, which costs around $0.02 in $ETH."
         },
         {
             question: "Is it really impossible to manipulate my data?",
@@ -55,14 +55,14 @@ export default function FAQ() {
         },
         {
             question: "My desired blockchain is not listed when building my profile!",
-            answer: "We can easily add new blockchain or website icons by simply adding the desired icon and submitting a pull request to the source code on GitHub. Here is how I added Ton Blockchain network Icon: https://github.com/LinkTrue/linktrue_client/commit/5d411900157913843be05a6b07cf23b92b4f191a."
+            answer: "We can easily add new blockchain or website icons by simply adding the desired icon and submitting a pull request to the source code on GitHub. Here is how I added Ton Blockchain network Icon: https://github.com/dTip/dTip_client/commit/5d411900157913843be05a6b07cf23b92b4f191a."
         },
         {
-            question: "Can I contribute to LinkTrue anyhow?",
+            question: "Can I contribute to dTip anyhow?",
             answer: "Absolutely! Any contribution is highly welcome!"
         },
         {
-            question: "Need a human support?",
+            question: "Need human support?",
             answer: "Join the Telegram Group > https://t.me/+nGn36o2JAv42ODAx"
         }
     ];

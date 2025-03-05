@@ -30,10 +30,9 @@ export default function Roadmap() {
         },
     ];
 
-
     // Set the page title dynamically
     useEffect(() => {
-        document.title = 'Roadmap | LinkTrue'; // Change this to whatever you want the title to be
+        document.title = 'Roadmap | dTip';
     }, []);
 
     return (
