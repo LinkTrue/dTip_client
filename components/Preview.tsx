@@ -155,7 +155,7 @@ const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
 
                     {!isPreview && showAd &&
                         <span className="text-sm font-bold text-white bg-gradient-to-r from-purple-500 to-indigo-500 px-2 py-4 rounded-lg shadow-md">
-                            <img src="/LT.svg" width={24} height={24} />
+                            <img src="/dTip.svg" width={24} height={24} />
                             ✨ Join {userProfile.username} on dTip!
                         </span>
                     }

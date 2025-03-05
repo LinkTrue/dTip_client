@@ -39,7 +39,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Link href="/" className="flex text-center justify-center pt-8 text-2xl animate-pulse">
-          <strong>L</strong>ink<strong>T</strong>rue
+          <strong>d</strong><strong>T</strong>ip
         </Link>
         <LoggerProvider>
           <BlockchainProvider>
