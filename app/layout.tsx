@@ -54,9 +54,9 @@ export default function RootLayout({
                     <footer className="relative z-10 mt-10 p-4 bg-gray-500 text-white text-center rounded-lg shadow-lg w-full mx-auto flex flex-col items-center justify-center">
 
                       <div className="flex justify-between w-full mt-6">
-                        <Link href="/faq" className="hover:underline flex items-center">
+                        <Link href="https://dtip.gitbook.io/docs/" className="hover:underline flex items-center">
                           <i className="fa-solid fa-question-circle fa-lg mr-2"></i>
-                          FAQ
+                          Docs
                         </Link>
                         <Link href="/roadmap" className="hover:underline flex items-center">
                           <i className="fa-solid fa-road fa-lg mr-2"></i>

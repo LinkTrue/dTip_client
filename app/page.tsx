@@ -35,8 +35,8 @@ const LandingPage = () => {
             Share your links & wallets, trustlessly
           </p>
           <div className="flex justify-center lg:justify-start gap-6 mt-8">
-            <Link
-              href="/faq"
+            <Link target='_blank'
+              href="https://dtip.gitbook.io/docs"
               className="px-6 py-3 bg-blue-200 text-white rounded-lg hover:bg-blue-400 transition-shadow"
             >
               Learn More
