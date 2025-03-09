@@ -26,7 +26,7 @@ const S1Main = () => {
                 if (cleanedData.username) {
                     setUserProfile(
                         {
-                            avatar: '',//todo add
+                            avatar: '',
                             username: cleanedData.username,
                             web2Items: cleanedData.web2Items,
                             web3Items: cleanedData.web3Items
