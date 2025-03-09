@@ -1,5 +1,6 @@
 import { Web2Item, Web3Item } from "@/context/GlobalStateContext";
 import { clsx, type ClassValue } from "clsx"
+import { ethers } from "ethers";
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
@@ -68,4 +69,16 @@ export function parseProfileData(result: string[]) {
     web3Items,
     username
   };
+}
+
+export async function getBrowserProvider() {
+  if (typeof (window as any).ethereum !== 'undefined') {
+    // Request MetaMask connection if not already connected
+    await (window as any).ethereum.request({ method: 'eth_requestAccounts' });
+
+    // Create a new provider using ethers.js connected to MetaMask
+    return new ethers.BrowserProvider((window as any).ethereum);
+  } else {
+    return undefined;
+  }
 }

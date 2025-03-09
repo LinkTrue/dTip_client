@@ -8,6 +8,7 @@ import Web3ItemsComboBox from '@/components/Web3ItemsComboBox';
 import { useGlobalState } from '@/context/GlobalStateContext';
 import Image from "next/image";
 import { toast } from "sonner";
+import { ValueTransfer } from "./VT";
 
 const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
     const [showAd, setShowAd] = useState(false);
@@ -100,6 +101,12 @@ const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
 
                             {selectedWeb3Item.walletAddress && (
                                 <div className="flex flex-col mt-4 gap-4 items-center">
+
+                                    {/* Transfer Modal */}
+                                    <ValueTransfer
+                                        item={selectedWeb3Item}
+                                    />
+
                                     <EllipsifiedAddress walletAddress={selectedWeb3Item.walletAddress} />
                                     {/* <p className="pt-4">or Scan the QR Code</p> */}
                                     <QRCodeSVG

@@ -1,0 +1,159 @@
+[
+    {
+        "name": "Ethereum Mainnet",
+        "chainId": 1,
+        "shortName": "eth",
+        "networkId": 1,
+        "nativeCurrency": {
+            "name": "Ether",
+            "symbol": "ETH",
+            "decimals": 18
+        },
+        "rpc": [
+            "https://mainnet.infura.io/v3/${INFURA_API_KEY}",
+            "wss://mainnet.infura.io/ws/v3/${INFURA_API_KEY}",
+            "https://api.mycryptoapi.com/eth",
+            "https://cloudflare-eth.com"
+        ],
+        "faucets": [],
+        "infoURL": "https://ethereum.org"
+    },
+    {
+        "name": "Binance Smart Chain Mainnet",
+        "chainId": 56,
+        "shortName": "bnb",
+        "networkId": 56,
+        "nativeCurrency": {
+            "name": "Binance Chain Native Token",
+            "symbol": "BNB",
+            "decimals": 18
+        },
+        "rpc": [
+            "https://bsc-dataseed1.binance.org",
+            "https://bsc-dataseed2.binance.org",
+            "https://bsc-dataseed3.binance.org",
+            "https://bsc-dataseed4.binance.org",
+            "https://bsc-dataseed1.defibit.io",
+            "https://bsc-dataseed2.defibit.io",
+            "https://bsc-dataseed3.defibit.io",
+            "https://bsc-dataseed4.defibit.io",
+            "https://bsc-dataseed1.ninicoin.io",
+            "https://bsc-dataseed2.ninicoin.io",
+            "https://bsc-dataseed3.ninicoin.io",
+            "https://bsc-dataseed4.ninicoin.io",
+            "wss://bsc-ws-node.nariox.org"
+        ],
+        "faucets": [
+            "https://free-online-app.com/faucet-for-eth-evm-chains/"
+        ],
+        "infoURL": "https://www.binance.org"
+    },
+    {
+        "name": "Polygon Mainnet",
+        "chainId": 137,
+        "shortName": "matic",
+        "networkId": 137,
+        "nativeCurrency": {
+            "name": "MATIC",
+            "symbol": "MATIC",
+            "decimals": 18
+        },
+        "rpc": [
+            "https://polygon-rpc.com/",
+            "https://rpc-mainnet.matic.network",
+            "https://matic-mainnet.chainstacklabs.com",
+            "https://rpc-mainnet.maticvigil.com",
+            "https://rpc-mainnet.matic.quiknode.pro",
+            "https://matic-mainnet-full-rpc.bwarelabs.com",
+            "https://polygon-bor.publicnode.com"
+        ],
+        "faucets": [],
+        "infoURL": "https://polygon.technology/"
+    },
+    {
+        "name": "Fantom Opera",
+        "chainId": 250,
+        "shortName": "ftm",
+        "networkId": 250,
+        "nativeCurrency": {
+            "name": "Fantom",
+            "symbol": "FTM",
+            "decimals": 18
+        },
+        "rpc": [
+            "https://rpc.ftm.tools"
+        ],
+        "faucets": [
+            "https://free-online-app.com/faucet-for-eth-evm-chains/"
+        ],
+        "infoURL": "https://fantom.foundation"
+    },
+    {
+        "name": "Arbitrum One",
+        "chainId": 42161,
+        "shortName": "arb",
+        "networkId": 42161,
+        "nativeCurrency": {
+            "name": "Ether",
+            "symbol": "ETH",
+            "decimals": 18
+        },
+        "rpc": [
+            "https://arbitrum-mainnet.infura.io/v3/${INFURA_API_KEY}",
+            "https://arb-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}",
+            "https://arb1.arbitrum.io/rpc"
+        ],
+        "faucets": [],
+        "infoURL": "https://arbitrum.io"
+    },
+    {
+        "name": "Optimism",
+        "chainId": 10,
+        "shortName": "op",
+        "networkId": 10,
+        "nativeCurrency": {
+            "name": "Ether",
+            "symbol": "ETH",
+            "decimals": 18
+        },
+        "rpc": [
+            "https://mainnet.optimism.io/"
+        ],
+        "faucets": [],
+        "infoURL": "https://optimism.io"
+    },
+    {
+        "name": "Cronos Mainnet Beta",
+        "chainId": 25,
+        "shortName": "cro",
+        "networkId": 25,
+        "nativeCurrency": {
+            "name": "Cronos",
+            "symbol": "CRO",
+            "decimals": 18
+        },
+        "rpc": [
+            "https://evm.cronos.org"
+        ],
+        "faucets": [],
+        "infoURL": "https://cronos.org/"
+    },
+    {
+        "name": "Avalanche C-Chain",
+        "chainId": 43114,
+        "shortName": "avax",
+        "networkId": 43114,
+        "nativeCurrency": {
+            "name": "Avalanche",
+            "symbol": "AVAX",
+            "decimals": 18
+        },
+        "rpc": [
+            "https://api.avax.network/ext/bc/C/rpc"
+        ],
+        "faucets": [
+            "https://free-online-app.com/faucet-for-eth-evm-chains/"
+        ],
+        "infoURL": "https://www.avax.network/"
+    }
+]
