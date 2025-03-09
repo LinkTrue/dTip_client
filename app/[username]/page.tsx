@@ -7,6 +7,7 @@ import { useContractMethods } from '@/hooks/useContractMethods';
 import { useGlobalState } from '@/context/GlobalStateContext';
 import { parseProfileData } from '@/lib/utils';
 
+export const dynamic = 'force-static';
 
 export default function UserProfile() {
   const params = useParams();
@@ -48,7 +49,7 @@ export default function UserProfile() {
       getProfileByUsername(username).then(res => {
         const cleanedData = parseProfileData(res);
         setUserProfile({
-          avatar: '',
+          bio: '', // todo add
           username: username,
           web2Items: cleanedData.web2Items,
           web3Items: cleanedData.web3Items,
