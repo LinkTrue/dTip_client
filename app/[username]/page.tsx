@@ -49,7 +49,7 @@ export default function UserProfile() {
       getProfileByUsername(username).then(res => {
         const cleanedData = parseProfileData(res);
         setUserProfile({
-          bio: '', // todo add
+          avatar: '',
           username: username,
           web2Items: cleanedData.web2Items,
           web3Items: cleanedData.web3Items,
