@@ -114,16 +114,22 @@ const S1Main = () => {
                     </span>
                 }
 
-                <div className="flex gap-4 items-center flex-col">
-                    <div>
+                <div>
+                    <div className="flex gap-2 items-center flex-col">
                         <BlockchainComponent />
                         {isConnected && !isOwner && (
-                            <button
-                                className="rounded-full border-2 border-white transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-                                onClick={nextStep}
-                            >
-                                Mint your profile
-                            </button>
+                            <div className="flex gap-2 items-center flex-col">
+                                <p>by using <i>dTip</i>, <span className='font-bold'>you agree</span> to <a
+                                    className='underline hover:no-underline' target='_blank' href="https://dtip.gitbook.io/docs/terms-of-use">TOU</a> and <a
+                                        className='underline hover:no-underline' target='_blank' href="https://dtip.gitbook.io/docs/privacy">PP</a>
+                                </p>
+                                <button
+                                    className="rounded-full border-2 border-white transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+                                    onClick={nextStep}
+                                >
+                                    Mint your profile
+                                </button>
+                            </div>
                         )}
                     </div>
                 </div>

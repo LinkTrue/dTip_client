@@ -58,10 +58,6 @@ export default function RootLayout({
                           <i className="fa-solid fa-question-circle fa-lg mr-2"></i>
                           Docs
                         </Link>
-                        <Link href="/roadmap" className="hover:underline flex items-center">
-                          <i className="fa-solid fa-road fa-lg mr-2"></i>
-                          Roadmap
-                        </Link>
                         <a
                           href="https://github.com/orgs/LinkTrue/repositories"
                           target="_blank"
@@ -73,12 +69,15 @@ export default function RootLayout({
                         </a>
                       </div>
                       <Link href="https://t.me/+nGn36o2JAv42ODAx" target="_blank" className="hover:underline flex items-center mt-8">
-                        <i className="fa-solid fa-question-circle fa-lg mr-2"></i>
+                        <i className="fa-solid fa-face-smile fa-lg mr-2"></i>
                         Join the Community
                       </Link>
-                      <p className="text-sm mt-12">
-                        &copy; {new Date().getFullYear()} dTip.
-                      </p>
+                      <a className="text-md mt-12 text-orange-500"
+                        href="https://dtip.gitbook.io/docs/terms-of-use"
+                        target="_blank"
+                      >
+                        TERMS OF USE
+                      </a>
                     </footer>
                   </div>
                 </SmartContractProvider>
