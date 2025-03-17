@@ -5,7 +5,7 @@
     "name": "Milad"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3009",
     "build": "next build -d",
     "start": "next start",
     "serve": "next serve .",
@@ -23,6 +23,7 @@
     "@radix-ui/react-tooltip": "^1.1.2",
     "@reduxjs/toolkit": "^2.2.7",
     "@sentry/nextjs": "^9.5.0",
+    "@vercel/analytics": "^1.5.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "ethers": "^6.13.2",

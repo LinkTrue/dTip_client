@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import { Analytics } from "@vercel/analytics/react"
 import { Toaster as SimpleToast } from "@/components/ui/toaster"
 import { Toaster } from "@/components/ui/sonner"
 
@@ -11,7 +12,6 @@ import { SmartContractProvider } from '@/context/SmartContractContext';
 import { BlockchainProvider } from '@/context/BlockchainProvider';
 import { LoggerProvider } from '@/context/LoggerContext';
 import Link from "next/link";
-
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -73,7 +73,7 @@ export default function RootLayout({
                         Join the Community
                       </Link>
                       <a className="text-md mt-12 text-orange-500"
-                        href="https://dtip.gitbook.io/docs/terms-of-use"
+                        href="https://dtip.gitbook.io/docs/terms/terms-of-use"
                         target="_blank"
                       >
                         TERMS OF USE
@@ -86,6 +86,7 @@ export default function RootLayout({
           </BlockchainProvider>
           <Toaster position="top-center" expand={true} />
           <SimpleToast />
+          <Analytics />
         </LoggerProvider>
       </body>
     </html>
