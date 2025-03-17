@@ -154,10 +154,12 @@ const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
                     }
 
                     {!isPreview && showAd &&
-                        <span className="text-sm font-bold text-white bg-gradient-to-r from-purple-500 to-indigo-500 px-2 py-4 rounded-lg shadow-md">
+                        <div className=" flex items-center text-sm font-bold text-yellow-200 bg-gradient-to-r from-black to-purple-700 px-2 py-4 rounded-lg shadow-md">
                             <img src="/dTip.svg" width={24} height={24} />
-                            ✨ Join {userProfile.username} on dTip!
-                        </span>
+                            <span className="">
+                                Join <u>{userProfile.username}</u> on <i>dTip</i>!
+                            </span>
+                        </div>
                     }
 
                 </>
