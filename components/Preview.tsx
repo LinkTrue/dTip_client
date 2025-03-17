@@ -154,12 +154,14 @@ const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
                     }
 
                     {!isPreview && showAd &&
-                        <div className=" flex items-center text-sm font-bold text-yellow-200 bg-gradient-to-r from-black to-purple-700 px-2 py-4 rounded-lg shadow-md">
-                            <img src="/dTip.svg" width={24} height={24} />
-                            <span className="">
-                                Join <u>{userProfile.username}</u> on <i>dTip</i>!
-                            </span>
-                        </div>
+                        <a href="/start">
+                            <div className=" flex items-center text-sm font-bold text-yellow-200 bg-gradient-to-r from-black to-purple-700 px-2 py-4 rounded-lg shadow-md">
+                                <img src="/dTip.svg" width={24} height={24} />
+                                <span className="">
+                                    Join <u>{userProfile.username}</u> on <i>dTip</i>!
+                                </span>
+                            </div>
+                        </a>
                     }
 
                 </>
