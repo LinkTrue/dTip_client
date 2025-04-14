@@ -44,7 +44,7 @@ const S3Web2Items = () => {
         setWeb2Item({
             ...web2Item,
             iconUrl: selectedOption ? selectedOption.value : "",
-            fullURL: selectedOption.label === 'email' ? "mailto:" : ''
+            fullURL: selectedOption?.label === 'email' ? "mailto:" : ''
         });
     };
 
@@ -73,29 +73,31 @@ const S3Web2Items = () => {
             {/* @ts-expect-error  error*/}
             <SocialMediaComboBox ref={comboBoxRef} onSelect={handleSelect} autoFocus={true} />
 
-            <div className="flex items-center">
-                <Input
-                    className="text-sm rounded h-8 mr-4 border"
-                    type="url"
-                    name="fullURL"
-                    value={web2Item.fullURL}
-                    onChange={handleWeb2AddressesChange}
-                    placeholder="e.g., https://example.com or https://paypal.me/username"
-                    required
-                    tabIndex={1}
-                />
-                {web2Item.iconUrl ?
-                    <Button
-                        className="rounded-full bg-foreground text-background text-base p-4"
-                        type="button"
-                        onClick={handleAddItem}
-                        tabIndex={2}
-                    >
-                        <strong>+</strong>
-                    </Button>
-                    : <></>
-                }
-            </div>
+            {!!web2Item.iconUrl.length &&
+                <div className="flex items-center">
+                    <Input
+                        className="text-sm rounded h-8 mr-4 border"
+                        type="url"
+                        name="fullURL"
+                        value={web2Item.fullURL}
+                        onChange={handleWeb2AddressesChange}
+                        placeholder="e.g., https://example.com or https://paypal.me/username"
+                        required
+                        tabIndex={1}
+                    />
+                    {web2Item.fullURL ?
+                        <Button
+                            className="rounded-full bg-foreground text-background text-base p-4"
+                            type="button"
+                            onClick={handleAddItem}
+                            tabIndex={2}
+                        >
+                            <strong>+</strong>
+                        </Button>
+                        : <></>
+                    }
+                </div>
+            }
 
             {userProfile.web2Items.length > 0 ? (
                 <div className="mt-2 p-6">
@@ -148,7 +150,7 @@ const S3Web2Items = () => {
                 <div className="flex justify-between gap-4">
 
                     <button
-                        className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+                        className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-gray-200 text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
                         type="button"
                         onClick={prevStep}
                     >

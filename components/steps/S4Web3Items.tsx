@@ -67,38 +67,45 @@ const S4Web3Items = () => {
 
     return (
         <div className="flex flex-col text-center gap-y-4">
-            <h2 className="text-xl lg:text-4xl md:text-2xl">Add your wallet addresses</h2>
+            {userProfile.web3Items.length > 0 ?
+                <h2 className="text-xl lg:text-4xl md:text-2xl">Don't you support other networks?</h2>
+                :
+                <h2 className="text-xl lg:text-4xl md:text-2xl"><strong>Where</strong> you want to receive tip?</h2>
+            }
             <div className="px-10">
                 {/* @ts-expect-error error*/}
                 <ChainsComboBox ref={comboBoxRef} onSelect={handleSelectChain} />
             </div>
 
-            <div className="flex items-center p-4">
-                <Input
-                    className="text-sm rounded h-8 mr-4 border"
-                    type="text"
-                    name="walletAddress"
-                    value={web3Item.walletAddress}
-                    onChange={handleWeb3ItemInputChange}
-                    placeholder="Wallet address (eg. 0x15e69F13Ef2C5b81D40342AB6dc84A887866B146)"
-                    required
-                />
-                {web3Item.icon ?
-                    <Button
-                        className="rounded-full bg-foreground text-background text-base h-8 p-6"
-                        type="button"
-                        onClick={handleAddItem}
-                    >
-                        <strong>+</strong>
-                    </Button>
-                    : <></>
-                }
-            </div>
+            {web3Item.icon && (
+
+                <div className="flex items-center p-4">
+                    <Input
+                        className="text-sm rounded h-8 mr-4 border"
+                        type="text"
+                        name="walletAddress"
+                        value={web3Item.walletAddress}
+                        onChange={handleWeb3ItemInputChange}
+                        placeholder="Enter your Wallet address (eg. 0x15e69F13Ef2C5b81D40342AB6dc84A887866B146)"
+                        required
+                    />
+                    {web3Item.walletAddress ?
+                        <Button
+                            className="rounded-full bg-foreground text-background text-base h-8 p-6"
+                            type="button"
+                            onClick={handleAddItem}
+                        >
+                            <strong>+</strong>
+                        </Button>
+                        : <></>
+                    }
+                </div>
+            )}
 
             {userProfile.web3Items.length > 0 ? (
 
                 <div className="mt-2 p-6">
-                    <p className="text-2xl font-bold">Your draft:</p>
+                    <p className="text-2xl font-bold">List of your wallets:</p>
                     <div className="flex flex-col pt-3 items-center">
 
                         <table className="min-w-full border border-gray-200 border-collapse">
@@ -141,22 +148,24 @@ const S4Web3Items = () => {
                 <hr className="m-4 border-t-2 dark:border-gray-600" />
                 <div className="flex justify-between gap-4 mt-6">
                     <button
-                        className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+                        className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-gray-200 text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
                         type="button"
                         onClick={prevStep}
                     >
                         {"<"}
                     </button>
 
-                    <button
-                        className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center 
+                    {!!userProfile.web3Items.length &&
+                        <button
+                            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center 
           bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] 
           text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-                        type="button"
-                        onClick={nextStep}
-                    >
-                        {">"}
-                    </button>
+                            type="button"
+                            onClick={nextStep}
+                        >
+                            {">"}
+                        </button>
+                    }
                 </div>
             </div>
 
