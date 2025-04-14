@@ -69,24 +69,26 @@ const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
             {userProfile.username && //TODO  sanitize the username
                 <>
                     {/* WEB2 ITEMS */}
-                    <div className="flex flex-wrap justify-center mb-2 bg-gray-100 rounded-lg p-3 px-16 gap-x-3">
-                        {userProfile.web2Items.map((item, index) => {
-                            return (
-                                <a key={`web2Addresses${index}`} href={item.fullURL} target="_blank" rel="noopener noreferrer"
-                                    title={item.iconUrl.substring(item.iconUrl.lastIndexOf('/') + 1).replace('.svg', '')}
-                                >
-                                    <div className="" style={{ display: "flex", alignItems: "center", margin: "2px" }}>
-                                        <Image src={item.iconUrl} alt={item.iconUrl}
-                                            width={30}
-                                            height={30}
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                </a>
-                            )
-                        }
-                        )}
-                    </div>
+                    {userProfile.web2Items.length > 0 &&
+                        <div className="flex flex-wrap justify-center mb-2 bg-gray-100 rounded-lg p-3 px-16 gap-x-3">
+                            {userProfile.web2Items.map((item, index) => {
+                                return (
+                                    <a key={`web2Addresses${index}`} href={item.fullURL} target="_blank" rel="noopener noreferrer"
+                                        title={item.iconUrl.substring(item.iconUrl.lastIndexOf('/') + 1).replace('.svg', '')}
+                                    >
+                                        <div className="" style={{ display: "flex", alignItems: "center", margin: "2px" }}>
+                                            <Image src={item.iconUrl} alt={item.iconUrl}
+                                                width={30}
+                                                height={30}
+                                                loading="lazy"
+                                            />
+                                        </div>
+                                    </a>
+                                )
+                            }
+                            )}
+                        </div>
+                    }
 
                     {/* WEB3 ITEMS */}
                     {userProfile.web3Items.length > 0 &&
