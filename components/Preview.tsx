@@ -3,11 +3,12 @@ import { QRCodeSVG } from 'qrcode.react';
 import Blockies from 'react-blockies'
 import { Web3Item } from "@/context/GlobalStateContext";
 import EllipsifiedAddress from "@/components/EllipsifiedAddress";
-import { copyToClipboard } from '@/lib/utils'
 import Web3ItemsComboBox from '@/components/Web3ItemsComboBox';
 import { useGlobalState } from '@/context/GlobalStateContext';
 import Image from "next/image";
-import { toast } from "sonner";
+import Dialog from "./ui/dialog";
+import { CopyButton } from "./ui/copyButton";
+import { ShareIcon } from "./ui/socialShareIcon";
 
 const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
     const [showAd, setShowAd] = useState(false);
@@ -125,34 +126,45 @@ const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
 
                     {/* SHARE BUTTONS */}
                     {!isPreview &&
-                        <div className="flex flex-col gap-4 text-center border-y-2 pb-2 border-violet-500">
-                            <div className="flex text-xl items-center justify-center gap-4 pt-3 ">
-                                <span className="fa-solid fa-share text-2lg text-orange-500"
-                                    title="Share this profile"
-                                ></span>
-                                <span className="flex space-x-4 items-center text-2xl">
-                                    <span title="share this profile on twitter" onClick={shareOnTwitter} className="fa-brands fa-square-x-twitter cursor-pointer"></span>
-                                    <span title="share this profile on facebook" onClick={shareOnFacebook} className="fa-brands fa-square-facebook cursor-pointer"></span>
-                                    <span title="share this profile on whatsapp" onClick={shareOnWhatsApp} className="fa-brands fa-square-whatsapp cursor-pointer"></span>
-                                </span>
-                            </div>
-                            <div>
-                                <a
-                                    className="cursor-pointer"
-                                    onClick={() => {
-                                        copyToClipboard(pageUrl)
-                                        toast.info("Profile address is copied.",
-                                            {
-                                                description: 'Paste it wherever you like.',
-                                                position: 'bottom-center'
-                                            }
-                                        )
-                                    }}
-                                >
-                                    <span className="fas fa-copy m-1" />Copy profile link
-                                </a>
-                            </div>
-                        </ div>
+                        <>
+                            <Dialog
+                                text="Share"
+                                title="Support this profile — share it!"
+                                description=""
+                                content={
+                                    <div className="w-full flex flex-col items-center gap-4 p-4 rounded-lg">
+
+                                        <CopyButton title="Copy link" textToCopy={pageUrl} />
+                                        <br />
+
+                                        <div className="flex flex-col items-center">
+                                            <span className="text-lg font-semibold">📣 Or post directly to</span>
+                                            <div className="flex mt-2 gap-4 text-2xl">
+                                                <ShareIcon
+                                                    onClick={shareOnTwitter}
+                                                    iconClass="fa-square-x-twitter"
+                                                    title="Share on X"
+                                                    hoverColor="#000000"
+                                                />
+                                                <ShareIcon
+                                                    onClick={shareOnFacebook}
+                                                    iconClass="fa-square-facebook"
+                                                    title="Share on Facebook"
+                                                    hoverColor="#4267B2"
+                                                />
+                                                <ShareIcon
+                                                    onClick={shareOnWhatsApp}
+                                                    iconClass="fa-square-whatsapp"
+                                                    title="Share on WhatsApp"
+                                                    hoverColor="#25D366"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            />
+
+                        </>
                     }
 
                     {!isPreview && showAd &&
