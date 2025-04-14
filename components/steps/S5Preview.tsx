@@ -47,15 +47,15 @@ const S5Preview = () => {
 
     return (
         <div>
-            <h1 className="font-bold mb-2 pt-8">Preview of your profile:</h1>
+            <h1 className="font-bold text-2xl mb-2 pt-8">Review & confirm 👇</h1>
             <div className='p-4'>
                 <Preview isPreview={true} />
             </div>
-            <p className='text-left mt-10'>All good? 👇</p>
+            <h1 className='text-left text-2xl mt-10'>All good? 👇</h1>
             <br />
             <br />
             <p>
-                MINT now to make it <strong>permanently yours</strong>!
+                MINT now to make it <strong>permanently yours</strong>! 👉
             </p>
 
             <div className='m-8'>

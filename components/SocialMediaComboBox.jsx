@@ -61,7 +61,7 @@ const SocialMediaComboBox = forwardRef(({ onSelect, autoFocus = false }, ref) =>
             {option.label}
           </div>
         )}
-        placeholder="Search for icon..."
+        placeholder="Select an icon"
         isClearable
         autoFocus={autoFocus}
       />

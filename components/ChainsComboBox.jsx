@@ -60,7 +60,7 @@ const ChainsComboBox = forwardRef(({ onSelect }, ref) => {
             {option.label}
           </div>
         )}
-        placeholder="network"
+        placeholder="Select Network"
         isClearable
       />
     </div>
