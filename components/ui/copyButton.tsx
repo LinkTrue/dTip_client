@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { copyToClipboard } from '@/lib/utils'
-import { toast } from "sonner";
-
 
 interface CopyButtonProps {
     title: string;
