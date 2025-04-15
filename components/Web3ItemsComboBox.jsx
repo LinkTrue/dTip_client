@@ -8,15 +8,13 @@ const Web3ItemsComboBox = forwardRef(({ onSelect }, ref) => {
   const [search, setSearch] = useState("");
   const [selectedOption, setSelectedOption] = useState(null);
 
-  const {
-    userProfile,
-  } = useGlobalState();
+  const { userProfile } = useGlobalState();
 
   useEffect(() => {
     // Load icons if userProfile.web3Items exists
     if (userProfile && userProfile.web3Items) {
       const userWeb3Items = userProfile.web3Items.map((item) => ({
-        label: item.icon.split('/').pop().replace('.svg', ''),
+        label: item.icon.split("/").pop().replace(".svg", ""),
         value: item.icon,
       }));
       setIcons(userWeb3Items);
@@ -26,13 +24,15 @@ const Web3ItemsComboBox = forwardRef(({ onSelect }, ref) => {
   const handleChange = (option) => {
     setSelectedOption(option);
     if (onSelect) {
-      const filteredItem = userProfile.web3Items.filter(i => i.icon === option?.value);
+      const filteredItem = userProfile.web3Items.filter(
+        (i) => i.icon === option?.value,
+      );
       if (filteredItem[0]?.walletAddress?.length > 0) {
         onSelect(filteredItem[0]);
       } else {
         onSelect({
-          walletAddress: '',
-          title: ''
+          walletAddress: "",
+          title: "",
         });
       }
     }
@@ -47,7 +47,7 @@ const Web3ItemsComboBox = forwardRef(({ onSelect }, ref) => {
   }));
 
   const options = icons.filter((icon) =>
-    icon.label.toLowerCase().includes(search.toLowerCase())
+    icon.label.toLowerCase().includes(search.toLowerCase()),
   );
 
   return (
@@ -70,12 +70,12 @@ const Web3ItemsComboBox = forwardRef(({ onSelect }, ref) => {
             {option.label}
           </div>
         )}
-        placeholder={`web3 wallets`}
+        placeholder={`Select a Network`}
         isClearable
         className="
-        border-2 
-        border-indigo-500 
-        shadow-lg 
+        border-2
+        border-indigo-500
+        shadow-lg
         rounded-lg
         "
       />

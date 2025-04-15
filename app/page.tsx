@@ -1,5 +1,5 @@
 "use client";
-import Script from 'next/script';
+import Script from "next/script";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -23,7 +23,6 @@ const LandingPage = () => {
       <div className="absolute top-0 left-0 w-72 h-72 bg-blue-400 opacity-20 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-purple-500 opacity-30 rounded-full blur-2xl z-0"></div>
 
-
       {/* Hero Section */}
       <header className="relative z-10 flex flex-col lg:flex-row items-center justify-between w-full max-w-6xl mx-auto p-6 lg:p-12 rounded-lg">
         {/* Hero Message */}
@@ -35,7 +34,8 @@ const LandingPage = () => {
             Share your links & wallets, trustlessly
           </p>
           <div className="flex justify-center lg:justify-start gap-6 mt-8">
-            <Link target='_blank'
+            <Link
+              target="_blank"
               href="https://dtip.gitbook.io/docs"
               className="px-6 py-3 bg-blue-200 text-white rounded-lg hover:bg-blue-400 transition-shadow"
             >
@@ -161,9 +161,8 @@ const LandingPage = () => {
       </section>
 
       <div className="text-indigo-400 hover:text-indigo-700 mt-16 pb-6 z-20">
-        <Link href={'/@miladtsx'} target='_blank' className="text-2xl">
-          Example Profile{' '}
-          <i className="fas fa-external-link-alt"></i>
+        <Link href={"/@miladtsx"} target="_blank" className="text-2xl">
+          Example Profile <i className="fas fa-external-link-alt"></i>
         </Link>
       </div>
     </main>

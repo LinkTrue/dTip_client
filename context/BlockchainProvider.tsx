@@ -34,7 +34,6 @@ export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children
     const CUSTOM_RPC_URL = "https://rpc.minato.soneium.org";
 
     const handleDisconnectWallet = () => {
-        debugger
         setSigner(null);
         setNetworkName("");
         setIsConnected(false);
