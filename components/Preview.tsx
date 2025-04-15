@@ -77,80 +77,98 @@ const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
         <>
           {/* WEB2 ITEMS */}
           {userProfile.web2Items.length > 0 && (
-            <div className="flex flex-wrap justify-center mb-2 bg-gray-100 rounded-lg p-3 px-16 gap-x-3">
-              {userProfile.web2Items.map((item, index) => {
-                return (
-                  <a
-                    key={`web2Addresses${index}`}
-                    href={item.fullURL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title={item.iconUrl
-                      .substring(item.iconUrl.lastIndexOf("/") + 1)
-                      .replace(".svg", "")}
-                  >
-                    <div
-                      className=""
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        margin: "2px",
-                      }}
-                    >
-                      <Image
-                        src={item.iconUrl}
-                        alt={item.iconUrl}
-                        width={30}
-                        height={30}
-                        loading="lazy"
-                      />
-                    </div>
-                  </a>
-                );
-              })}
-            </div>
+            <>
+              <Dialog
+                text="Find me Online"
+                title="My Web2 Links:"
+                description=""
+                content={
+                  <div className="w-full flex flex-wrap justify-center mb-2 bg-gray-100 rounded-lg p-3 px-16 gap-x-3">
+                    {userProfile.web2Items.map((item, index) => {
+                      return (
+                        <a
+                          key={`web2Addresses${index}`}
+                          href={item.fullURL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title={item.iconUrl
+                            .substring(item.iconUrl.lastIndexOf("/") + 1)
+                            .replace(".svg", "")}
+                        >
+                          <div
+                            className=""
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              margin: "2px",
+                            }}
+                          >
+                            <Image
+                              src={item.iconUrl}
+                              alt={item.iconUrl}
+                              width={30}
+                              height={30}
+                              loading="lazy"
+                            />
+                          </div>
+                        </a>
+                      );
+                    })}
+                  </div>
+                }
+              />
+            </>
           )}
 
           {/* WEB3 ITEMS */}
           {userProfile.web3Items.length > 0 && (
-            <div className="flex flex-col items-center justify-center border p-4 rounded-md">
-              {userProfile.web3Items.length > 0 && (
-                <div className="flex items-center space-x-4">
-                  {/* @ts-expect-error  error*/}
-                  <Web3ItemsComboBox onSelect={handleWeb3ItemSelect} />
-                </div>
-              )}
+            <>
+              <Dialog
+                text="Donate Crypto"
+                title="I accept tips on these blockchain networks: 👇"
+                description=""
+                content={
+                  <div className="w-full flex flex-col items-center justify-center p-4 rounded-md">
+                    {userProfile.web3Items.length > 0 && (
+                      <div className="flex items-center space-x-4">
+                        {/* @ts-expect-error  error*/}
+                        <Web3ItemsComboBox onSelect={handleWeb3ItemSelect} />
+                      </div>
+                    )}
 
-              {selectedWeb3Item.walletAddress && (
-                <div className="flex flex-col mt-4 gap-4 items-center">
-                  <EllipsifiedAddress
-                    walletAddress={selectedWeb3Item.walletAddress}
-                  />
-                  {/* <p className="pt-4">or Scan the QR Code</p> */}
-                  <QRCodeSVG
-                    className="rounded-xl border-8 p-2 border-gray-100"
-                    size={200}
-                    level={"H"}
-                    title={`Scan the QR code to copy the selected wallet address`}
-                    imageSettings={{
-                      src: selectedWeb3Item.icon,
-                      height: 50,
-                      width: 50,
-                      excavate: false,
-                      opacity: 1,
-                    }}
-                    value={selectedWeb3Item.walletAddress}
-                  />
-                </div>
-              )}
-            </div>
+                    {selectedWeb3Item.walletAddress && (
+                      <div className="flex flex-col mt-4 gap-4 items-center">
+                        <EllipsifiedAddress
+                          walletAddress={selectedWeb3Item.walletAddress}
+                        />
+                        {/* <p className="pt-4">or Scan the QR Code</p> */}
+                        <QRCodeSVG
+                          className="rounded-xl border-8 p-2 border-gray-100"
+                          size={200}
+                          level={"H"}
+                          title={`Scan the QR code to copy the selected wallet address`}
+                          imageSettings={{
+                            src: selectedWeb3Item.icon,
+                            height: 50,
+                            width: 50,
+                            excavate: false,
+                            opacity: 1,
+                          }}
+                          value={selectedWeb3Item.walletAddress}
+                        />
+                      </div>
+                    )}
+                  </div>
+                }
+              />
+            </>
           )}
 
           {/* SHARE BUTTONS */}
           {!isPreview && (
             <>
               <Dialog
-                text="Share"
+                text="Share Profile"
                 title="Support this profile — share it!"
                 description=""
                 content={
@@ -191,7 +209,7 @@ const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
 
           {!isPreview && showAd && (
             <a href="/start">
-              <div className=" flex items-center text-sm font-bold text-yellow-200 bg-gradient-to-r from-black to-purple-700 px-2 py-4 rounded-lg shadow-md">
+              <div className=" flex items-center text-sm font-bold text-yellow-200 bg-gradient-to-r from-black to-purple-700 px-2 py-2 rounded-lg shadow-md">
                 <img src="/dTip.svg" width={24} height={24} />
                 <span className="">
                   Create your own <i>dTip</i>!
