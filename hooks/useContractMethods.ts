@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useSmartContract } from "@/context/SmartContractContext";
 import { toast } from "sonner";
 import { useLogger } from '@/context/LoggerContext';
+import Constants from "@/lib/Constants";
 
 export const useContractMethods = () => {
   const { log, logException } = useLogger();
@@ -40,7 +41,7 @@ export const useContractMethods = () => {
               `This profile is free to reserve; join now!`, { duration: 1000 }
             );
           } else if (revertReason.includes("Username is reserved or contains a reserved prefix")) {
-            toast.warning(`This username might confuse users, please choose your brand name`);
+            toast.warning(Constants.USERNAME_ALREADY_TAKEN);
           }
         } else {
           debugger
@@ -71,7 +72,7 @@ export const useContractMethods = () => {
               `This profile is not found!`, { duration: 10000 }
             );
           } else if (revertReason.includes("Username is reserved or contains a reserved prefix")) {
-            toast.warning(`This username might confuse users, please choose your brand name`);
+            toast.warning(Constants.USERNAME_ALREADY_TAKEN);
           }
         } else {
           debugger
@@ -105,7 +106,7 @@ export const useContractMethods = () => {
               `Each wallet can only have one profile. Please use a different wallet.`
             );
           } else if (revertReason.includes("Username is reserved or contains a reserved prefix")) {
-            throw Error(`This username might confuse users, please choose your brand name`);
+            throw Error(Constants.USERNAME_ALREADY_TAKEN);
           } else if (revertReason.includes("Username already taken")) {
             throw Error(`It is taken. now be creative.`);
           }
@@ -149,7 +150,7 @@ export const useContractMethods = () => {
             );
           }
           else if (revertReason.includes("Username is reserved or contains a reserved prefix")) {
-            toast.warning(`This username might confuse users, please choose your brand name`);
+            toast.warning(Constants.USERNAME_ALREADY_TAKEN);
           }
         } else {
           debugger
