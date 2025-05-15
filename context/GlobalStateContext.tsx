@@ -36,6 +36,9 @@ interface GlobalState {
   usernameError: string | undefined;
   setUsernameError: (value: string | undefined) => void;
 
+  areTertmsAgreed: boolean;
+  setAreTertmsAgreed: (value: boolean) => void;
+
   addWeb2Item: (item: Web2Item) => void;
   removeWeb2Item: (index: number) => void;
   addWeb3Item: (item: Web3Item) => void;
@@ -66,6 +69,7 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
   const [userNameOK, setUserNameOK] = useState<boolean>(false);
   const [userNameCheckOK, setUserNameCheckOK] = useState<boolean>(false);
   const [usernameError, setUsernameError] = useState<string | undefined>();
+  const [areTertmsAgreed, setAreTertmsAgreed] = useState<boolean>(false);
 
   const updateUsername = (username: string) => {
     setUserProfile((prevProfile) => ({
@@ -134,6 +138,9 @@ export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
 
     usernameError,
     setUsernameError,
+
+    areTertmsAgreed,
+    setAreTertmsAgreed,
 
     addWeb2Item,
     removeWeb2Item,

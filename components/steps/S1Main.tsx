@@ -13,12 +13,11 @@ const S1Main = () => {
   const { logException } = useLogger();
   const { nextStep } = useSteps();
   const { signer, isConnected, isConnecting } = useBlockchain();
-  const { userProfile, setUserProfile } = useGlobalState();
+  const { userProfile, setUserProfile, areTertmsAgreed, setAreTertmsAgreed } = useGlobalState();
 
   const { getProfileByWallet, isSmartContractInitialized } =
     useContractMethods();
   const [isOwner, setIsOwner] = useState<boolean>(false);
-  const [isAgreed, setIsAgreed] = useState<boolean>(false);
 
   useEffect(() => {
     if (isSmartContractInitialized && signer?.address) {
@@ -212,9 +211,10 @@ const S1Main = () => {
               <div className="flex items-center gap-2">
                 <input
                   type="checkbox"
+                  checked={areTertmsAgreed}
                   id="agreeTerms"
                   className="w-4 h-4"
-                  onChange={(e) => setIsAgreed(e.target.checked)}
+                  onChange={(e) => setAreTertmsAgreed(e.target.checked)}
                 />
                 <label htmlFor="agreeTerms" className="text-sm">
                   I agree
@@ -238,9 +238,9 @@ const S1Main = () => {
             </p>
 
             <button
-              className={`rounded-full border-2 border-white transition-colors flex items-center justify-center text-background ${isAgreed ? "bg-foreground hover:bg-[#383838] dark:hover:bg-[#ccc]" : "bg-gray-300"} gap-2 text-sm sm:text-base h-10 sm:h-12 px-4 :px-5`}
+              className={`rounded-full border-2 border-white transition-colors flex items-center justify-center text-background ${areTertmsAgreed ? "bg-foreground hover:bg-[#383838] dark:hover:bg-[#ccc]" : "bg-gray-300"} gap-2 text-sm sm:text-base h-10 sm:h-12 px-4 :px-5`}
               onClick={nextStep}
-              disabled={!isAgreed}
+              disabled={!areTertmsAgreed}
             >
               Create Your Profile
             </button>
