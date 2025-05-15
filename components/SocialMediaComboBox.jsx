@@ -39,7 +39,7 @@ const SocialMediaComboBox = forwardRef(({ onSelect, autoFocus = false }, ref) =>
   }));
 
   return (
-    <div>
+    <div className="max-w-md mx-auto">
       <Select
         tabIndex={0}
         value={selectedOption}

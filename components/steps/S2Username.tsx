@@ -72,7 +72,7 @@ const S2Username = () => {
     useEffect(() => { });
 
     return (
-        <div className='flex flex-col text-center'>
+        <div className='flex flex-col text-center max-w-md mx-auto'>
             <h2 className="lg:text-4xl md:text-2xl">Choose your unique brand name</h2>
             <div className="flex-column items-center p-1 m-10">
                 <Input
@@ -100,7 +100,7 @@ const S2Username = () => {
                 <hr className='m-4 border-t-2 dark:border-gray-600' />
                 <div className="flex justify-between gap-4">
                     <button
-                        className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+                        className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-gray-300 text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
                         type="button"
                         onClick={prevStep}
                         tabIndex={4}

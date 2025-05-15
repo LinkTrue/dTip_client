@@ -65,10 +65,10 @@ const S3Web2Items = () => {
     };
 
     return (
-        <div className="flex flex-col text-center gap-8">
+        <div className="flex flex-col text-center gap-8 max-w-md mx-auto">
 
             <h2 className="pt-8 text-2xl lg:text-4xl md:text-2xl">Add your social links:<br />
-                <p className="text-xs">(any website, social media, shops, stripe, ...)</p>
+                <p className="text-xs">(any link, social media, online shops, stripe, ...)</p>
             </h2>
             {/* @ts-expect-error  error*/}
             <SocialMediaComboBox ref={comboBoxRef} onSelect={handleSelect} autoFocus={true} />

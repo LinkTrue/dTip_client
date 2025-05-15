@@ -136,9 +136,11 @@ export const useContractMethods = () => {
           if (revertReason.includes("rejected")) {
             toast.info(
               `
-              It seems you just REJECTED the transaction; feel free to review your profile and then try again to publish.
-              If it was an error, let me know so I do fix it.
-              `
+              Transaction is REJECTED!
+              You should MINT your profile to make it yours forever!
+              `, {
+                duration: 120 * 1000
+              }
             );
           } else if (revertReason.includes("Wallet already registered!")) {
             toast.info(

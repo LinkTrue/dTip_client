@@ -195,7 +195,7 @@ const S1Main = () => {
             </Link>
           ) : (
             <Link href={"/@miladtsx"} target="_blank">
-              See an Example Profile{" "}
+              Example Profile{" "}
               <i className="fas fa-external-link-alt"></i>
             </Link>
           )}
@@ -238,11 +238,11 @@ const S1Main = () => {
             </p>
 
             <button
-              className={`rounded-full border-2 border-white transition-colors flex items-center justify-center text-background ${isAgreed ? "bg-foreground hover:bg-[#383838] dark:hover:bg-[#ccc]" : "bg-gray-200"} gap-2 text-sm sm:text-base h-10 sm:h-12 px-4 :px-5`}
+              className={`rounded-full border-2 border-white transition-colors flex items-center justify-center text-background ${isAgreed ? "bg-foreground hover:bg-[#383838] dark:hover:bg-[#ccc]" : "bg-gray-300"} gap-2 text-sm sm:text-base h-10 sm:h-12 px-4 :px-5`}
               onClick={nextStep}
               disabled={!isAgreed}
             >
-              Mint your profile
+              Create Your Profile
             </button>
           </div>
         )}

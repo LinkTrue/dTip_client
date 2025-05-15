@@ -46,27 +46,21 @@ const S5Preview = () => {
     };
 
     return (
-        <div>
-            <h1 className="font-bold text-2xl mb-2 pt-8">Review & confirm 👇</h1>
+        <div className='max-w-md mx-auto text-center'>
+            <h1 className="font-bold text-2xl mb-2 pt-8">Final review 👇</h1>
             <div className='p-4'>
                 <Preview isPreview={true} />
             </div>
-            <h1 className='text-left text-2xl mt-10'>All good? 👇</h1>
-            <br />
-            <br />
-            <p>
-                MINT now to make it <strong>permanently yours</strong>! 👉
-            </p>
+            <hr className='m-4 border-t-2 dark:border-gray-600' />
 
             <div className='m-8'>
-                <hr className='m-4 border-t-2 dark:border-gray-600' />
                 <div className="flex justify-between gap-4 mt-9">
                     <button
                         className="rounded-full 
                border border-solid border-transparent 
                transition-colors 
                flex items-center justify-center 
-               bg-gray-200 
+               bg-gray-400 
                text-background gap-2 
                hover:bg-black 
                dark:hover:bg-[#ccc] 
@@ -74,7 +68,7 @@ const S5Preview = () => {
                         type="button"
                         onClick={prevStep}
                     >
-                        {"<"}
+                        {"Modify"}
                     </button>
 
                     <button className="rounded-full font-bold border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#10bdbd] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
@@ -84,7 +78,7 @@ const S5Preview = () => {
                     >
                         {isPublishing ?
                             (<div className="spinner"></div>)
-                            : "MINT"
+                            : "All good, MINT"
                         }
                     </button>
                 </div>
