@@ -4,7 +4,6 @@ import { useGlobalState } from "@/context/GlobalStateContext";
 import { useContractMethods } from '@/hooks/useContractMethods';
 import { useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input';
-import { toast } from 'sonner';
 
 const S2Username = () => {
 
