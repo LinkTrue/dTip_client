@@ -63,7 +63,8 @@ const S2Username = () => {
             }
         }).catch(err => {
             setIsUsernameError(true);
-            toast.error(err.message)
+            setUsernameError(err.message);
+            setUserNameOK(false);
         }).finally(() => {
             setIsChecking(false);
         })
@@ -108,13 +109,13 @@ const S2Username = () => {
                         {"<"}
                     </button>
 
-                    {userNameOK && !userNameCheckOK ?
+                    {!userNameCheckOK ?
                         <button
                             onClick={handleUsernameCheck}
                             disabled={!userNameOK || isChecking}
                             className={`
                             btn-small rounded-full py-2 px-4 
-                            ${userNameOK ? "bg-blue-500 text-white" : "bg-gray-400 text-gray-700"}
+                            ${userNameOK ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-300"}
                             `}
                             tabIndex={2}
                         >
