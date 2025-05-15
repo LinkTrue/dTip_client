@@ -18,6 +18,7 @@ const S1Main = () => {
   const { getProfileByWallet, isSmartContractInitialized } =
     useContractMethods();
   const [isOwner, setIsOwner] = useState<boolean>(false);
+  const [isAgreed, setIsAgreed] = useState<boolean>(false);
 
   useEffect(() => {
     if (isSmartContractInitialized && signer?.address) {
@@ -208,26 +209,38 @@ const S1Main = () => {
         {isConnected && !isOwner && (
           <div className="flex gap-2 items-center flex-col text-sm">
             <p>
-              <span className="font-bold">If you agree</span> to{" "}
-              <a
-                className="underline hover:no-underline"
-                target="_blank"
-                href="https://dtip.gitbook.io/docs/terms/terms-of-use"
-              >
-                Terms Of Use
-              </a>{" "}
-              and{" "}
-              <a
-                className="underline hover:no-underline"
-                target="_blank"
-                href="https://dtip.gitbook.io/docs/terms/privacy"
-              >
-                Privacy Policy
-              </a>
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  id="agreeTerms"
+                  className="w-4 h-4"
+                  onChange={(e) => setIsAgreed(e.target.checked)}
+                />
+                <label htmlFor="agreeTerms" className="text-sm">
+                  I agree
+                </label>
+                <a
+                  className="underline"
+                  target="_blank"
+                  href="https://dtip.gitbook.io/docs/terms/terms-of-use"
+                >
+                  Terms Of Use
+                </a>{" "}
+                and{" "}
+                <a
+                  className="underline"
+                  target="_blank"
+                  href="https://dtip.gitbook.io/docs/terms/privacy"
+                >
+                  Privacy Policy
+                </a>
+              </div>
             </p>
+
             <button
-              className="rounded-full border-2 border-white transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+              className={`rounded-full border-2 border-white transition-colors flex items-center justify-center text-background ${isAgreed ? "bg-foreground hover:bg-[#383838] dark:hover:bg-[#ccc]" : "bg-gray-200"} gap-2 text-sm sm:text-base h-10 sm:h-12 px-4 :px-5`}
               onClick={nextStep}
+              disabled={!isAgreed}
             >
               Mint your profile
             </button>
