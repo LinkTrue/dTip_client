@@ -125,7 +125,7 @@ const Preview = ({ isPreview = false }: { isPreview: boolean }) => {
             <>
               <Dialog
                 text="Donate Crypto"
-                title="I accept tips on these blockchain networks: 👇"
+                title="Support me on these blockchain networks: 👇"
                 description=""
                 content={
                   <div className="w-full flex flex-col items-center justify-center p-4 rounded-md">
