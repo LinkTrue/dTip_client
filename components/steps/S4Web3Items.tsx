@@ -68,7 +68,7 @@ const S4Web3Items = () => {
     return (
         <div className="flex flex-col text-center gap-y-8 max-w-md mx-auto">
             {userProfile.web3Items.length > 0 ?
-                <h2 className="text-xl lg:text-3xl md:text-2xl">You can support more networks</h2>
+                <h2 className="text-xl lg:text-3xl md:text-2xl">Add more 👇</h2>
                 :
                 <h2 className="text-xl lg:text-3xl md:text-2xl"><strong>Where</strong> you want to receive tip?</h2>
             }
