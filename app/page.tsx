@@ -12,7 +12,7 @@ const testimonials: { title: string, occupation: string, body: string }[] = [
 
 const cta = <Link
   className="
-mt-4 bg-yellow-400 hover:bg-yellow-500 
+bg-yellow-400 hover:bg-yellow-500 
 text-black font-bold py-3 px-8 
 rounded-lg text-lg shadow-lg transition
 "
@@ -46,7 +46,7 @@ const LandingPage = () => {
             <br /> In One Link.
           </h1>
           <p className="text-gray-700 text-md md:text-lg italic">
-            dTip aggregates all your payment methods—crypto, cards, PayPal, stores, socials—into one powerful, fee-free link anyone can use to support you.
+            If you accept crypto in multiple chains, share 1 link, let people choose.
           </p>
           <div>
             {cta}
@@ -142,120 +142,12 @@ const LandingPage = () => {
       {/* Quick Profile */}
       <section className="flex flex-col md:flex-row items-center gap-8">
         <div className="max-w-6xl mx-auto p-8 bg-white shadow-xs rounded-lg">
-          <h3 className="text-xl md:text-4xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-blue-500 drop-shadow-lg flex items-center gap-3 animate-pulse">
+          <h3 className="text-xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-pink-500 to-blue-500 drop-shadow-lg flex items-center gap-3 animate-pulse">
             <svg className="w-8 h-8 text-yellow-400 animate-bounce" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             Get your free dTip link under <span className="underline decoration-wavy decoration-pink-500">a minute</span>
           </h3>
-          {/* Steps Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr_auto_1fr] gap-4 items-center">
-            <div className="flex flex-col items-center p-8 bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition-shadow animate-float hover-effect">
-              <div className="w-16 h-16 flex items-center justify-center bg-blue-200 rounded-full mb-6">
-                <span className="text-3xl font-bold text-blue-600">1</span>
-              </div>
-              <h2 className="text-xl md:text-2xl font-semibold text-gray-800 mb-4">
-                Connect
-              </h2>
-              <p className="text-base md:text-md text-gray-600 text-center">
-                YOUR crypto wallet to own your profile
-              </p>
-            </div>
-
-            {/* Horizontal Arrow between Step 1 and Step 2 */}
-            <div className="hidden md:block">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 text-gray-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </div>
-            <div className="block md:hidden w-full text-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 text-gray-500 inline-block"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
-
-            {/* Step 2 */}
-            <div className="flex flex-col items-center p-8 bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition-shadow animate-float2 hover-effect">
-              <div className="w-16 h-16 flex items-center justify-center bg-green-200 rounded-full mb-6">
-                <span className="text-3xl font-bold text-green-600">2</span>
-              </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-4">
-                Create
-              </h3>
-              <p className="text-base md:text-lg text-gray-600 text-center">
-                Put all your payment options in one place
-              </p>
-            </div>
-
-            {/* Horizontal Arrow between Step 2 and Step 3 */}
-            <div className="hidden md:block">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 text-gray-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </div>
-            <div className="block md:hidden w-full text-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-8 w-8 text-gray-500 inline-block"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </div>
-
-            {/* Step 3 */}
-            <div className="flex flex-col items-center p-8 bg-gray-50 rounded-2xl shadow-md hover:shadow-xl transition-shadow animate-float3 hover-effect">
-              <div className="w-16 h-16 flex items-center justify-center bg-purple-200 rounded-full mb-6">
-                <span className="text-3xl font-bold text-purple-600">3</span>
-              </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-gray-800 mb-4">
-                Share
-              </h3>
-              <p className="text-base md:text-lg text-gray-600 text-center">
-                your dTip link to get tips, donations, or payments
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
