@@ -13,19 +13,31 @@ const SmartContractContext = createContext<SmartContractContextType | undefined>
 export const SmartContractProvider: React.FC<
     { children: ReactNode }
 > = ({ children }) => {
-    const { signer } = useBlockchain();
+    // Retrieve signer and chainId from the BlockchainProvider.
+    // chainId is crucial for ensuring SmartContractService interacts with the correct blockchain network.
+    const { signer, chainId } = useBlockchain(); 
     const [smartContractService, setSmartContractService] = useState<BlockchainServiceInterface | null>(null);
 
     useEffect(() => {
-        if (!smartContractService && signer) {
+        // This effect hook re-initializes SmartContractService whenever the signer or chainId changes.
+        // Signer changes when the user connects/disconnects a wallet or changes accounts.
+        // ChainId changes when the user switches to a different blockchain network.
+        if (signer && chainId) { // Check for both signer and chainId
             try {
-                const service = SmartContractService(signer)
+                // Re-initialize SmartContractService with the new signer and chainId.
+                // This is critical for multi-chain support, ensuring that contract interactions
+                // are always targeted at the currently selected network and account.
+                const service = SmartContractService(signer, chainId);
                 setSmartContractService(service);
             } catch (error: any) {
-                toast.error("Failed to setup Web3!")
+                toast.error("Failed to setup Web3!");
             }
+        } else {
+            // If signer or chainId is unavailable (e.g., wallet disconnected),
+            // set the service to null to prevent errors.
+            setSmartContractService(null); 
         }
-    }, [signer]);
+    }, [signer, chainId]); // Dependencies: re-run if signer or chainId changes.
 
 
     return (
