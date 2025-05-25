@@ -11,7 +11,7 @@ import { GlobalStateProvider } from "@/context/GlobalStateContext";
 import { SmartContractProvider } from "@/context/SmartContractContext";
 import { BlockchainProvider } from "@/context/BlockchainProvider";
 import { LoggerProvider } from "@/context/LoggerContext";
-import { PrivyProvider } from "@privy-io/react-auth";
+import { PrivyClientProvider } from '@/components/PrivyClientProvider';
 import Link from "next/link";
 import ConnectWallet from '@/components/ConnectWallet';
 
@@ -56,7 +56,7 @@ export default function RootLayout({
         </header>
 
         <LoggerProvider>
-          <PrivyProvider appId="cmb38tpev01tvl40mzw5q0pwe">
+          <PrivyClientProvider appId="cmb38tpev01tvl40mzw5q0pwe">
             <BlockchainProvider>
               <GlobalStateProvider>
                 <StepsProvider>
@@ -109,7 +109,7 @@ export default function RootLayout({
                 </StepsProvider>
               </GlobalStateProvider>
             </BlockchainProvider>
-          </PrivyProvider>
+          </PrivyClientProvider>
           <Toaster position="top-center" expand={true} />
           <SimpleToast />
           <Analytics />
