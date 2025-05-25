@@ -11,7 +11,9 @@ import { GlobalStateProvider } from "@/context/GlobalStateContext";
 import { SmartContractProvider } from "@/context/SmartContractContext";
 import { BlockchainProvider } from "@/context/BlockchainProvider";
 import { LoggerProvider } from "@/context/LoggerContext";
+import { PrivyProvider } from "@privy-io/react-auth";
 import Link from "next/link";
+import ConnectWallet from '@/components/ConnectWallet';
 
 export const metadata: Metadata = {
   title: "dTip - Your ID-Fi Hub",
@@ -49,62 +51,65 @@ export default function RootLayout({
             <React.Fragment key={1}>
               <Link href="/start" className="hover:underline">Join</Link>
             </React.Fragment>
+            <ConnectWallet />
           </nav>
         </header>
 
         <LoggerProvider>
-          <BlockchainProvider>
-            <GlobalStateProvider>
-              <StepsProvider>
-                <SmartContractProvider>
-                  {children}
-                  {/* Footer */}
-                  <footer className="
+          <PrivyProvider appId="cmb38tpev01tvl40mzw5q0pwe">
+            <BlockchainProvider>
+              <GlobalStateProvider>
+                <StepsProvider>
+                  <SmartContractProvider>
+                    {children}
+                    {/* Footer */}
+                    <footer className="
                     mt-auto bg-black text-white text-center py-6 px-6
                     w-full mx-auto flex flex-col
                     items-center justify-center
                     gap-4
                     ">
-                    <Link
-                      href="https://dtip.gitbook.io/docs/"
-                      className="hover:underline flex items-center"
-                    >
-                      <i className="fa-solid fa-question-circle fa-lg mr-2"></i>
-                      Docs
-                    </Link>
+                      <Link
+                        href="https://dtip.gitbook.io/docs/"
+                        className="hover:underline flex items-center"
+                      >
+                        <i className="fa-solid fa-question-circle fa-lg mr-2"></i>
+                        Docs
+                      </Link>
 
-                    <Link
-                      href="https://github.com/orgs/LinkTrue/repositories"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:underline flex items-center"
-                    >
-                      <i className="fa-brands fa-github fa-lg mr-2"></i>
-                      Source Code
-                    </Link>
+                      <Link
+                        href="https://github.com/orgs/LinkTrue/repositories"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline flex items-center"
+                      >
+                        <i className="fa-brands fa-github fa-lg mr-2"></i>
+                        Source Code
+                      </Link>
 
-                    <Link
-                      className="text-md"
-                      href="https://dtip.gitbook.io/docs/terms/terms-of-use"
-                      target="_blank"
-                    >
-                      <i className="fa-solid fa-handshake fa-lg mr-2"></i>
-                      TERMS OF USE
-                    </Link>
+                      <Link
+                        className="text-md"
+                        href="https://dtip.gitbook.io/docs/terms/terms-of-use"
+                        target="_blank"
+                      >
+                        <i className="fa-solid fa-handshake fa-lg mr-2"></i>
+                        TERMS OF USE
+                      </Link>
 
-                    <Link
-                      href="https://t.me/+nGn36o2JAv42ODAx"
-                      target="_blank"
-                      className="hover:underline flex items-center"
-                    >
-                      <i className="fa-solid fa-face-smile fa-lg mr-2"></i>
-                      Join the Community
-                    </Link>
-                  </footer>
-                </SmartContractProvider>
-              </StepsProvider>
-            </GlobalStateProvider>
-          </BlockchainProvider>
+                      <Link
+                        href="https://t.me/+nGn36o2JAv42ODAx"
+                        target="_blank"
+                        className="hover:underline flex items-center"
+                      >
+                        <i className="fa-solid fa-face-smile fa-lg mr-2"></i>
+                        Join the Community
+                      </Link>
+                    </footer>
+                  </SmartContractProvider>
+                </StepsProvider>
+              </GlobalStateProvider>
+            </BlockchainProvider>
+          </PrivyProvider>
           <Toaster position="top-center" expand={true} />
           <SimpleToast />
           <Analytics />

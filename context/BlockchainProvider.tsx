@@ -1,164 +1,95 @@
-"use client"
-import React, { createContext, useContext, useEffect, useState, ReactNode, useRef } from "react";
-import { useLogger } from '@/context/LoggerContext';
-import { ethers, VoidSigner, ZeroAddress } from "ethers";
-import { toast } from "sonner";
+"use client";
+import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { usePrivy, User } from '@privy-io/react-auth';
+import { ethers } from "ethers";
+import { useLogger } from '@/context/LoggerContext'; // Assuming useLogger is still needed
 
-const supportedBlockchains = [
-    1868, // Soneium
-    1946 // Soneium Minato Testnet
-];
+// const supportedBlockchains = [
+//     1868, // Soneium
+//     1946 // Soneium Minato Testnet
+// ]; // This might be handled by Privy or configured elsewhere now
+
 interface BlockchainContextType {
+    walletAddress: string | undefined;
     isConnected: boolean;
-    isConnecting: boolean;
-    networkName: string;
-    chainId: number;
-    signer: any;
-    provider: any;
-    handleConnectWallet: (usingMetamask: boolean) => Promise<Boolean>;
-    handleDisconnectWallet: () => void;
+    networkName: string; // This might need to be derived differently or removed if Privy handles it
+    chainId: number | undefined; // This will come from the Privy wallet or provider
+    signer: ethers.Signer | null;
+    ethersProvider: ethers.BrowserProvider | null; // Renamed from provider
+    login: () => Promise<User | null>;
+    logout: () => Promise<void>;
+    user: User | null;
+    ready: boolean;
+    authenticated: boolean;
 }
 
 const BlockchainContext = createContext<BlockchainContextType | undefined>(undefined);
 
 export const BlockchainProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const { log, logException } = useLogger();
-    const [networkName, setNetworkName] = useState<string>("");
-    const [isConnected, setIsConnected] = useState<boolean>(false);
+    const { log, logException } = useLogger(); // Assuming logger is still useful
+    const privy = usePrivy();
 
-    const [provider, setProvider] = useState<ethers.BrowserProvider | ethers.JsonRpcProvider | null>(null);
-    const [signer, setSigner] = useState<ethers.JsonRpcSigner | VoidSigner | null>(null);
-    const [chainId, setChainId] = useState<number>(0);
-    const [isConnecting, setIsConnecting] = useState<boolean>(false);
+    const [ethersProvider, setEthersProvider] = useState<ethers.BrowserProvider | null>(null);
+    const [signer, setSigner] = useState<ethers.Signer | null>(null);
+    const [networkName, setNetworkName] = useState<string>(""); // May need adjustment
+    const [chainId, setChainId] = useState<number | undefined>(undefined);
 
-    const CUSTOM_RPC_URL = "https://rpc.minato.soneium.org";
-
-    const handleDisconnectWallet = () => {
-        setSigner(null);
-        setNetworkName("");
-        setIsConnected(false);
-        log('Disconnected from provider');
-    }
-
-    const connectWallet = async (usingMetamask: boolean = true): Promise<void> => {
-        let ethersProvider;
-
-        if (usingMetamask) {
-            // Check if MetaMask is available and use it, otherwise use the custom RPC provider
-            if (typeof window !== "undefined" && (window as any).ethereum) {
-                const metaMaskProvider = (window as any).ethereum;
-                const accounts = await metaMaskProvider.request({ method: 'eth_requestAccounts' });
-                let chainIdRaw = await metaMaskProvider.request({ method: 'eth_chainId' });
-                let chainId = parseInt(chainIdRaw, 16);
-
-                // Add supported network to MetaMask.
-                if (!supportedBlockchains.includes(chainId)) {
-
-                    const chainId = '0x79a'; // Minato Chain ID
-
-                    try {
-                        // Attempt to switch to Soneium
-                        await (window as any).ethereum.request({
-                            method: 'wallet_switchEthereumChain',
-                            params: [{ chainId }],
-                        });
+    useEffect(() => {
+        const setupProviderAndSigner = async () => {
+            if (privy.ready && privy.authenticated && privy.user?.wallet?.provider) {
+                try {
+                    const externalProvider = await privy.user.wallet.getEthereumProvider();
+                    if (externalProvider) {
+                        const newEthersProvider = new ethers.BrowserProvider(externalProvider);
+                        setEthersProvider(newEthersProvider);
+                        const network = await newEthersProvider.getNetwork();
+                        setNetworkName(network.name);
+                        setChainId(Number(network.chainId));
+                        
+                        const newSigner = await newEthersProvider.getSigner();
+                        setSigner(newSigner);
+                        log('Ethers provider and signer set up from Privy wallet.');
+                    } else {
+                        throw new Error("Failed to get Ethereum provider from Privy wallet.");
                     }
-                    catch (switchError: any) {
-                        // Error 4902 means the network is not added, so we add it
-                        if (switchError.code === 4902) {
-                            try {
-                                await (window as any).ethereum.request({
-                                    method: 'wallet_addEthereumChain',
-                                    params: [{
-                                        chainId,
-                                        chainName: 'Soneium Testnet Minato',
-                                        nativeCurrency: {
-                                            name: 'Minato',
-                                            symbol: 'ETH',
-                                            decimals: 18
-                                        },
-                                        rpcUrls: ['https://rpc.minato.soneium.org'],
-                                        blockExplorerUrls: ['']
-                                    }]
-                                });
-                            } catch (addError) {
-                                console.error("Failed to add Soneium network:", addError);
-                            }
-                        } else {
-                            console.error("Failed to switch network:", switchError);
-                        }
-                    }
+                } catch (error) {
+                    logException(error);
+                    setEthersProvider(null);
+                    setSigner(null);
+                    setNetworkName("");
+                    setChainId(undefined);
                 }
-
-                chainIdRaw = await metaMaskProvider.request({ method: 'eth_chainId' });
-                chainId = parseInt(chainIdRaw, 16);
-
-                ethersProvider = new ethers.BrowserProvider(metaMaskProvider);
-
-                // Get signer only when using MetaMask
-                const walletSigner = await ethersProvider.getSigner();
-                setSigner(walletSigner);
-
             } else {
-                throw new Error("No MetaMask browser extension found. Please install MetaMask.");
+                setEthersProvider(null);
+                setSigner(null);
+                setNetworkName("");
+                setChainId(undefined);
+                if (privy.ready && !privy.authenticated) {
+                    log('User is not authenticated, clearing provider and signer.');
+                }
             }
-        } else {
-            log('MetaMask not found, using custom RPC node');
-            ethersProvider = new ethers.JsonRpcProvider(CUSTOM_RPC_URL);
+        };
 
-            const fallbackSigner = new ethers.VoidSigner(ZeroAddress, ethersProvider);
-
-            // No need for a signer in this case, just read-only operations
-            setSigner(fallbackSigner);  // Set signer as null for custom RPC
-        }
-
-        setProvider(ethersProvider);
-
-        const network = await ethersProvider.getNetwork();
-        setChainId(Number(network.chainId));
-
-        setIsConnected(true);
-        log('Wallet connected');
-    };
-
-    const handleConnectWallet = async (usingMetamask: boolean = true) => {
-        if (isConnecting) return false;
-
-        setIsConnecting(true);
-
-        try {
-            await connectWallet(usingMetamask);
-            setIsConnecting(false);
-        } catch (error: any) {
-            if (error.message.includes("User rejected the request")) {
-                toast.warning("To own a profile, connect your wallet and chose the Soneium blockchain network.")
-            } else if (error.message.includes("No MetaMask browser extension found. Please install MetaMask")) {
-                toast.warning(error.message);
-            } else {
-                debugger
-                log("Failed to connect wallet:");
-                logException(error);
-            }
-            setIsConnecting(false);
-            return false;
-        }
-        return true;
-    };
+        setupProviderAndSigner();
+    }, [privy.ready, privy.authenticated, privy.user?.wallet?.provider, log, logException]);
+    
+    const walletAddress = privy.user?.wallet?.address;
+    const isConnected = privy.ready && privy.authenticated && !!privy.user?.wallet;
 
     return (
-        <BlockchainContext.Provider value={
-            {
-                isConnected,
-                networkName,
-                chainId,
-                signer,
-                isConnecting,
-                provider,
-                // smartContract,
-                handleConnectWallet,
-                handleDisconnectWallet
-            }
-        }>
+        <BlockchainContext.Provider value={{
+            walletAddress,
+            isConnected,
+            networkName,
+            chainId,
+            signer,
+            ethersProvider,
+            login: privy.login,
+            logout: privy.logout,
+            user: privy.user,
+            ready: privy.ready,
+            authenticated: privy.authenticated,
+        }}>
             {children}
         </BlockchainContext.Provider>
     );

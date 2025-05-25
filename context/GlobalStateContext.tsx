@@ -1,6 +1,6 @@
 "use client"
-import { BrowserProvider, JsonRpcSigner } from 'ethers';
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { useBlockchain } from '@/context/BlockchainProvider';
 
 // Define Web2 and Web3 address types
 
@@ -59,12 +59,54 @@ export const useGlobalState = (): GlobalState => {
 
 // Create a provider component
 export const GlobalStateProvider = ({ children }: { children: ReactNode }) => {
+  const { user, ready, authenticated } = useBlockchain();
   const [userProfile, setUserProfile] = useState<UserProfile>({
     username: '',
     avatar: '',
     web2Items: [],
     web3Items: [],
   });
+
+  useEffect(() => {
+    if (ready && authenticated && user?.linkedAccounts) {
+      const privyWallets = user.linkedAccounts.filter(
+        (account) => account.type === 'wallet'
+      );
+      const newWeb3Items: Web3Item[] = privyWallets.map((account: any) => {
+        let explorerBaseUrl = '';
+        // Attempt to set explorer URL based on known chain IDs or types
+        if (account.chainType === 'ethereum') {
+          if (account.chainId === '1' || account.chainId.startsWith('eip155:1')) { // Mainnet
+            explorerBaseUrl = 'https://etherscan.io/address/';
+          } else if (account.chainId === '5' || account.chainId.startsWith('eip155:5')) { // Goerli
+            explorerBaseUrl = 'https://goerli.etherscan.io/address/';
+          } else if (account.chainId === '11155111' || account.chainId.startsWith('eip155:11155111')) { // Sepolia
+            explorerBaseUrl = 'https://sepolia.etherscan.io/address/';
+          }
+          // Add more Ethereum testnets or other EVM chains as needed
+        }
+        // Add other chain types like solana, polygon, etc. if relevant
+        
+        return {
+          icon: '/icons/chains/default-wallet-icon.svg', // Placeholder icon
+          walletAddress: account.address,
+          chainName: account.chainType || 'Unknown Chain',
+          chainId: account.chainId,
+          explorerAddress: explorerBaseUrl ? `${explorerBaseUrl}${account.address}` : undefined,
+        };
+      });
+      setUserProfile((prevProfile) => ({
+        ...prevProfile,
+        web3Items: newWeb3Items,
+      }));
+    } else {
+      // Clear web3Items if not authenticated or no linked accounts
+      setUserProfile((prevProfile) => ({
+        ...prevProfile,
+        web3Items: [],
+      }));
+    }
+  }, [user, ready, authenticated, setUserProfile]);
 
   const [userNameOK, setUserNameOK] = useState<boolean>(false);
   const [userNameCheckOK, setUserNameCheckOK] = useState<boolean>(false);
